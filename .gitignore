@@ -1,0 +1,12 @@
+node_modules/
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
