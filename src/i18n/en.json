@@ -1,0 +1,27 @@
+{
+  "config": {
+    "date": {
+      "presets": {
+        "time": "H:mm",
+        "date": "MMMM D, YYYY",
+        "datetime": "MMMM D, YYYY [at] H:mm",
+        "dmy": "DD MM YYYY"
+      },
+      "formats": {
+        "same_day": "[Today at] H:mm",
+        "last_day": "[Yesterday at] H:mm",
+        "next_day": "[Tomorrow at] H:mm",
+        "last_week": "[Last] dddd [at] H:mm",
+        "next_week": "[Next] dddd [at] H:mm"
+      }
+    }
+  },
+  "translations": {
+    "formats": {
+      "date": "{{value, date}}"
+    },
+    "common": {},
+    "validation": {},
+    "errors": {}
+  }
+}
