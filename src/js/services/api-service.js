@@ -99,7 +99,7 @@ export class ApiService {
       headers: {
         [HEADER_CONTENT_TYPE]: MIME_TYPE_JSON_API,
         [HEADER_ACCEPT]: MIME_TYPE_JSON_API,
-      }
+      },
     }
 
     if (opts.token) {
@@ -113,6 +113,6 @@ export class ApiService {
       throw e
     }
 
-    return response
+    return response.data
   }
 }
