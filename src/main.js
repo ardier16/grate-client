@@ -12,7 +12,11 @@ import { i18nOptions } from '@/i18n'
 import { globalize } from '@/vue/filters/globalize'
 import { formatDate } from '@/vue/filters/format-date'
 
+import { initApi } from './api'
+import config from './config'
+
 i18next.init(i18nOptions)
+initApi(config.API_URL)
 
 Vue.config.productionTip = false
 Vue.use(Vuelidate)
