@@ -5,6 +5,7 @@ const mutations = {
 
   // auth
   SET_AUTH_TOKEN: 'SET_AUTH_TOKEN',
+  SET_USER_ID: 'SET_USER_ID',
 }
 
 const actions = {
@@ -16,6 +17,7 @@ const actions = {
 const getters = {
   authToken: 'authToken',
   isSignedIn: 'isSignedIn',
+  userId: 'userId',
 }
 
 export const vuexTypes = {
