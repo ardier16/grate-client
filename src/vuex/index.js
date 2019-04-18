@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import auth from './auth.module'
+
 import { vuexTypes } from '@/vuex/types'
 import { localStoragePlugin } from './plugins/local-storage'
 
@@ -19,7 +21,9 @@ export const rootModule = {
 
 const store = new Vuex.Store({
   ...rootModule,
-  modules: {},
+  modules: {
+    auth,
+  },
   plugins: [localStoragePlugin],
 })
 
