@@ -21,10 +21,20 @@ export const mutations = {
 }
 
 export const actions = {
-  async [vuexTypes.SIGN_IN] ({ commit }, { login, passwordHash }) {
+  async [vuexTypes.SIGN_IN] ({ commit }, { login, password }) {
     const data = await api().post({
       endpoint: '/auth',
-      data: { login, passwordHash },
+      data: { login, password },
+    })
+
+    commit(vuexTypes.SET_AUTH_TOKEN, data.token)
+    commit(vuexTypes.SET_USER_ID, data.id)
+  },
+
+  async [vuexTypes.SIGN_UP] ({ commit }, opts) {
+    const data = await api().post({
+      endpoint: '/users',
+      data: opts,
     })
 
     commit(vuexTypes.SET_AUTH_TOKEN, data.token)
