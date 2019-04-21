@@ -22,6 +22,9 @@
     },
     "common": {},
     "validation": {},
-    "errors": {}
+    "errors": {},
+    "footer": {
+      "copyright": "{{year}} © gRate"
+    }
   }
 }
