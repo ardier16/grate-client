@@ -1,8 +1,8 @@
 <template>
-  <nav class="header">
-    <div class="header__title-wrapper">
-      <h2 class="header__title">
-        {{ 'pageNameTranslationId' | globalize }}
+  <nav class="navbar">
+    <div class="navbar__title-wrapper">
+      <h2 class="navbar__title">
+        {{ pageTranslationId | globalize }}
       </h2>
     </div>
   </nav>
@@ -10,17 +10,16 @@
 
 <script>
 export default {
-  name: 'header',
+  name: 'navbar',
 
   computed: {
-    pageNameTranslationId () {
+    pageTranslationId () {
       const pageNamePath = this.$route.matched
-        .find(path => path.meta.pageNameTranslationId)
-      if (pageNamePath) {
-        return pageNamePath.meta.pageNameTranslationId
-      } else {
-        return ''
-      }
+        .find(path => path.meta.pageTranslationId)
+
+      return pageNamePath
+        ? pageNamePath.meta.pageTranslationId
+        : ''
     },
   },
 }
@@ -30,7 +29,7 @@ export default {
 @import "~@scss/mixins";
 @import "~@scss/variables";
 
-.header {
+.navbar {
   width: 100%;
   background-color: $col-app-background;
   padding: 3.3rem $content-padding-right 2.1rem $content-padding-left;
@@ -43,7 +42,7 @@ export default {
       2.1rem $content-side-paddings-sm + 5.2rem;
   }
 
-  .header__title {
+  .navbar__title {
     font-size: 4rem;
     font-weight: normal;
     min-width: 15rem;
@@ -54,7 +53,7 @@ export default {
   }
 }
 
-.header__title {
+.navbar__title {
   color: $col-text;
   font-size: 4rem;
   line-height: 1.5;
