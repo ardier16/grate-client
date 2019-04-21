@@ -1,3 +1,5 @@
+import InputField from '@/vue/fields/input-field'
+
 import { validationMixin } from 'vuelidate'
 
 import { globalize } from '@/vue/filters/globalize'
@@ -5,6 +7,10 @@ import { globalize } from '@/vue/filters/globalize'
 import safeGet from 'lodash/get'
 
 export default {
+  components: {
+    InputField,
+  },
+
   mixins: [validationMixin],
 
   data: _ => ({

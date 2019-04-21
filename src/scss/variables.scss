@@ -4,9 +4,12 @@ $_black: #000000;
 // global colors
 $col-app-background: $_white;
 $col-primary: $_black;
+$col-accent: red;
 
 $col-text: $col-primary;
 $col-text-inverse: $_white;
+
+$col-block-bg: $_white;
 
 // button colors:
 $col-button-primary: $col-primary;
