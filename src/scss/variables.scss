@@ -1,3 +1,14 @@
+$sidebar-hide-bp: 768px;
+$status-message-reposition-bp: 470px;
+
+$sidebar-width: 27.5rem;
+
+$content-padding-top: 3.7rem;
+$content-padding-bottom: 2.5rem;
+$content-padding-left: 5rem;
+$content-padding-right: 6.5rem;
+$content-side-paddings-sm: 2rem;
+
 $_white: #ffffff;
 $_black: #000000;
 
@@ -10,6 +21,9 @@ $col-text: $col-primary;
 $col-text-inverse: $_white;
 
 $col-block-bg: $_white;
+$col-sidebar-background: lightgray;
+$col-sidebar-text: $col-primary;
+$col-sidebar-active-bg: rgb(230, 230, 230);
 
 // button colors:
 $col-button-primary: $col-primary;

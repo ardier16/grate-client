@@ -21,7 +21,13 @@
       "date": "{{value, date}}"
     },
     "common": {},
+    "pages": {
+      "feed": "Feed"
+    },
     "validation": {},
-    "errors": {}
+    "errors": {},
+    "footer": {
+      "copyright": "{{year}} © gRate"
+    }
   }
 }
