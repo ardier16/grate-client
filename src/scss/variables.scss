@@ -4,3 +4,15 @@ $_black: #000000;
 // global colors
 $col-app-background: $_white;
 $col-primary: $_black;
+
+$col-text: $col-primary;
+$col-text-inverse: $_white;
+
+// button colors:
+$col-button-primary: $col-primary;
+$col-button-primary-txt: $col-text-inverse;
+
+$col-button-secondary-hover: lightgray;
+$col-button-secondary-txt: $col-text;
+$col-button-secondary-txt-inactive: gray;
+$col-button-secondary-disabled-txt: lightgray;
