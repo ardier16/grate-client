@@ -56,7 +56,7 @@
 import FormMixin from '@/vue/mixins/form.mixin'
 
 import { vuexTypes } from '@/vuex'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'profile-form',
@@ -71,15 +71,44 @@ export default {
     },
   }),
 
+  computed: {
+    ...mapGetters({
+      profile: vuexTypes.profile,
+    }),
+  },
+
+  async created () {
+    if (this.profile) {
+      this.populateForm()
+    }
+  },
+
   methods: {
     ...mapActions({
-      signIn: vuexTypes.SIGN_IN,
+      createProfile: vuexTypes.CREATE_PROFILE,
+      updateProfile: vuexTypes.UPDATE_PROFILE,
+      loadProfile: vuexTypes.LOAD_PROFILE,
     }),
+
+    populateForm () {
+      this.form = {
+        name: this.profile.name,
+        birthDate: this.profile.birthDate,
+        status: this.profile.status,
+        avatarUrl: this.profile.avatarUrl,
+      }
+    },
 
     async submit () {
       this.disableForm()
       try {
+        if (this.profile) {
+          await this.updateProfile(this.form)
+        } else {
+          await this.createProfile(this.form)
+        }
       } catch (e) {
+        console.error(e)
         alert(e.message)
       }
       this.enableForm()
