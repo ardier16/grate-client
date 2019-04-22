@@ -19,16 +19,16 @@ const router = new Router({
       path: '/auth',
       name: 'auth',
       component: Auth,
-      redirect: { name: 'signin' },
+      redirect: { name: 'sign-in' },
       children: [
         {
           path: '/sign-in',
-          name: 'signin',
+          name: 'sign-in',
           component: SignIn,
         },
         {
           path: '/sign-up',
-          name: 'signup',
+          name: 'sign-up',
           component: SignUp,
         },
       ],

@@ -28,6 +28,15 @@
     "errors": {},
     "footer": {
       "copyright": "{{year}} © gRate"
+    },
+    "auth-pages": {
+      "title": "gRate for you",
+      "sign-in": "Sign in",
+      "sign-up": "Sign up",
+      "no-account-question": "No account yet?",
+      "no-account-answer": "Sign up",
+      "have-account-question": "Already have an account?",
+      "have-account-answer": "Sign in"
     }
   }
 }
