@@ -1,7 +1,7 @@
 @import '~@scss/variables';
 
 $col-field-text: $col-primary;
-$col-field-text-unfocused: lightgray;
+$col-field-text-unfocused: gray;
 $col-field-icon: $col-primary;
 $col-dropdown-bg: $_white;
 
@@ -65,4 +65,3 @@ $field-placeholer-color: $col-field-text-unfocused;
   border-bottom: .1rem dashed $color;
   background: none;
 }
-

@@ -32,6 +32,18 @@
           <router-link
             class="sidebar__link"
             @click.native="closeSidebar"
+            :to="vueRoutes.profile"
+            tag="a"
+          >
+            <i class="sidebar__link-icon mdi mdi-account" />
+            <span>
+              {{ 'pages.profile' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="sidebar__link"
+            @click.native="closeSidebar"
             :to="vueRoutes.feed"
             tag="a"
           >

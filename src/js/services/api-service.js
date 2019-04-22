@@ -45,7 +45,7 @@ export class ApiService {
     })
   }
 
-  patch (endpoint, data, token) {
+  patch ({ endpoint, data, token }) {
     return this._call({
       method: methods.PATCH,
       token,
@@ -54,7 +54,7 @@ export class ApiService {
     })
   }
 
-  put (endpoint, data, token) {
+  put ({ endpoint, data, token }) {
     return this._call({
       method: methods.PUT,
       token,
@@ -63,7 +63,7 @@ export class ApiService {
     })
   }
 
-  delete (endpoint, data, token) {
+  delete ({ endpoint, data, token }) {
     return this._call({
       method: methods.DELETE,
       token,

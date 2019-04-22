@@ -9,6 +9,8 @@ import AppContent from '@/vue/app-content'
 import Auth from '@/vue/pages/auth'
 import SignIn from '@/vue/pages/sign-in'
 import SignUp from '@/vue/pages/sign-up'
+import Profile from '@/vue/pages/profile'
+import Feed from '@/vue/pages/feed'
 
 Vue.use(Router)
 
@@ -23,17 +25,17 @@ const router = new Router({
       path: '/auth',
       name: 'auth',
       component: Auth,
-      redirect: { name: 'sign-in' },
+      redirect: vueRoutes.signIn,
       beforeEnter: authPageGuard,
       children: [
         {
           path: '/sign-in',
-          name: 'sign-in',
+          name: vueRoutes.signIn.name,
           component: SignIn,
         },
         {
           path: '/sign-up',
-          name: 'sign-up',
+          name: vueRoutes.signUp.name,
           component: SignUp,
         },
       ],
@@ -43,6 +45,21 @@ const router = new Router({
       name: 'app',
       component: AppContent,
       beforeEnter: inAppRouteGuard,
+      redirect: vueRoutes.profile,
+      children: [
+        {
+          path: '/profile',
+          name: vueRoutes.profile.name,
+          component: Profile,
+          meta: { pageTranslationId: 'pages.profile' },
+        },
+        {
+          path: '/feed',
+          name: vueRoutes.feed.name,
+          component: Feed,
+          meta: { pageTranslationId: 'pages.feed' },
+        },
+      ],
     },
   ],
 })
