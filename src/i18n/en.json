@@ -25,7 +25,10 @@
       "feed": "Feed"
     },
     "validation": {
-      "field-error_required": "Please fill this field"
+      "field-error_required": "Please fill this field",
+      "field-error_email": "This field should be a valid email",
+      "field-error_password": "Password should contain minimum 6 symbols",
+      "field-error_sameAsPassword": "Passwords don't match"
     },
     "errors": {},
     "footer": {
@@ -40,7 +43,9 @@
       "have-account-question": "Already have an account?",
       "have-account-answer": "Sign in",
       "email": "E-mail",
-      "password": "Password"
+      "password": "Password",
+      "confirm-password": "Confirm password",
+      "username": "Username"
     }
   }
 }
