@@ -22,7 +22,8 @@
     },
     "common": {},
     "pages": {
-      "feed": "Feed"
+      "feed": "Feed",
+      "profile": "Profile"
     },
     "validation": {
       "field-error_required": "Please fill this field",
