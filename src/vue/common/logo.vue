@@ -7,16 +7,21 @@
 <script>
 import { vueRoutes } from '@/vue-router/routes'
 
-const DEFAULT_LOGO_URL = '/static/logo.svg'
+const LOGO_URL = '/static/logo.svg'
+const INVERSE_LOGO_URL = '/static/logo-inverse.svg'
 
 export default {
+  props: {
+    inverse: { type: Boolean, default: false },
+  },
+
   data: _ => ({
     vueRoutes,
   }),
 
   computed: {
     logoUrl () {
-      return DEFAULT_LOGO_URL
+      return this.inverse ? INVERSE_LOGO_URL : LOGO_URL
     },
   },
 }

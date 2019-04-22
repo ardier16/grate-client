@@ -24,10 +24,31 @@
     "pages": {
       "feed": "Feed"
     },
-    "validation": {},
+    "validation": {
+      "field-error_required": "Please fill this field",
+      "field-error_email": "This field should be a valid email",
+      "field-error_password": "Password should contain minimum 6 symbols",
+      "field-error_sameAsPassword": "Passwords don't match"
+    },
     "errors": {},
+    "navbar": {
+      "sign-out-btn": "Sign out"
+    },
     "footer": {
       "copyright": "{{year}} © gRate"
+    },
+    "auth-pages": {
+      "title": "gRate for you",
+      "sign-in": "Sign in",
+      "sign-up": "Sign up",
+      "no-account-question": "No account yet?",
+      "no-account-answer": "Sign up",
+      "have-account-question": "Already have an account?",
+      "have-account-answer": "Sign in",
+      "email": "E-mail",
+      "password": "Password",
+      "confirm-password": "Confirm password",
+      "username": "Username"
     }
   }
 }

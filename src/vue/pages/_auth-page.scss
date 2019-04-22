@@ -1,2 +1,44 @@
 @import '~@scss/variables';
 @import '~@scss/mixins';
+@import '~@/vue/forms/app-form';
+
+.auth-page__title {
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin-bottom: 2.4rem;
+  color: $col-text;
+}
+
+.auth-page__tips {
+  margin-top: 5.5rem;
+}
+
+.auth-page__explanations {
+  line-height: 2.6rem;
+}
+
+.auth-page__tip-link {
+  color: $col-text;
+  text-decoration: underline;
+  line-height: 1.5;
+}
+
+.auth-page__submit-btn {
+  @include button-primary();
+
+  margin-right: auto;
+  margin-bottom: 2rem;
+  width: 20rem;
+
+  &:not(:only-child):not(:last-child) {
+    margin-right: .75rem;
+  }
+}
+
+.auth-page__cancel-btn {
+  @include button();
+
+  margin-right: auto;
+  margin-bottom: 2rem;
+  width: 15rem;
+}

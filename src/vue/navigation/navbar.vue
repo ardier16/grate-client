@@ -5,10 +5,24 @@
         {{ pageTranslationId | globalize }}
       </h2>
     </div>
+
+    <div class="navbar__actions-wrp">
+      <button
+        class="app__button-primary"
+        @click="processSignOut"
+      >
+        {{ 'navbar.sign-out-btn' | globalize }}
+      </button>
+    </div>
   </nav>
 </template>
 
 <script>
+import { vuexTypes } from '@/vuex'
+import { mapMutations } from 'vuex'
+
+import { vueRoutes } from '@/vue-router/routes'
+
 export default {
   name: 'navbar',
 
@@ -20,6 +34,17 @@ export default {
       return pageNamePath
         ? pageNamePath.meta.pageTranslationId
         : ''
+    },
+  },
+
+  methods: {
+    ...mapMutations({
+      signOut: vuexTypes.SIGN_OUT,
+    }),
+
+    processSignOut () {
+      this.signOut()
+      this.$router.push(vueRoutes.auth)
     },
   },
 }

@@ -1,0 +1,9 @@
+@import '~@scss/mixins';
+@import '~@scss/variables';
+
+.auth-form__submit-btn {
+  @include button-primary();
+
+  margin-right: auto;
+  width: 20rem;
+}
