@@ -50,6 +50,13 @@
       "password": "Password",
       "confirm-password": "Confirm password",
       "username": "Username"
+    },
+    "profile-form": {
+      "name": "Name",
+      "birth-date": "Birth date",
+      "status": "Status",
+      "avatar-url": "Avatar URL",
+      "update-btn": "Update"
     }
   }
 }
