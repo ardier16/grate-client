@@ -24,7 +24,9 @@
     "pages": {
       "feed": "Feed"
     },
-    "validation": {},
+    "validation": {
+      "field-error_required": "Please fill this field"
+    },
     "errors": {},
     "footer": {
       "copyright": "{{year}} © gRate"
@@ -36,7 +38,9 @@
       "no-account-question": "No account yet?",
       "no-account-answer": "Sign up",
       "have-account-question": "Already have an account?",
-      "have-account-answer": "Sign in"
+      "have-account-answer": "Sign in",
+      "email": "E-mail",
+      "password": "Password"
     }
   }
 }
