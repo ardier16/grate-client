@@ -107,6 +107,7 @@ export default {
         } else {
           await this.createProfile(this.form)
         }
+        alert('Updated')
       } catch (e) {
         console.error(e)
         alert(e.message)

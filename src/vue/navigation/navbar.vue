@@ -40,10 +40,12 @@ export default {
   methods: {
     ...mapMutations({
       signOut: vuexTypes.SIGN_OUT,
+      clearState: vuexTypes.CLEAR_STATE,
     }),
 
     processSignOut () {
       this.signOut()
+      this.clearState()
       this.$router.push(vueRoutes.auth)
     },
   },

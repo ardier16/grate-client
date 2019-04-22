@@ -23,9 +23,12 @@ const actions = {
 }
 
 const getters = {
+  // auth
   authToken: 'authToken',
   isSignedIn: 'isSignedIn',
   userId: 'userId',
+
+  // profile
   profile: 'profile',
 }
 
