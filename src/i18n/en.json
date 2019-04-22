@@ -31,6 +31,9 @@
       "field-error_sameAsPassword": "Passwords don't match"
     },
     "errors": {},
+    "navbar": {
+      "sign-out-btn": "Sign out"
+    },
     "footer": {
       "copyright": "{{year}} © gRate"
     },
