@@ -3,13 +3,28 @@
     <div
       v-for="post in posts"
       :key="post._id"
+      class="feed__card"
     >
-      <p>{{ post.title }}</p>
-      <vue-markdown :source="post.text" />
-      <p>Created: {{ post.createdAt | formatDate }}</p>
-      <p>Updated: {{ post.updatedAt | formatDate }}</p>
-      <hr>
-      <br>
+      <h3 class="feed__card-title">
+        {{ post.title }}
+      </h3>
+
+      <vue-markdown
+        class="feed__card-text"
+        :source="post.text"
+      />
+      <hr class="feed__card-line">
+
+      <div class="feed__card-date">
+        <p class="feed__card-created">
+          {{ 'feed.created' | globalize }}
+          {{ post.createdAt | formatDate }}
+        </p>
+        <p class="feed__card-updated">
+          {{ 'feed.updated' | globalize }}
+          {{ post.updatedAt | formatDate }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -48,3 +63,33 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@scss/variables';
+
+.feed__card {
+  background-color: $col-block-bg;
+  margin-bottom: 2rem;
+  padding: 2.4rem;
+  border-radius: 0.5rem;
+}
+
+.feed__card-title {
+  font-size: 3.2rem;
+  text-align: center;
+}
+
+.feed__card-text {
+  margin-top: 1.6rem;
+}
+
+.feed__card-line {
+  margin-top: 1.6rem;
+}
+
+.feed__card-date {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+</style>
