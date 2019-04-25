@@ -14,7 +14,7 @@ $x-large: 1920px;
   justify-content: center;
   align-items: center;
   border: none;
-  padding: 0.8rem 1.6rem;
+  padding: 1rem 2rem;
   font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
@@ -29,7 +29,7 @@ $x-large: 1920px;
 @mixin button-primary () {
   @include button();
 
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: $col-button-primary;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.15);
   color: $col-button-primary-txt;

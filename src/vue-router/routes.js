@@ -5,5 +5,6 @@ export const vueRoutes = Object.freeze({
   signUp: { name: 'sign-up' },
   feed: { name: 'app.feed' },
   profile: { name: 'app.profile' },
+  createPost: { name: 'create-post' },
   settings: { name: 'app.settings' },
 })

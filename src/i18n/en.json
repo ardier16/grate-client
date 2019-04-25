@@ -23,7 +23,8 @@
     "common": {},
     "pages": {
       "feed": "Feed",
-      "profile": "Profile"
+      "profile": "Profile",
+      "create-post": "New post"
     },
     "validation": {
       "field-error_required": "Please fill this field",
@@ -56,6 +57,16 @@
       "birth-date": "Birth date",
       "status": "Status",
       "avatar-url": "Avatar URL",
+      "update-btn": "Update"
+    },
+    "feed": {
+      "created": "Created:",
+      "updated": "Updated:"
+    },
+    "post-form": {
+      "title": "Title",
+      "text": "Text",
+      "create-btn": "Create",
       "update-btn": "Update"
     }
   }

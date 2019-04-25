@@ -11,9 +11,11 @@ $content-side-paddings-sm: 2rem;
 
 $_white: #ffffff;
 $_black: #000000;
+$_lightgray: #ebebeb;
 
 // global colors
-$col-app-background: $_white;
+$col-app-background: $_lightgray;
+$col-block-bg: $_white;
 $col-primary: $_black;
 $col-accent: red;
 

@@ -52,6 +52,18 @@
               {{ 'pages.feed' | globalize }}
             </span>
           </router-link>
+
+          <router-link
+            class="sidebar__link"
+            @click.native="closeSidebar"
+            :to="vueRoutes.createPost"
+            tag="a"
+          >
+            <i class="sidebar__link-icon mdi mdi-plus" />
+            <span>
+              {{ 'pages.create-post' | globalize }}
+            </span>
+          </router-link>
         </nav>
       </section>
 

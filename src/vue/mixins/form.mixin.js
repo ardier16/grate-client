@@ -1,4 +1,5 @@
 import InputField from '@/vue/fields/input-field'
+import MarkdownField from '@/vue/fields/markdown-field'
 
 import { validationMixin } from 'vuelidate'
 
@@ -9,6 +10,7 @@ import safeGet from 'lodash/get'
 export default {
   components: {
     InputField,
+    MarkdownField,
   },
 
   mixins: [validationMixin],

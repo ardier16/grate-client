@@ -5,6 +5,12 @@ $margin-row-to-row: 2.4rem;
 $margin-row-to-row-small: 3rem;
 $field-to-field-gap: 2rem;
 
+form {
+  padding: 2.4rem;
+  background-color: $col-block-bg;
+  border-radius: 0.5rem;
+}
+
 .app__form-row {
   display: flex;
   width: 100%;
