@@ -23,7 +23,8 @@
     "common": {},
     "pages": {
       "feed": "Feed",
-      "profile": "Profile"
+      "profile": "Profile",
+      "create-post": "New post"
     },
     "validation": {
       "field-error_required": "Please fill this field",
@@ -61,6 +62,11 @@
     "feed": {
       "created": "Created:",
       "updated": "Updated:"
+    },
+    "create-post-form": {
+      "title": "Title",
+      "text": "Text",
+      "create-btn": "Create"
     }
   }
 }

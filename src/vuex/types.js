@@ -27,6 +27,7 @@ const actions = {
 
   // posts
   LOAD_POSTS: 'LOAD_POSTS',
+  CREATE_POST: 'CREATE_POST',
 }
 
 const getters = {

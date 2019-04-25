@@ -10,6 +10,7 @@ import Auth from '@/vue/pages/auth'
 import SignIn from '@/vue/pages/sign-in'
 import SignUp from '@/vue/pages/sign-up'
 import Profile from '@/vue/pages/profile'
+import CreatePost from '@/vue/pages/create-post'
 import Feed from '@/vue/pages/feed'
 
 Vue.use(Router)
@@ -52,6 +53,12 @@ const router = new Router({
           name: vueRoutes.profile.name,
           component: Profile,
           meta: { pageTranslationId: 'pages.profile' },
+        },
+        {
+          path: '/posts/create',
+          name: vueRoutes.createPost.name,
+          component: CreatePost,
+          meta: { pageTranslationId: 'pages.create-post' },
         },
         {
           path: '/feed',

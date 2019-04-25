@@ -12,12 +12,20 @@ export const mutations = {
 }
 
 export const actions = {
-  async [vuexTypes.LOAD_POSTS] ({ commit, posts }) {
+  async [vuexTypes.LOAD_POSTS] ({ commit }) {
     const data = await api().get({
       endpoint: `/posts`,
     })
 
     commit(vuexTypes.SET_POSTS, data)
+  },
+
+  async [vuexTypes.CREATE_POST] ({ commit, rootGetters }, opts) {
+    await api().post({
+      endpoint: '/posts',
+      data: opts,
+      token: rootGetters[vuexTypes.authToken],
+    })
   },
 }
 
