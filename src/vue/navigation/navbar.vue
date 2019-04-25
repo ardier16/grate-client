@@ -21,8 +21,6 @@
 import { vuexTypes } from '@/vuex'
 import { mapMutations } from 'vuex'
 
-import { vueRoutes } from '@/vue-router/routes'
-
 export default {
   name: 'navbar',
 
@@ -46,7 +44,7 @@ export default {
     processSignOut () {
       this.signOut()
       this.clearState()
-      this.$router.push(vueRoutes.auth)
+      location.reload()
     },
   },
 }

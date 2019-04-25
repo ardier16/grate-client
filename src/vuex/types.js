@@ -20,6 +20,7 @@ const actions = {
   // profile
   CREATE_PROFILE: 'CREATE_PROFILE',
   UPDATE_PROFILE: 'UPDATE_PROFILE',
+  LOAD_PROFILE: 'LOAD_PROFILE',
 }
 
 const getters = {

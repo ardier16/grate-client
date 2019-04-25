@@ -12,9 +12,9 @@ export const mutations = {
 }
 
 export const actions = {
-  async [vuexTypes.LOAD_PROFILE] ({ commit, getters, rootGetters }) {
+  async [vuexTypes.LOAD_PROFILE] ({ commit, rootGetters }) {
     const data = await api().get({
-      endpoint: `/profiles/${getters[vuexTypes.profile]._id}`,
+      endpoint: `/profiles/mine`,
       token: rootGetters[vuexTypes.authToken],
     })
 
