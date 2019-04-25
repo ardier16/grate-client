@@ -1,14 +1,14 @@
 <template>
   <div class="create-post">
-    <create-post-form />
+    <post-form />
   </div>
 </template>
 
 <script>
-import CreatePostForm from '@/vue/forms/create-post-form'
+import PostForm from '@/vue/forms/post-form'
 
 export default {
   name: 'create-post',
-  components: { CreatePostForm },
+  components: { PostForm },
 }
 </script>

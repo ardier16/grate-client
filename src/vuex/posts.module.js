@@ -20,9 +20,17 @@ export const actions = {
     commit(vuexTypes.SET_POSTS, data)
   },
 
-  async [vuexTypes.CREATE_POST] ({ commit, rootGetters }, opts) {
+  async [vuexTypes.CREATE_POST] ({ rootGetters }, opts) {
     await api().post({
       endpoint: '/posts',
+      data: opts,
+      token: rootGetters[vuexTypes.authToken],
+    })
+  },
+
+  async [vuexTypes.UPDATE_POST] ({ rootGetters }, opts) {
+    await api().put({
+      endpoint: `/posts/${opts.id}`,
       data: opts,
       token: rootGetters[vuexTypes.authToken],
     })

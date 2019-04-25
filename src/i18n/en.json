@@ -63,10 +63,11 @@
       "created": "Created:",
       "updated": "Updated:"
     },
-    "create-post-form": {
+    "post-form": {
       "title": "Title",
       "text": "Text",
-      "create-btn": "Create"
+      "create-btn": "Create",
+      "update-btn": "Update"
     }
   }
 }

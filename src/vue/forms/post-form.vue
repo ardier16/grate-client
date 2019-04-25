@@ -1,12 +1,12 @@
 <template>
-  <form class="app-form create-post-form" @submit.prevent="submit">
+  <form class="app-form post-form" @submit.prevent="submit">
     <div class="app__form-row">
       <div class="app__form-field">
         <input-field
           v-model="form.title"
           @blur="touchField('form.title')"
-          name="create-post-title"
-          :label="'create-post-form.title' | globalize"
+          name="post-title"
+          :label="'post-form.title' | globalize"
           :error-message="getFieldErrorMessage('form.title')"
         />
       </div>
@@ -17,9 +17,9 @@
         <markdown-field
           v-model="form.text"
           @blur="touchField('form.text')"
-          name="create-post-text"
+          name="post-text"
           :error-message="getFieldErrorMessage('form.text')"
-          :label="'create-post-form.text' | globalize"
+          :label="'post-form.text' | globalize"
         />
       </div>
     </div>
@@ -27,10 +27,16 @@
     <div class="app__form-actions">
       <button
         type="submit"
-        class="create-post-form__submit-btn app__button-primary"
+        class="post-form__submit-btn app__button-primary"
         :disabled="formMixin.isDisabled"
       >
-        {{ 'create-post-form.create-btn' | globalize }}
+        <template v-if="post">
+          {{ 'post-form.update-btn' | globalize }}
+        </template>
+
+        <template v-else>
+          {{ 'post-form.create-btn' | globalize }}
+        </template>
       </button>
     </div>
   </form>
@@ -44,14 +50,23 @@ import { required } from '@validators'
 import { vuexTypes } from '@/vuex'
 import { mapActions } from 'vuex'
 
+const EVENTS = {
+  submit: 'submit',
+}
+
 export default {
-  name: 'create-post-form',
+  name: 'post-form',
   mixins: [FormMixin],
+
+  props: {
+    post: { type: Object, default: null },
+  },
 
   data: _ => ({
     form: {
       title: '',
       text: '',
+      id: '',
     },
   }),
 
@@ -62,9 +77,18 @@ export default {
     },
   },
 
+  created () {
+    if (this.post) {
+      this.form.title = this.post.title
+      this.form.text = this.post.text
+      this.form.id = this.post._id
+    }
+  },
+
   methods: {
     ...mapActions({
       createPost: vuexTypes.CREATE_POST,
+      updatePost: vuexTypes.UPDATE_POST,
     }),
 
     async submit () {
@@ -74,8 +98,14 @@ export default {
 
       this.disableForm()
       try {
-        await this.createPost(this.form)
-        alert('Created')
+        if (this.post) {
+          await this.updatePost(this.form)
+        } else {
+          await this.createPost(this.form)
+        }
+
+        alert('Success')
+        this.$emit(EVENTS.submit)
       } catch (e) {
         console.error(e)
         alert(e.message)

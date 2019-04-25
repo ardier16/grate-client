@@ -1,36 +1,54 @@
 <template>
   <div class="feed">
-    <div
-      v-for="post in posts"
-      :key="post._id"
-      class="feed__card"
-    >
-      <h3 class="feed__card-title">
-        {{ post.title }}
-      </h3>
-
-      <vue-markdown
-        class="feed__card-text"
-        :source="post.text"
+    <template v-if="selectedPost">
+      <post-form
+        :post="selectedPost"
+        @submit="refreshPosts"
       />
-      <hr class="feed__card-line">
+    </template>
 
-      <div class="feed__card-date">
-        <p class="feed__card-created">
-          {{ 'feed.created' | globalize }}
-          {{ post.createdAt | formatDate }}
-        </p>
-        <p class="feed__card-updated">
-          {{ 'feed.updated' | globalize }}
-          {{ post.updatedAt | formatDate }}
-        </p>
+    <template v-else>
+      <div
+        v-for="post in posts"
+        :key="post._id"
+        class="feed__card"
+      >
+        <a
+          v-if="post.ownerId === userId"
+          @click="selectedPost = post"
+          class="feed__card-edit"
+        >
+          <i class="mdi mdi-pencil" />
+        </a>
+
+        <h3 class="feed__card-title">
+          {{ post.title }}
+        </h3>
+
+        <vue-markdown
+          class="feed__card-text"
+          :source="post.text"
+        />
+        <hr class="feed__card-line">
+
+        <div class="feed__card-date">
+          <p class="feed__card-created">
+            {{ 'feed.created' | globalize }}
+            {{ post.createdAt | formatDate }}
+          </p>
+          <p class="feed__card-updated">
+            {{ 'feed.updated' | globalize }}
+            {{ post.updatedAt | formatDate }}
+          </p>
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
+import PostForm from '@/vue/forms/post-form'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
@@ -39,11 +57,17 @@ export default {
   name: 'feed',
   components: {
     VueMarkdown,
+    PostForm,
   },
+
+  data: _ => ({
+    selectedPost: null,
+  }),
 
   computed: {
     ...mapGetters({
       posts: vuexTypes.posts,
+      userId: vuexTypes.userId,
     }),
   },
 
@@ -60,11 +84,22 @@ export default {
     ...mapActions({
       loadPosts: vuexTypes.LOAD_POSTS,
     }),
+
+    async refreshPosts () {
+      this.selectedPost = null
+
+      try {
+        await this.loadPosts()
+      } catch (e) {
+        console.error(e)
+        alert(e.message)
+      }
+    },
   },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@scss/variables';
 
 .feed__card {
@@ -72,6 +107,17 @@ export default {
   margin-bottom: 2rem;
   padding: 2.4rem;
   border-radius: 0.5rem;
+  position: relative;
+}
+
+.feed__card-edit {
+  position: absolute;
+  right: 2rem;
+  cursor: pointer;
+
+  i {
+    font-size: 2rem;
+  }
 }
 
 .feed__card-title {
