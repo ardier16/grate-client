@@ -78,8 +78,15 @@ export default {
   },
 
   async created () {
-    if (this.profile) {
-      this.populateForm()
+    try {
+      await this.loadProfile()
+
+      if (this.profile) {
+        this.populateForm()
+      }
+    } catch (e) {
+      console.error(e)
+      alert(e.message)
     }
   },
 
