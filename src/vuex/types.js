@@ -9,6 +9,9 @@ const mutations = {
 
   // profile
   SET_PROFILE: 'SET_PROFILE',
+
+  // posts
+  SET_POSTS: 'SET_POSTS',
 }
 
 const actions = {
@@ -21,6 +24,9 @@ const actions = {
   CREATE_PROFILE: 'CREATE_PROFILE',
   UPDATE_PROFILE: 'UPDATE_PROFILE',
   LOAD_PROFILE: 'LOAD_PROFILE',
+
+  // posts
+  LOAD_POSTS: 'LOAD_POSTS',
 }
 
 const getters = {
@@ -31,6 +37,9 @@ const getters = {
 
   // profile
   profile: 'profile',
+
+  // posts
+  posts: 'posts',
 }
 
 export const vuexTypes = {
