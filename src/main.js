@@ -18,7 +18,10 @@ import { initApi } from './api'
 import config from './config'
 
 i18next.init(i18nOptions)
-initApi(config.API_URL)
+initApi({
+  apiUrl: config.API_URL,
+  storageUrl: config.STORAGE_URL,
+})
 
 Vue.config.productionTip = false
 Vue.use(Vuelidate)

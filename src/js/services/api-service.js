@@ -9,20 +9,23 @@ const methods = Object.freeze({
 })
 
 const MIME_TYPE_JSON_API = 'application/json'
+const MIME_TYPE_FORM_DATA = 'multipart/form-data'
 
 const HEADER_CONTENT_TYPE = 'Content-Type'
 const HEADER_ACCEPT = 'Accept'
 const HEADER_TOKEN = 'x-access-token'
 
 export class ApiService {
-  constructor ({ axios, apiUrl }) {
+  constructor ({ axios, apiUrl, storageUrl }) {
     this._axios = axios
     this._apiUrl = apiUrl
+    this._storageUrl = storageUrl
   }
 
-  static getInstance (apiUrl) {
+  static getInstance ({ apiUrl, storageUrl }) {
     return new ApiService({
       apiUrl,
+      storageUrl,
       axios: axios.create(),
     })
   }
@@ -70,6 +73,28 @@ export class ApiService {
       endpoint,
       data,
     })
+  }
+
+  async uploadDocument (document) {
+    const formData = new FormData()
+    formData.append('image', document)
+
+    const config = {
+      baseURL: this._apiUrl,
+      data: formData,
+      method: methods.POST,
+      url: 'documents',
+      headers: { [HEADER_CONTENT_TYPE]: MIME_TYPE_FORM_DATA },
+    }
+
+    let response
+    try {
+      response = await this._axios(config)
+    } catch (e) {
+      throw e
+    }
+
+    return `${this._storageUrl}${response.data.path}`
   }
 
   /**

@@ -1,5 +1,7 @@
 import InputField from '@/vue/fields/input-field'
 import MarkdownField from '@/vue/fields/markdown-field'
+import DateField from '@/vue/fields/date-field'
+import FileField from '@/vue/fields/file-field'
 
 import { validationMixin } from 'vuelidate'
 
@@ -11,6 +13,8 @@ export default {
   components: {
     InputField,
     MarkdownField,
+    DateField,
+    FileField,
   },
 
   mixins: [validationMixin],

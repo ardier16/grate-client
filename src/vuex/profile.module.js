@@ -22,9 +22,16 @@ export const actions = {
   },
 
   async [vuexTypes.CREATE_PROFILE] ({ commit, rootGetters }, opts) {
+    let optsData = opts
+
+    if (opts.avatar) {
+      const docUrl = await api().uploadDocument(opts.avatar)
+      optsData = Object.assign(opts, { avatarUrl: docUrl })
+    }
+
     const data = await api().post({
       endpoint: '/profiles',
-      data: opts,
+      data: optsData,
       token: rootGetters[vuexTypes.authToken],
     })
 
@@ -32,9 +39,16 @@ export const actions = {
   },
 
   async [vuexTypes.UPDATE_PROFILE] ({ commit, getters, rootGetters }, opts) {
+    let optsData = opts
+
+    if (opts.avatar) {
+      const docUrl = await api().uploadDocument(opts.avatar)
+      optsData = Object.assign(opts, { avatarUrl: docUrl })
+    }
+
     const data = await api().put({
       endpoint: `/profiles/${getters[vuexTypes.profile]._id}`,
-      data: opts,
+      data: optsData,
       token: rootGetters[vuexTypes.authToken],
     })
 
