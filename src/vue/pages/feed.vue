@@ -32,11 +32,18 @@
         <hr class="feed__card-line">
 
         <div class="feed__card-date">
-          <p class="feed__card-created">
+          <p
+            class="feed__card-created"
+            :title="post.createdAt | formatCalendar"
+          >
             {{ 'feed.created' | globalize }}
             {{ post.createdAt | formatDate }}
           </p>
-          <p class="feed__card-updated">
+
+          <p
+            class="feed__card-updated"
+            :title="post.updatedAt | formatCalendar"
+          >
             {{ 'feed.updated' | globalize }}
             {{ post.updatedAt | formatDate }}
           </p>
