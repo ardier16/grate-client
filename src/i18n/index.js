@@ -28,6 +28,8 @@ export const i18nOptions = {
     format: (param, format) => {
       switch (format.toLowerCase()) {
         case 'date':
+          return moment(param).fromNow()
+        case 'calendar':
           return moment(param).calendar(null, {
             sameDay: i18n.config.date.formats.same_day,
             lastDay: i18n.config.date.formats.last_day,

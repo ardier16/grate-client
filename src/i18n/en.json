@@ -18,7 +18,8 @@
   },
   "translations": {
     "formats": {
-      "date": "{{value, date}}"
+      "date": "{{value, date}}",
+      "calendar": "{{value, calendar}}"
     },
     "common": {},
     "pages": {
