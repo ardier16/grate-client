@@ -35,6 +35,13 @@ export const actions = {
       token: rootGetters[vuexTypes.authToken],
     })
   },
+
+  async [vuexTypes.DELETE_POST] ({ rootGetters }, id) {
+    await api().delete({
+      endpoint: `/posts/${id}`,
+      token: rootGetters[vuexTypes.authToken],
+    })
+  },
 }
 
 export const getters = {

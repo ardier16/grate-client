@@ -13,13 +13,23 @@
         :key="post._id"
         class="feed__card"
       >
-        <a
+        <div
           v-if="post.ownerId === userId"
-          @click="selectedPost = post"
-          class="feed__card-edit"
+          class="feed__card-actions"
         >
-          <i class="mdi mdi-pencil" />
-        </a>
+          <a
+            @click="selectedPost = post"
+            class="feed__card-edit"
+          >
+            <i class="mdi mdi-pencil" />
+          </a>
+          <a
+            @click="removePost(post)"
+            class="feed__card-delete"
+          >
+            <i class="mdi mdi-close" />
+          </a>
+        </div>
 
         <h3 class="feed__card-title">
           {{ post.title }}
@@ -90,6 +100,7 @@ export default {
   methods: {
     ...mapActions({
       loadPosts: vuexTypes.LOAD_POSTS,
+      deletePost: vuexTypes.DELETE_POST,
     }),
 
     async refreshPosts () {
@@ -97,6 +108,17 @@ export default {
 
       try {
         await this.loadPosts()
+      } catch (e) {
+        console.error(e)
+        alert(e.message)
+      }
+    },
+
+    async removePost (post) {
+      try {
+        await this.deletePost(post._id)
+        await this.refreshPosts()
+        alert('Deleted')
       } catch (e) {
         console.error(e)
         alert(e.message)
@@ -117,9 +139,12 @@ export default {
   position: relative;
 }
 
-.feed__card-edit {
+.feed__card-actions {
   position: absolute;
   right: 2rem;
+}
+
+.feed__card-edit, .feed__card-delete {
   cursor: pointer;
 
   i {
