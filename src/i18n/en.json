@@ -57,7 +57,7 @@
       "name": "Name",
       "birth-date": "Birth date",
       "status": "Status",
-      "avatar-url": "Avatar URL",
+      "avatar": "Avatar",
       "update-btn": "Update"
     },
     "feed": {
@@ -69,6 +69,9 @@
       "text": "Text",
       "create-btn": "Create",
       "update-btn": "Update"
+    },
+    "file-field": {
+      "title": "Select image to upload"
     }
   }
 }

@@ -55,7 +55,7 @@ export default {
 
     date (value) {
       this.$emit(EVENTS.input, value)
-    }
+    },
   },
 
   created () {
