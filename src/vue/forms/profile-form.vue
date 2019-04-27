@@ -12,7 +12,7 @@
 
     <div class="app__form-row">
       <div class="app__form-field">
-        <input-field
+        <date-field
           v-model="form.birthDate"
           name="profile-birth-date"
           :label="'profile-form.birth-date' | globalize"
