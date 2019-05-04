@@ -1,5 +1,4 @@
-# gRate Web-Client
-[Work in progress] Vue client for gRate social network
+# *gRate* web client
 
 ## How to run
 
