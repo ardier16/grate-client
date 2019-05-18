@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import Navbar from '@/vue/navigation/navbar'
-import Sidebar from '@/vue/navigation/sidebar'
+import Navbar from '@/vue/navigation/navbar.vue'
+import Sidebar from '@/vue/navigation/sidebar.vue'
 
-import StatusMessage from '@/vue/common/status-message'
+import StatusMessage from '@/vue/common/status-message.vue'
 
 import { mapGetters } from 'vuex'
 import { vuexTypes } from '@/vuex'

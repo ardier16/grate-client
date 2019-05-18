@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ProfileForm from '@/vue/forms/profile-form'
+import ProfileForm from '@/vue/forms/profile-form.vue'
 
 export default {
   name: 'profile',

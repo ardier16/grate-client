@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import SignInForm from '@/vue/forms/sign-in-form'
+import SignInForm from '@/vue/forms/sign-in-form.vue'
 import { vueRoutes } from '@/vue-router/routes'
 
 export default {

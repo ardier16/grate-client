@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import Logo from '@/vue/common/logo'
-import AppFooter from '@/vue/navigation/footer'
+import Logo from '@/vue/common/logo.vue'
+import AppFooter from '@/vue/navigation/footer.vue'
 
 import { vueRoutes } from '@/vue-router/routes'
 

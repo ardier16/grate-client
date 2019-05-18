@@ -1,7 +1,7 @@
 import './scss/app.scss'
 
 import Vue from 'vue'
-import App from '@/vue/app'
+import App from '@/vue/app.vue'
 import i18next from 'i18next'
 import Vuelidate from 'vuelidate'
 import VueResource from 'vue-resource'
