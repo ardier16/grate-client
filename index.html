@@ -5,6 +5,7 @@
 
   <title>gRate</title>
 
+  <link rel="manifest" href="/static/manifest.json">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 </head>
@@ -12,5 +13,21 @@
   <script type="text/javascript" src="/static/env.js"></script>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope)
+        }, function(err) {
+          console.log('ServiceWorker registration failed: ', err)
+        }).catch(function(err) {
+          console.log(err)
+        })
+      })
+    } else {
+      console.log('service worker is not supported')
+    }
+  </script>
 </body>
 </html>
