@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <template v-if="isLoaded">
+    <template v-if="isLoaded && !posts.length">
       <template v-if="selectedPost">
         <post-form
           :post="selectedPost"
@@ -63,14 +63,23 @@
       </template>
     </template>
 
+    <no-data-message
+      v-else-if="isLoaded"
+      icon-name="note-outline"
+      :title="'feed.no-posts-title' | globalize"
+      :message="'feed.no-posts-msg' | globalize"
+    />
+
     <loader v-else />
   </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import PostForm from '@/vue/forms/post-form.vue'
 import Loader from '@/vue/common/loader.vue'
+import NoDataMessage from '@/vue/common/no-data-message.vue'
+
+import PostForm from '@/vue/forms/post-form.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
@@ -82,8 +91,9 @@ export default {
   name: 'feed',
   components: {
     VueMarkdown,
-    PostForm,
     Loader,
+    NoDataMessage,
+    PostForm,
   },
 
   data: _ => ({

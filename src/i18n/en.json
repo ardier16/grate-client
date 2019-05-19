@@ -84,7 +84,9 @@
     },
     "feed": {
       "created": "Created:",
-      "updated": "Updated:"
+      "updated": "Updated:",
+      "no-posts-title": "No posts yet",
+      "no-posts-msg": "Be the first to create a post"
     },
     "post-form": {
       "title": "Title",
