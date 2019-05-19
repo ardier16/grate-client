@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import SignUpForm from '@/vue/forms/sign-up-form'
+import SignUpForm from '@/vue/forms/sign-up-form.vue'
 import { vueRoutes } from '@/vue-router/routes'
 
 export default {

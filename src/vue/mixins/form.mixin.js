@@ -1,7 +1,7 @@
-import InputField from '@/vue/fields/input-field'
-import MarkdownField from '@/vue/fields/markdown-field'
-import DateField from '@/vue/fields/date-field'
-import FileField from '@/vue/fields/file-field'
+import InputField from '@/vue/fields/input-field.vue'
+import MarkdownField from '@/vue/fields/markdown-field.vue'
+import DateField from '@/vue/fields/date-field.vue'
+import FileField from '@/vue/fields/file-field.vue'
 
 import { validationMixin } from 'vuelidate'
 

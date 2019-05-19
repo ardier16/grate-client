@@ -5,13 +5,13 @@ import { store, vuexTypes } from '@/vuex'
 
 import { vueRoutes } from '@/vue-router/routes'
 
-import AppContent from '@/vue/app-content'
-import Auth from '@/vue/pages/auth'
-import SignIn from '@/vue/pages/sign-in'
-import SignUp from '@/vue/pages/sign-up'
-import Profile from '@/vue/pages/profile'
-import CreatePost from '@/vue/pages/create-post'
-import Feed from '@/vue/pages/feed'
+import AppContent from '@/vue/app-content.vue'
+import Auth from '@/vue/pages/auth.vue'
+import SignIn from '@/vue/pages/sign-in.vue'
+import SignUp from '@/vue/pages/sign-up.vue'
+import Profile from '@/vue/pages/profile.vue'
+import CreatePost from '@/vue/pages/create-post.vue'
+import Feed from '@/vue/pages/feed.vue'
 
 Vue.use(Router)
 

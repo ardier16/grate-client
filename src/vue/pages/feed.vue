@@ -65,7 +65,7 @@
 
 <script>
 import VueMarkdown from 'vue-markdown'
-import PostForm from '@/vue/forms/post-form'
+import PostForm from '@/vue/forms/post-form.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'

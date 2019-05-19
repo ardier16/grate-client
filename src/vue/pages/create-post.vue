@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import PostForm from '@/vue/forms/post-form'
+import PostForm from '@/vue/forms/post-form.vue'
 
 export default {
   name: 'create-post',
