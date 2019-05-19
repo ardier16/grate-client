@@ -11,6 +11,7 @@ import { router } from '@/vue-router'
 import { i18nOptions } from '@/i18n'
 
 import { globalize } from '@/vue/filters/globalize'
+import { abbreviate } from '@/vue/filters/abbreviate'
 import { formatDate } from '@/vue/filters/format-date'
 import { formatCalendar } from '@/vue/filters/format-calendar'
 
@@ -28,6 +29,7 @@ Vue.use(Vuelidate)
 Vue.use(VueResource)
 
 Vue.filter('globalize', globalize)
+Vue.filter('abbreviate', abbreviate)
 Vue.filter('formatDate', formatDate)
 Vue.filter('formatCalendar', formatCalendar)
 

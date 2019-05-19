@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <template v-if="isLoaded && !posts.length">
+    <template v-if="isLoaded && posts.length">
       <template v-if="selectedPost">
         <post-form
           :post="selectedPost"
@@ -116,7 +116,7 @@ export default {
 
   async created () {
     try {
-      await this.loadPostss()
+      await this.loadPosts()
       this.isLoaded = true
     } catch (e) {
       this.isLoadFailed = true

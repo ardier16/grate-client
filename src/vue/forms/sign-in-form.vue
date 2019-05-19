@@ -68,6 +68,7 @@ export default {
   methods: {
     ...mapActions({
       signIn: vuexTypes.SIGN_IN,
+      loadProfile: vuexTypes.LOAD_PROFILE,
     }),
 
     async submit () {
@@ -81,6 +82,7 @@ export default {
           login: this.form.email.toLowerCase(),
           password: this.form.password,
         })
+        await this.loadProfile()
 
         this.$router.push({ name: 'app' })
       } catch (e) {

@@ -65,6 +65,10 @@
     "footer": {
       "copyright": "{{year}} © gRate"
     },
+    "passport": {
+      "signed-in-as": "Signed in as",
+      "sign-out-btn": "Sign out"
+    },
     "auth-pages": {
       "title": "gRate for you",
       "sign-in": "Sign in",

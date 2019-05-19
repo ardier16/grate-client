@@ -6,23 +6,21 @@
       </h2>
     </div>
 
-    <div class="navbar__actions-wrp">
-      <button
-        class="app__button-primary"
-        @click="processSignOut"
-      >
-        {{ 'navbar.sign-out-btn' | globalize }}
-      </button>
+    <div class="navbar__passport-wrp">
+      <passport />
     </div>
   </nav>
 </template>
 
 <script>
+import Passport from './passport'
+
 import { vuexTypes } from '@/vuex'
 import { mapMutations } from 'vuex'
 
 export default {
   name: 'navbar',
+  components: { Passport },
 
   computed: {
     pageTranslationId () {
