@@ -113,3 +113,8 @@ body {
 .app__button-secondary {
   @include button-secondary();
 }
+
+.app__fill {
+  width: 100%;
+  height: 100%;
+}

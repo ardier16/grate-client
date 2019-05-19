@@ -68,6 +68,7 @@ export default {
   methods: {
     ...mapActions({
       signIn: vuexTypes.SIGN_IN,
+      loadProfile: vuexTypes.LOAD_PROFILE,
     }),
 
     async submit () {
@@ -81,8 +82,13 @@ export default {
           login: this.form.email.toLowerCase(),
           password: this.form.password,
         })
+        await this.loadProfile()
 
-        this.$router.push({ name: 'app' })
+        if (this.$route.query.redirectPath) {
+          this.$router.push({ path: this.$route.query.redirectPath })
+        } else {
+          this.$router.push({ name: 'app' })
+        }
       } catch (e) {
         ErrorHandler.process(e)
       }

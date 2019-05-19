@@ -6,23 +6,21 @@
       </h2>
     </div>
 
-    <div class="navbar__actions-wrp">
-      <button
-        class="app__button-primary"
-        @click="processSignOut"
-      >
-        {{ 'navbar.sign-out-btn' | globalize }}
-      </button>
+    <div class="navbar__passport-wrp">
+      <passport />
     </div>
   </nav>
 </template>
 
 <script>
+import Passport from './passport'
+
 import { vuexTypes } from '@/vuex'
 import { mapMutations } from 'vuex'
 
 export default {
   name: 'navbar',
+  components: { Passport },
 
   computed: {
     pageTranslationId () {
@@ -63,8 +61,8 @@ export default {
   justify-content: space-between;
 
   @include respond-to-custom($sidebar-hide-bp) {
-    padding: 3.3rem $content-side-paddings-sm
-      2.1rem $content-side-paddings-sm + 5.2rem;
+    padding: 3.9rem $content-side-paddings-sm
+      1.7rem $content-side-paddings-sm + 5.2rem;
   }
 
   .navbar__title {

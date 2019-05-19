@@ -6,12 +6,24 @@
   <title>gRate</title>
 
   <link rel="manifest" href="/static/manifest.json">
+  <link rel="stylesheet" href="/static/init-loader.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
   <script type="text/javascript" src="/static/env.js"></script>
-  <div id="app"></div>
+  <div id="app">
+    <div class="init-loader">
+      <div class="init-loader__caption">
+        <div class="init-loader__cube-wrp">
+          <div class="init-loader__cube"></div>
+          <div class="init-loader__cube"></div>
+          <div class="init-loader__cube"></div>
+          <div class="init-loader__cube"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- built files will be auto injected -->
 
   <script>

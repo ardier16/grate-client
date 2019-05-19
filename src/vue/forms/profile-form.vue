@@ -1,5 +1,9 @@
 <template>
-  <form class="app-form profile-form" @submit.prevent="submit">
+  <form
+    v-if="isLoaded"
+    class="app-form profile-form"
+    @submit.prevent="submit"
+  >
     <div class="app__form-row">
       <div class="app__form-field">
         <input-field
@@ -50,9 +54,12 @@
       </button>
     </div>
   </form>
+
+  <loader v-else />
 </template>
 
 <script>
+import Loader from '@/vue/common/loader.vue'
 import FormMixin from '@/vue/mixins/form.mixin'
 
 import { vuexTypes } from '@/vuex'
@@ -63,6 +70,7 @@ import { Bus } from '@/js/helpers/event-bus'
 
 export default {
   name: 'profile-form',
+  components: { Loader },
   mixins: [FormMixin],
 
   data: _ => ({
@@ -72,6 +80,7 @@ export default {
       status: '',
       avatarUrl: '',
     },
+    isLoaded: false,
   }),
 
   computed: {
@@ -83,6 +92,7 @@ export default {
   async created () {
     try {
       await this.loadProfile()
+      this.isLoaded = true
 
       if (this.profile) {
         this.populateForm()
