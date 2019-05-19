@@ -108,6 +108,12 @@ body {
 
 .app__button-primary {
   @include button-primary();
+
+  &--success { background-color: $col-success }
+  &--error { background-color: $col-error }
+  &--danger { background-color: $col-danger }
+  &--info { background-color: $col-info }
+  &--warning { background-color: $col-warning }
 }
 
 .app__button-secondary {

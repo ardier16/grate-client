@@ -18,6 +18,8 @@ const mutations = {
 
   // friends
   SET_FRIENDS: 'SET_FRIENDS',
+  SET_FRIENDS_SENT_REQUESTS: 'SET_FRIENDS_SENT_REQUESTS',
+  SET_FRIENDS_RECEIVED_REQUESTS: 'SET_FRIENDS_RECEIVED_REQUESTS',
 }
 
 const actions = {
@@ -42,6 +44,11 @@ const actions = {
 
   // friends
   LOAD_FRIENDS: 'LOAD_FRIENDS',
+  LOAD_FRIENDS_SENT_REQUESTS: 'LOAD_FRIENDS_SENT_REQUESTS',
+  LOAD_FRIENDS_RECEIVED_REQUESTS: 'LOAD_FRIENDS_RECEIVED_REQUESTS',
+  SEND_FRIEND_REQUEST: 'SEND_FRIEND_REQUEST',
+  APPROVE_FRIEND_REQUEST: 'APPROVE_FRIEND_REQUEST',
+  REJECT_FRIEND_REQUEST: 'REJECT_FRIEND_REQUEST',
 }
 
 const getters = {
@@ -61,6 +68,8 @@ const getters = {
 
   // friends
   friends: 'friends',
+  friendsSentRequests: 'friendsSentRequests',
+  friendsReceivedRequests: 'friendsReceivedRequests',
 }
 
 export const vuexTypes = {

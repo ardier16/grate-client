@@ -96,7 +96,14 @@
       "no-posts-msg": "Be the first to create a post"
     },
     "profiles": {
-      "add-friend-btn": "Add friend"
+      "add-friend-btn": "Add friend",
+      "friend-btn": "Your friend",
+      "requested-btn": "Requested",
+      "approve-btn": "Approve",
+      "reject-btn": "Reject",
+      "request-sent-msg": "Your friend request was sent",
+      "request-approved-msg": "Request approved. Now you are friends",
+      "request-rejected-msg": "Friend request was successfully rejected"
     },
     "friends": {
       "no-friends-title": "No friends yet",

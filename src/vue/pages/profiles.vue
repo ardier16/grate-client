@@ -36,12 +36,45 @@
             {{ profile.status }}
           </p>
 
-          <button
-            v-if="profile.userId !== userId"
-            class="app__button-primary profiles__add-friend-btn"
-          >
-            {{ 'profiles.add-friend-btn' | globalize }}
-          </button>
+          <div class="profiles__card-actions">
+            <template v-if="needReview(profile.userId)">
+              <button
+                class="app__button-primary app__button-primary--success"
+                @click="approveRequest(profile.userId)"
+              >
+                {{ 'profiles.approve-btn' | globalize }}
+              </button>
+
+              <button
+                class="app__button-primary app__button-primary--danger"
+                @click="rejectRequest(profile.userId)"
+              >
+                {{ 'profiles.reject-btn' | globalize }}
+              </button>
+            </template>
+
+            <template v-else>
+              <button
+                v-if="profile.userId !== userId"
+                class="app__button-primary"
+                @click="addFriend(profile.userId)"
+                :disabled="isFriend(profile.userId) ||
+                  isPendingRequest(profile.userId)"
+              >
+                <template v-if="isFriend(profile.userId)">
+                  {{ 'profiles.friend-btn' | globalize }}
+                </template>
+
+                <template v-else-if="isPendingRequest(profile.userId)">
+                  {{ 'profiles.requested-btn' | globalize }}
+                </template>
+
+                <template v-else>
+                  {{ 'profiles.add-friend-btn' | globalize }}
+                </template>
+              </button>
+            </template>
+          </div>
         </div>
       </div>
     </template>
@@ -60,6 +93,7 @@ import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
 
 import { ErrorHandler } from '@/js/helpers/error-handler'
+import { Bus } from '@/js/helpers/event-bus'
 
 export default {
   name: 'profiles',
@@ -76,32 +110,91 @@ export default {
   computed: {
     ...mapGetters({
       profiles: vuexTypes.profiles,
+      friends: vuexTypes.friends,
+      friendsSentRequests: vuexTypes.friendsSentRequests,
+      friendsReceivedRequests: vuexTypes.friendsReceivedRequests,
       userId: vuexTypes.userId,
     }),
   },
 
   async created () {
-    try {
-      await this.loadProfiles()
-      this.isLoaded = true
-    } catch (e) {
-      this.isLoadFailed = true
-    }
+    await this.load()
   },
 
   methods: {
     ...mapActions({
       loadProfiles: vuexTypes.LOAD_PROFILES,
+      loadFriends: vuexTypes.LOAD_FRIENDS,
+      loadFriendsSentRequests: vuexTypes.LOAD_FRIENDS_SENT_REQUESTS,
+      loadFriendsReceivedRequests: vuexTypes.LOAD_FRIENDS_RECEIVED_REQUESTS,
+      sendFriendRequest: vuexTypes.SEND_FRIEND_REQUEST,
+      approveFriendRequest: vuexTypes.APPROVE_FRIEND_REQUEST,
+      rejectFriendRequest: vuexTypes.REJECT_FRIEND_REQUEST,
     }),
 
-    async refreshProfiles () {
+    async load () {
       this.isLoaded = false
       try {
-        await this.loadProfiles()
+        await Promise.all([
+          this.loadProfiles(),
+          this.loadFriends(),
+          this.loadFriendsSentRequests(),
+          this.loadFriendsReceivedRequests(),
+        ])
         this.isLoaded = true
+      } catch (e) {
+        this.isLoadFailed = true
+      }
+    },
+
+    async addFriend (userId) {
+      try {
+        await this.sendFriendRequest(userId)
+        Bus.success('profiles.request-sent-msg')
+        await this.load()
       } catch (e) {
         ErrorHandler.process(e)
       }
+    },
+
+    async approveRequest (userId) {
+      try {
+        const request = this.friendsReceivedRequests
+          .find(r => r.ownerId === userId)
+        await this.approveFriendRequest(request.id)
+        Bus.success('profiles.request-approved-msg')
+        await this.load()
+      } catch (e) {
+        ErrorHandler.process(e)
+      }
+    },
+
+    async rejectRequest (userId) {
+      try {
+        const request = this.friendsReceivedRequests
+          .find(r => r.ownerId === userId)
+        await this.rejectFriendRequest(request.id)
+        Bus.success('profiles.request-rejected-msg')
+        await this.load()
+      } catch (e) {
+        ErrorHandler.process(e)
+      }
+    },
+
+    isFriend (userId) {
+      return this.friends.map(f => f.userId).includes(userId)
+    },
+
+    isPendingRequest (userId) {
+      return this.friendsSentRequests
+        .map(r => r.participantId)
+        .includes(userId)
+    },
+
+    needReview (userId) {
+      return this.friendsReceivedRequests
+        .map(r => r.ownerId)
+        .includes(userId)
     },
   },
 }
@@ -179,7 +272,9 @@ $media-small-desktop: 960px;
   font-style: italic;
 }
 
-.profiles__add-friend-btn {
+.profiles__card-actions {
   margin-top: 2.4rem;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
