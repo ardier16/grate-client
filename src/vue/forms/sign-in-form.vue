@@ -84,7 +84,11 @@ export default {
         })
         await this.loadProfile()
 
-        this.$router.push({ name: 'app' })
+        if (this.$route.query.redirectPath) {
+          this.$router.push({ path: this.$route.query.redirectPath })
+        } else {
+          this.$router.push({ name: 'app' })
+        }
       } catch (e) {
         ErrorHandler.process(e)
       }

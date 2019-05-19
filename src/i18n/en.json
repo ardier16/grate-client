@@ -59,9 +59,6 @@
       "default-title": "Loading error",
       "default-msg": "There was an error while loading. Please, try again later"
     },
-    "navbar": {
-      "sign-out-btn": "Sign out"
-    },
     "footer": {
       "copyright": "{{year}} © gRate"
     },
