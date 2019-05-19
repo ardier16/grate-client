@@ -12,6 +12,14 @@ const mutations = {
 
   // posts
   SET_POSTS: 'SET_POSTS',
+
+  // profiles
+  SET_PROFILES: 'SET_PROFILES',
+
+  // friends
+  SET_FRIENDS: 'SET_FRIENDS',
+  SET_FRIENDS_SENT_REQUESTS: 'SET_FRIENDS_SENT_REQUESTS',
+  SET_FRIENDS_RECEIVED_REQUESTS: 'SET_FRIENDS_RECEIVED_REQUESTS',
 }
 
 const actions = {
@@ -30,6 +38,17 @@ const actions = {
   CREATE_POST: 'CREATE_POST',
   UPDATE_POST: 'UPDATE_POST',
   DELETE_POST: 'DELETE_POST',
+
+  // profiles
+  LOAD_PROFILES: 'LOAD_PROFILES',
+
+  // friends
+  LOAD_FRIENDS: 'LOAD_FRIENDS',
+  LOAD_FRIENDS_SENT_REQUESTS: 'LOAD_FRIENDS_SENT_REQUESTS',
+  LOAD_FRIENDS_RECEIVED_REQUESTS: 'LOAD_FRIENDS_RECEIVED_REQUESTS',
+  SEND_FRIEND_REQUEST: 'SEND_FRIEND_REQUEST',
+  APPROVE_FRIEND_REQUEST: 'APPROVE_FRIEND_REQUEST',
+  REJECT_FRIEND_REQUEST: 'REJECT_FRIEND_REQUEST',
 }
 
 const getters = {
@@ -43,6 +62,14 @@ const getters = {
 
   // posts
   posts: 'posts',
+
+  // profiles
+  profiles: 'profiles',
+
+  // friends
+  friends: 'friends',
+  friendsSentRequests: 'friendsSentRequests',
+  friendsReceivedRequests: 'friendsReceivedRequests',
 }
 
 export const vuexTypes = {

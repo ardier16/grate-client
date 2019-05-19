@@ -1,5 +1,5 @@
 <template>
-  <div class="app-content app__container">
+  <div class="app__container">
     <template v-if="isSignedIn">
       <sidebar />
 
@@ -12,10 +12,6 @@
           <router-view />
         </div>
       </div>
-    </template>
-
-    <template v-else>
-      <router-view />
     </template>
   </div>
 </template>

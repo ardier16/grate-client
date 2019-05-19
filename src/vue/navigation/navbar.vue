@@ -15,9 +15,6 @@
 <script>
 import Passport from './passport'
 
-import { vuexTypes } from '@/vuex'
-import { mapMutations } from 'vuex'
-
 export default {
   name: 'navbar',
   components: { Passport },
@@ -30,19 +27,6 @@ export default {
       return pageNamePath
         ? pageNamePath.meta.pageTranslationId
         : ''
-    },
-  },
-
-  methods: {
-    ...mapMutations({
-      signOut: vuexTypes.SIGN_OUT,
-      clearState: vuexTypes.CLEAR_STATE,
-    }),
-
-    processSignOut () {
-      this.signOut()
-      this.clearState()
-      location.reload()
     },
   },
 }

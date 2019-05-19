@@ -47,7 +47,7 @@ export const actions = {
     }
 
     const data = await api().put({
-      endpoint: `/profiles/${getters[vuexTypes.profile]._id}`,
+      endpoint: `/profiles/${getters[vuexTypes.profile].id}`,
       data: optsData,
       token: rootGetters[vuexTypes.authToken],
     })

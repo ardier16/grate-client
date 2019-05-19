@@ -11,7 +11,7 @@
       <template v-else>
         <div
           v-for="post in posts"
-          :key="post._id"
+          :key="post.id"
           class="feed__card"
         >
           <div
@@ -143,7 +143,7 @@ export default {
 
     async removePost (post) {
       try {
-        await this.deletePost(post._id)
+        await this.deletePost(post.id)
         await this.refreshPosts()
         Bus.success('feed.post-removed-msg')
       } catch (e) {

@@ -84,7 +84,7 @@ export default {
     if (this.post) {
       this.form.title = this.post.title
       this.form.text = this.post.text
-      this.form.id = this.post._id
+      this.form.id = this.post.id
     }
   },
 
