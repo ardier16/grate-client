@@ -25,6 +25,7 @@
     "pages": {
       "feed": "Feed",
       "profile": "Profile",
+      "profiles": "Profiles",
       "create-post": "New post"
     },
     "validation": {
@@ -92,6 +93,9 @@
       "updated": "Updated:",
       "no-posts-title": "No posts yet",
       "no-posts-msg": "Be the first to create a post"
+    },
+    "profiles": {
+      "add-friend-btn": "Add friend"
     },
     "post-form": {
       "title": "Title",

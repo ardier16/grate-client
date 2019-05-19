@@ -28,8 +28,6 @@ $max-size: 2rem;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 100%;
-  height: calc(100% - 6.4rem);
 }
 
 .loader__dot {

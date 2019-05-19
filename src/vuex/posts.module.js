@@ -2,7 +2,7 @@ import { vuexTypes } from './types'
 import { api } from '@/api'
 
 export const state = {
-  posts: null,
+  posts: [],
 }
 
 export const mutations = {

@@ -12,6 +12,7 @@ import SignUp from '@/vue/pages/sign-up.vue'
 import Profile from '@/vue/pages/profile.vue'
 import CreatePost from '@/vue/pages/create-post.vue'
 import Feed from '@/vue/pages/feed.vue'
+import Profiles from '@/vue/pages/profiles.vue'
 
 Vue.use(Router)
 
@@ -65,6 +66,12 @@ const router = new Router({
           name: vueRoutes.feed.name,
           component: Feed,
           meta: { pageTranslationId: 'pages.feed' },
+        },
+        {
+          path: '/profiles',
+          name: vueRoutes.profiles.name,
+          component: Profiles,
+          meta: { pageTranslationId: 'pages.profiles' },
         },
       ],
     },

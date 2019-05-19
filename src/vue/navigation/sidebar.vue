@@ -56,6 +56,18 @@
           <router-link
             class="sidebar__link"
             @click.native="closeSidebar"
+            :to="vueRoutes.profiles"
+            tag="a"
+          >
+            <i class="sidebar__link-icon mdi mdi-account-multiple" />
+            <span>
+              {{ 'pages.profiles' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="sidebar__link"
+            @click.native="closeSidebar"
             :to="vueRoutes.createPost"
             tag="a"
           >
