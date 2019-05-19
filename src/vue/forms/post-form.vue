@@ -50,6 +50,9 @@ import { required } from '@validators'
 import { vuexTypes } from '@/vuex'
 import { mapActions } from 'vuex'
 
+import { ErrorHandler } from '@/js/helpers/error-handler'
+import { Bus } from '@/js/helpers/event-bus'
+
 const EVENTS = {
   submit: 'submit',
 }
@@ -104,11 +107,10 @@ export default {
           await this.createPost(this.form)
         }
 
-        alert('Success')
+        Bus.success('post-form.post-created-msg')
         this.$emit(EVENTS.submit)
       } catch (e) {
-        console.error(e)
-        alert(e.message)
+        ErrorHandler.process(e)
       }
       this.enableForm()
     },

@@ -33,7 +33,28 @@
       "field-error_password": "Password should contain minimum 6 symbols",
       "field-error_sameAsPassword": "Passwords don't match"
     },
-    "errors": {},
+    "errors": {
+      "default": "This service is temporary unavailable. Please try again later",
+      "timeout": "Timeout exceeded. Please re-check your internet connection and try again",
+      "network": "Network error. Please re-check your internet connection and try again",
+      "internal": "This service is temporary unavailable. Please try again later",
+      "conflict": "Such item already exists",
+      "not-found": "Such item not found",
+      "forbidden": "Request forbidden",
+      "bad-request": "The request you sent is invalid in some way",
+      "not-allowed": "Your account don't have permissions to perform this request",
+      "unauthorized": "Access denied"
+    },
+    "status-message": {
+      "title_warning": "Warning",
+      "title_success": "Success",
+      "title_error": "Error",
+      "title_info": "Notification",
+      "default-message_warning": "Something you are doing is not recommended",
+      "default-message_success": "Action successful",
+      "default-message_error": "Something went wrong",
+      "default-message_info": "Something is happening. Just want you to know that"
+    },
     "navbar": {
       "sign-out-btn": "Sign out"
     },
@@ -58,7 +79,8 @@
       "birth-date": "Birth date",
       "status": "Status",
       "avatar": "Avatar",
-      "update-btn": "Update"
+      "update-btn": "Update",
+      "profile-updated-msg": "Your profile was successfully updated"
     },
     "feed": {
       "created": "Created:",
@@ -68,7 +90,8 @@
       "title": "Title",
       "text": "Text",
       "create-btn": "Create",
-      "update-btn": "Update"
+      "update-btn": "Update",
+      "post-created-msg": "Your post was successfully created"
     },
     "file-field": {
       "title": "Select image to upload"
