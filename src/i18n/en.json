@@ -55,6 +55,10 @@
       "default-message_error": "Something went wrong",
       "default-message_info": "Something is happening. Just want you to know that"
     },
+    "load-failed-message": {
+      "default-title": "Loading error",
+      "default-msg": "There was an error while loading. Please, try again later"
+    },
     "navbar": {
       "sign-out-btn": "Sign out"
     },

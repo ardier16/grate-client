@@ -70,14 +70,18 @@
       :message="'feed.no-posts-msg' | globalize"
     />
 
+    <load-failed-message v-else-if="isLoadFailed" />
+
     <loader v-else />
   </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown'
+
 import Loader from '@/vue/common/loader.vue'
 import NoDataMessage from '@/vue/common/no-data-message.vue'
+import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
 
 import PostForm from '@/vue/forms/post-form.vue'
 
@@ -93,11 +97,13 @@ export default {
     VueMarkdown,
     Loader,
     NoDataMessage,
+    LoadFailedMessage,
     PostForm,
   },
 
   data: _ => ({
     isLoaded: false,
+    isLoadFailed: false,
     selectedPost: null,
   }),
 
@@ -110,10 +116,10 @@ export default {
 
   async created () {
     try {
-      await this.loadPosts()
+      await this.loadPostss()
       this.isLoaded = true
     } catch (e) {
-      ErrorHandler.process(e)
+      this.isLoadFailed = true
     }
   },
 
