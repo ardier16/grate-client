@@ -2,6 +2,8 @@
 
 ## How to run
 
+### Run [gRate API](https://github.com/ardier16/grate-api)
+
 ### Clone the repository
 
 Using SSH: `git clone git@github.com:ardier16/grate-client.git`
