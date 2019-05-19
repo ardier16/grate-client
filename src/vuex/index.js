@@ -5,6 +5,7 @@ import auth from './auth.module'
 import profile from './profile.module'
 import posts from './posts.module'
 import profiles from './profiles.module'
+import friends from './friends.module'
 
 import { vuexTypes } from '@/vuex/types'
 import { localStoragePlugin } from './plugins/local-storage'
@@ -27,8 +28,9 @@ const store = new Vuex.Store({
   modules: {
     auth,
     profile,
-    profiles,
     posts,
+    profiles,
+    friends,
   },
   plugins: [localStoragePlugin],
 })

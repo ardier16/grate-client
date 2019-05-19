@@ -15,6 +15,9 @@ const mutations = {
 
   // profiles
   SET_PROFILES: 'SET_PROFILES',
+
+  // friends
+  SET_FRIENDS: 'SET_FRIENDS',
 }
 
 const actions = {
@@ -36,6 +39,9 @@ const actions = {
 
   // profiles
   LOAD_PROFILES: 'LOAD_PROFILES',
+
+  // friends
+  LOAD_FRIENDS: 'LOAD_FRIENDS',
 }
 
 const getters = {
@@ -53,6 +59,8 @@ const getters = {
   // profiles
   profiles: 'profiles',
 
+  // friends
+  friends: 'friends',
 }
 
 export const vuexTypes = {

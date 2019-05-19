@@ -26,6 +26,7 @@
       "feed": "Feed",
       "profile": "Profile",
       "profiles": "Profiles",
+      "friends": "Friends",
       "create-post": "New post"
     },
     "validation": {
@@ -96,6 +97,10 @@
     },
     "profiles": {
       "add-friend-btn": "Add friend"
+    },
+    "friends": {
+      "no-friends-title": "No friends yet",
+      "no-friends-msg": "You do not have any friends yet"
     },
     "post-form": {
       "title": "Title",

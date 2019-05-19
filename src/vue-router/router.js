@@ -13,6 +13,7 @@ import Profile from '@/vue/pages/profile.vue'
 import CreatePost from '@/vue/pages/create-post.vue'
 import Feed from '@/vue/pages/feed.vue'
 import Profiles from '@/vue/pages/profiles.vue'
+import Friends from '@/vue/pages/friends.vue'
 
 Vue.use(Router)
 
@@ -72,6 +73,12 @@ const router = new Router({
           name: vueRoutes.profiles.name,
           component: Profiles,
           meta: { pageTranslationId: 'pages.profiles' },
+        },
+        {
+          path: '/friends',
+          name: vueRoutes.friends.name,
+          component: Friends,
+          meta: { pageTranslationId: 'pages.friends' },
         },
       ],
     },

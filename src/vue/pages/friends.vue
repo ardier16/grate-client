@@ -1,50 +1,50 @@
 <template>
-  <div class="profiles">
-    <template v-if="isLoaded">
-      <div class="profiles__cards">
+  <div class="friends">
+    <template v-if="isLoaded && friends.length">
+      <div class="friends__cards">
         <div
-          v-for="profile in profiles"
-          :key="profile.id"
-          class="profiles__card"
+          v-for="friend in friends"
+          :key="friend.id"
+          class="friends__card"
         >
-          <div class="profiles__card-avatar">
+          <div class="friends__card-avatar">
             <img
-              v-if="profile.avatarUrl"
-              class="profiles__card-avatar profiles__card-avatar--image"
-              :src="profile.avatarUrl"
+              v-if="friend.avatarUrl"
+              class="friends__card-avatar friends__card-avatar--image"
+              :src="friend.avatarUrl"
             >
 
             <p
               v-else
-              class="profiles__card-avatar profiles__card-avatar--abbr"
+              class="friends__card-avatar friends__card-avatar--abbr"
             >
-              {{ profile.name | abbreviate }}
+              {{ friend.name | abbreviate }}
             </p>
           </div>
 
           <h3
-            class="profiles__card-title"
-            :title="profile.name"
+            class="friends__card-title"
+            :title="friend.name"
           >
-            {{ profile.name }}
+            {{ friend.name }}
           </h3>
 
           <p
-            class="profiles__card-status"
-            :title="profile.status"
+            class="friends__card-status"
+            :title="friend.status"
           >
-            {{ profile.status }}
+            {{ friend.status }}
           </p>
-
-          <button
-            v-if="profile.userId !== userId"
-            class="app__button-primary profiles__add-friend-btn"
-          >
-            {{ 'profiles.add-friend-btn' | globalize }}
-          </button>
         </div>
       </div>
     </template>
+
+    <no-data-message
+      v-else-if="isLoaded"
+      icon-name="note-outline"
+      :title="'friends.no-friends-title' | globalize"
+      :message="'friends.no-friends-msg' | globalize"
+    />
 
     <load-failed-message v-else-if="isLoadFailed" />
 
@@ -54,17 +54,17 @@
 
 <script>
 import Loader from '@/vue/common/loader.vue'
+import NoDataMessage from '@/vue/common/no-data-message.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
 
-import { ErrorHandler } from '@/js/helpers/error-handler'
-
 export default {
-  name: 'profiles',
+  name: 'friends',
   components: {
     Loader,
+    NoDataMessage,
     LoadFailedMessage,
   },
 
@@ -75,14 +75,14 @@ export default {
 
   computed: {
     ...mapGetters({
-      profiles: vuexTypes.profiles,
+      friends: vuexTypes.friends,
       userId: vuexTypes.userId,
     }),
   },
 
   async created () {
     try {
-      await this.loadProfiles()
+      await this.loadFriends()
       this.isLoaded = true
     } catch (e) {
       this.isLoadFailed = true
@@ -91,18 +91,8 @@ export default {
 
   methods: {
     ...mapActions({
-      loadProfiles: vuexTypes.LOAD_PROFILES,
+      loadFriends: vuexTypes.LOAD_FRIENDS,
     }),
-
-    async refreshProfiles () {
-      this.isLoaded = false
-      try {
-        await this.loadProfiles()
-        this.isLoaded = true
-      } catch (e) {
-        ErrorHandler.process(e)
-      }
-    },
   },
 }
 </script>
@@ -111,24 +101,24 @@ export default {
 @import '@scss/variables';
 @import '@scss/mixins';
 
-$profile-card-margin: 1rem;
+$friend-card-margin: 1rem;
 
 $media-small-desktop: 960px;
 
-.profiles__cards {
+.friends__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: -1rem;
 }
 
-@mixin profile-card-width ($width) {
-  flex: 0 1 calc(#{$width} - (#{$profile-card-margin} * 2));
-  max-width: calc(#{$width} - (#{$profile-card-margin} * 2));
+@mixin friend-card-width ($width) {
+  flex: 0 1 calc(#{$width} - (#{$friend-card-margin} * 2));
+  max-width: calc(#{$width} - (#{$friend-card-margin} * 2));
 }
 
-.profiles__card {
-  margin: $profile-card-margin;
+.friends__card {
+  margin: $friend-card-margin;
   background-color: $col-block-bg;
   padding: 2.4rem;
   border-radius: 0.5rem;
@@ -136,18 +126,18 @@ $media-small-desktop: 960px;
   cursor: pointer;
 
   @include box-shadow();
-  @include profile-card-width(33%);
+  @include friend-card-width(33%);
 
   @include respond-to-custom($media-small-desktop) {
-    @include profile-card-width(50%);
+    @include friend-card-width(50%);
   }
 
   @include respond-to(small) {
-    @include profile-card-width(100%);
+    @include friend-card-width(100%);
   }
 }
 
-.profiles__card-avatar {
+.friends__card-avatar {
   margin: 0 auto;
   width: 8rem;
   height: 8rem;
@@ -167,19 +157,15 @@ $media-small-desktop: 960px;
   }
 }
 
-.profiles__card-title {
+.friends__card-title {
   font-size: 2.4rem;
   text-align: center;
   margin-top: 2rem;
 }
 
-.profiles__card-status {
+.friends__card-status {
   margin-top: 0.6rem;
   text-align: right;
   font-style: italic;
-}
-
-.profiles__add-friend-btn {
-  margin-top: 2.4rem;
 }
 </style>
