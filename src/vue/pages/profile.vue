@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <div class="profile app__fill">
     <profile-form />
   </div>
 </template>
