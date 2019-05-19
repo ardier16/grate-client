@@ -12,6 +12,13 @@ $content-side-paddings-sm: 2rem;
 $_white: #ffffff;
 $_black: #000000;
 $_lightgray: #ebebeb;
+$_lightRed: #ef5350;
+$_darkRed: #d6244a;
+$_blue: #4ea8f1;
+$_green: #33a494;
+$_lightGreen: #51ca90;
+$_orange: #ef6c00;
+$_orangePeel: #ffa333;
 
 // global colors
 $col-app-background: $_lightgray;
@@ -27,6 +34,15 @@ $col-sidebar-background: lightgray;
 $col-sidebar-text: $col-primary;
 $col-sidebar-active-bg: rgb(230, 230, 230);
 
+// status colors:
+$col-accent: $_lightRed;
+$col-pending: $_orange;
+$col-warning: $_orangePeel;
+$col-success: $_green;
+$col-error: $_lightRed;
+$col-info: $_blue;
+$col-danger: $_darkRed;
+
 // button colors:
 $col-button-primary: $col-primary;
 $col-button-primary-txt: $col-text-inverse;
@@ -35,3 +51,11 @@ $col-button-secondary-hover: lightgray;
 $col-button-secondary-txt: $col-text;
 $col-button-secondary-txt-inactive: gray;
 $col-button-secondary-disabled-txt: lightgray;
+
+// status message colors
+$col-status-msg-warning: $col-warning;
+$col-status-msg-success: #3cab00;
+$col-status-msg-error: $col-error;
+$col-status-msg-info: $col-info;
+$col-status-msg-text: $col-text-inverse;
+$col-status-close-btn-hover: rgba(0, 0, 0, 0.1);

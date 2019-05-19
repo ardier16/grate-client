@@ -45,6 +45,8 @@ import { required } from '@validators'
 import { vuexTypes } from '@/vuex'
 import { mapActions } from 'vuex'
 
+import { ErrorHandler } from '@/js/helpers/error-handler'
+
 export default {
   name: 'sign-in-form',
   mixins: [FormMixin],
@@ -82,7 +84,7 @@ export default {
 
         this.$router.push({ name: 'app' })
       } catch (e) {
-        alert(e.message)
+        ErrorHandler.process(e)
       }
       this.enableForm()
     },
