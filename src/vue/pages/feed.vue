@@ -70,6 +70,9 @@ import PostForm from '@/vue/forms/post-form.vue'
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
 
+import { ErrorHandler } from '@/js/helpers/error-handler'
+import { Bus } from '@/js/helpers/event-bus'
+
 export default {
   name: 'feed',
   components: {
@@ -92,8 +95,7 @@ export default {
     try {
       await this.loadPosts()
     } catch (e) {
-      console.error(e)
-      alert(e.message)
+      ErrorHandler.process(e)
     }
   },
 
@@ -109,8 +111,7 @@ export default {
       try {
         await this.loadPosts()
       } catch (e) {
-        console.error(e)
-        alert(e.message)
+        ErrorHandler.process(e)
       }
     },
 
@@ -118,10 +119,9 @@ export default {
       try {
         await this.deletePost(post._id)
         await this.refreshPosts()
-        alert('Deleted')
+        Bus.success('feed.post-removed-msg')
       } catch (e) {
-        console.error(e)
-        alert(e.message)
+        ErrorHandler.process(e)
       }
     },
   },

@@ -58,6 +58,9 @@ import FormMixin from '@/vue/mixins/form.mixin'
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
 
+import { ErrorHandler } from '@/js/helpers/error-handler'
+import { Bus } from '@/js/helpers/event-bus'
+
 export default {
   name: 'profile-form',
   mixins: [FormMixin],
@@ -85,8 +88,7 @@ export default {
         this.populateForm()
       }
     } catch (e) {
-      console.error(e)
-      alert(e.message)
+      ErrorHandler.process(e)
     }
   },
 
@@ -114,10 +116,9 @@ export default {
         } else {
           await this.createProfile(this.form)
         }
-        alert('Updated')
+        Bus.success('profile-form.profile-updated-msg')
       } catch (e) {
-        console.error(e)
-        alert(e.message)
+        ErrorHandler.process(e)
       }
       this.enableForm()
     },

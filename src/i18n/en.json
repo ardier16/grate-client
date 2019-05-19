@@ -79,7 +79,8 @@
       "birth-date": "Birth date",
       "status": "Status",
       "avatar": "Avatar",
-      "update-btn": "Update"
+      "update-btn": "Update",
+      "profile-updated-msg": "Your profile was successfully updated"
     },
     "feed": {
       "created": "Created:",
@@ -89,7 +90,8 @@
       "title": "Title",
       "text": "Text",
       "create-btn": "Create",
-      "update-btn": "Update"
+      "update-btn": "Update",
+      "post-created-msg": "Your post was successfully created"
     },
     "file-field": {
       "title": "Select image to upload"
