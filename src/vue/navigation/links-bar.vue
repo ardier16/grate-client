@@ -27,7 +27,7 @@
             :to="vueRoutes.feed"
             tag="a"
           >
-            <i class="links-bar__link-icon mdi mdi-menu" />
+            <i class="links-bar__link-icon mdi mdi-calendar-text-outline" />
             <span class="links-bar__link-text">
               {{ 'pages.feed' | globalize }}
             </span>
@@ -63,6 +63,17 @@
             <i class="links-bar__link-icon mdi mdi-account-multiple" />
             <span class="links-bar__link-text">
               {{ 'pages.profiles' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="links-bar__link"
+            :to="vueRoutes.posts"
+            tag="a"
+          >
+            <i class="links-bar__link-icon mdi mdi-menu" />
+            <span class="links-bar__link-text">
+              {{ 'pages.posts' | globalize }}
             </span>
           </router-link>
         </nav>
@@ -193,6 +204,10 @@ $content-item-right-padding: 2.4rem;
     flex: 0 1 20%;
     max-width: 6.4rem;
     justify-content: center;
+
+    &:nth-child(n+6) {
+      display: none;
+    }
 
     &.router-link-active {
       background-color: transparent;

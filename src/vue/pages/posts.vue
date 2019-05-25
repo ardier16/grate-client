@@ -1,5 +1,5 @@
 <template>
-  <div class="feed">
+  <div class="posts">
     <template v-if="isLoaded && posts.length">
       <template v-if="selectedPost">
         <post-form
@@ -12,30 +12,32 @@
         <div
           v-for="post in posts"
           :key="post.id"
-          class="feed__card"
+          class="posts__card"
         >
-          <div class="feed__card-author">
-            <div class="feed__card-author-avatar-wrp">
+          <div class="posts__card-author">
+            <div class="posts__card-author-avatar-wrp">
               <img
                 v-if="post.author.avatarUrl"
-                class="feed__card-author-avatar feed__card-author-avatar--image"
+                class="posts__card-author-avatar
+                       posts__card-author-avatar--image"
                 :src="post.author.avatarUrl"
               >
 
               <p
                 v-else
-                class="feed__card-author-avatar feed__card-author-avatar--abbr"
+                class="posts__card-author-avatar
+                       posts__card-author-avatar--abbr"
               >
                 {{ (post.author.name || post.author.login) | abbreviate }}
               </p>
             </div>
 
-            <div class="feed__card-author-text">
-              <span class="feed__card-author-name">
+            <div class="posts__card-author-text">
+              <span class="posts__card-author-name">
                 {{ post.author.name || post.author.login }}
               </span>
 
-              <span class="feed__card-author-username">
+              <span class="posts__card-author-username">
                 @{{ post.author.login }}
               </span>
             </div>
@@ -43,46 +45,46 @@
 
           <div
             v-if="post.author.id === userId"
-            class="feed__card-actions"
+            class="posts__card-actions"
           >
             <a
               @click="selectedPost = post"
-              class="feed__card-edit"
+              class="posts__card-edit"
             >
               <i class="mdi mdi-pencil" />
             </a>
             <a
               @click="removePost(post)"
-              class="feed__card-delete"
+              class="posts__card-delete"
             >
               <i class="mdi mdi-close" />
             </a>
           </div>
 
-          <h3 class="feed__card-title">
+          <h3 class="posts__card-title">
             {{ post.title }}
           </h3>
 
           <vue-markdown
-            class="feed__card-text"
+            class="posts__card-text"
             :source="post.text"
           />
-          <hr class="feed__card-line">
+          <hr class="posts__card-line">
 
-          <div class="feed__card-date">
+          <div class="posts__card-date">
             <p
-              class="feed__card-created"
+              class="posts__card-created"
               :title="post.createdAt | formatCalendar"
             >
-              {{ 'feed.created' | globalize }}
+              {{ 'posts.created' | globalize }}
               {{ post.createdAt | formatDate }}
             </p>
 
             <p
-              class="feed__card-updated"
+              class="posts__card-updated"
               :title="post.updatedAt | formatCalendar"
             >
-              {{ 'feed.updated' | globalize }}
+              {{ 'posts.updated' | globalize }}
               {{ post.updatedAt | formatDate }}
             </p>
           </div>
@@ -93,8 +95,8 @@
     <no-data-message
       v-else-if="isLoaded"
       icon-name="note-outline"
-      :title="'feed.no-posts-title' | globalize"
-      :message="'feed.no-posts-msg' | globalize"
+      :title="'posts.no-posts-title' | globalize"
+      :message="'posts.no-posts-msg' | globalize"
     />
 
     <load-failed-message v-else-if="isLoadFailed" />
@@ -119,7 +121,7 @@ import { ErrorHandler } from '@/js/helpers/error-handler'
 import { Bus } from '@/js/helpers/event-bus'
 
 export default {
-  name: 'feed',
+  name: 'posts',
   components: {
     VueMarkdown,
     Loader,
@@ -136,7 +138,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      posts: vuexTypes.feedPosts,
+      posts: vuexTypes.posts,
       userId: vuexTypes.userId,
     }),
   },
@@ -152,7 +154,7 @@ export default {
 
   methods: {
     ...mapActions({
-      loadPosts: vuexTypes.LOAD_FEED,
+      loadPosts: vuexTypes.LOAD_POSTS,
       deletePost: vuexTypes.DELETE_POST,
     }),
 
@@ -172,7 +174,7 @@ export default {
       try {
         await this.deletePost(post.id)
         await this.refreshPosts()
-        Bus.success('feed.post-removed-msg')
+        Bus.success('posts.post-removed-msg')
       } catch (e) {
         ErrorHandler.process(e)
       }
@@ -185,7 +187,7 @@ export default {
 @import '@scss/variables';
 @import '@scss/mixins';
 
-.feed__card {
+.posts__card {
   background-color: $col-block-bg;
   padding: 2.4rem 4.8rem 4.8rem;
   border-radius: 0.5rem;
@@ -198,7 +200,7 @@ export default {
   }
 }
 
-.feed__card-actions {
+.posts__card-actions {
   position: absolute;
   right: 4.8rem;
   top: 2.4rem;
@@ -208,7 +210,7 @@ export default {
   }
 }
 
-.feed__card-edit, .feed__card-delete {
+.posts__card-edit, .posts__card-delete {
   cursor: pointer;
 
   i {
@@ -216,28 +218,28 @@ export default {
   }
 }
 
-.feed__card-author {
+.posts__card-author {
   display: flex;
 }
 
-.feed__card-author-text {
+.posts__card-author-text {
   margin-left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.feed__card-author-name {
+.posts__card-author-name {
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.feed__card-author-username {
+.posts__card-author-username {
   font-size: 1.4rem;
   color: $col-text-secondary;
 }
 
-.feed__card-author-avatar {
+.posts__card-author-avatar {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -256,13 +258,13 @@ export default {
   }
 }
 
-.feed__card-title {
+.posts__card-title {
   margin-top: 2rem;
   font-size: 3.2rem;
   text-align: center;
 }
 
-.feed__card-text {
+.posts__card-text {
   margin-top: 1.6rem;
 
   img {
@@ -308,11 +310,11 @@ export default {
   }
 }
 
-.feed__card-line {
+.posts__card-line {
   margin-top: 1.6rem;
 }
 
-.feed__card-date {
+.posts__card-date {
   margin-top: 0.8rem;
   display: flex;
   justify-content: space-between;

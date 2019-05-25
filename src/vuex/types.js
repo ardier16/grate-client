@@ -12,6 +12,7 @@ const mutations = {
 
   // posts
   SET_POSTS: 'SET_POSTS',
+  SET_FEED_POSTS: 'SET_FEED_POSTS',
 
   // profiles
   SET_PROFILES: 'SET_PROFILES',
@@ -35,6 +36,7 @@ const actions = {
 
   // posts
   LOAD_POSTS: 'LOAD_POSTS',
+  LOAD_FEED: 'LOAD_FEED',
   CREATE_POST: 'CREATE_POST',
   UPDATE_POST: 'UPDATE_POST',
   DELETE_POST: 'DELETE_POST',
@@ -62,6 +64,7 @@ const getters = {
 
   // posts
   posts: 'posts',
+  feedPosts: 'feedPosts',
 
   // profiles
   profiles: 'profiles',

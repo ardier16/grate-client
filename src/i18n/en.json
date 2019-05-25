@@ -24,6 +24,7 @@
     "common": {},
     "pages": {
       "feed": "Feed",
+      "posts": "Posts",
       "profile": "Profile",
       "profiles": "Profiles",
       "friends": "Friends",
