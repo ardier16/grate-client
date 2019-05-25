@@ -12,6 +12,7 @@ import SignUp from '@/vue/pages/sign-up.vue'
 import Profile from '@/vue/pages/profile.vue'
 import CreatePost from '@/vue/pages/create-post.vue'
 import Feed from '@/vue/pages/feed.vue'
+import Posts from '@/vue/pages/posts.vue'
 import Profiles from '@/vue/pages/profiles.vue'
 import Friends from '@/vue/pages/friends.vue'
 
@@ -57,7 +58,7 @@ const router = new Router({
           meta: { pageTranslationId: 'pages.profile' },
         },
         {
-          path: '/posts/create',
+          path: '/create-post',
           name: vueRoutes.createPost.name,
           component: CreatePost,
           meta: { pageTranslationId: 'pages.create-post' },
@@ -67,6 +68,12 @@ const router = new Router({
           name: vueRoutes.feed.name,
           component: Feed,
           meta: { pageTranslationId: 'pages.feed' },
+        },
+        {
+          path: '/posts',
+          name: vueRoutes.posts.name,
+          component: Posts,
+          meta: { pageTranslationId: 'pages.posts' },
         },
         {
           path: '/profiles',
