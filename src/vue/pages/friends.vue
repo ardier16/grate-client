@@ -7,33 +7,23 @@
           :key="friend.id"
           class="friends__card"
         >
-          <div class="friends__card-avatar">
-            <img
-              v-if="friend.avatarUrl"
-              class="friends__card-avatar friends__card-avatar--image"
-              :src="friend.avatarUrl"
-            >
-
-            <p
-              v-else
-              class="friends__card-avatar friends__card-avatar--abbr"
-            >
-              {{ friend.name | abbreviate }}
-            </p>
-          </div>
+          <user-avatar
+            class="friends__card-avatar"
+            :user="friend"
+          />
 
           <h3
             class="friends__card-title"
-            :title="friend.name"
+            :title="friend.name || friend.login"
           >
-            {{ friend.name }}
+            {{ friend.name || friend.login }}
           </h3>
 
           <p
-            class="friends__card-status"
-            :title="friend.status"
+            class="friends__card__username"
+            :title="friend.login"
           >
-            {{ friend.status }}
+            @{{ friend.login }}
           </p>
 
           <p
@@ -74,6 +64,7 @@ import moment from 'moment'
 import Loader from '@/vue/common/loader.vue'
 import NoDataMessage from '@/vue/common/no-data-message.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
+import UserAvatar from '@/vue/common/user-avatar.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
@@ -84,6 +75,7 @@ export default {
     Loader,
     NoDataMessage,
     LoadFailedMessage,
+    UserAvatar,
   },
 
   data: _ => ({
@@ -144,7 +136,7 @@ $media-small-desktop: 960px;
   background-color: $col-block-bg;
   padding: 2.4rem;
   border-radius: 0.5rem;
-  min-height: 25rem;
+  min-height: 22rem;
   cursor: pointer;
 
   @include box-shadow();
@@ -159,40 +151,21 @@ $media-small-desktop: 960px;
   }
 }
 
-.friends__card-avatar {
-  margin: 0 auto;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-
-  &--image {
-    display: block;
-  }
-
-  &--abbr {
-    font-size: 3.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $col-primary;
-    color: $col-text-inverse;
-  }
-}
-
 .friends__card-title {
   font-size: 2.4rem;
   text-align: center;
   margin-top: 2rem;
 }
 
-.friends__card-status {
-  margin-top: 0.6rem;
-  text-align: right;
-  font-style: italic;
+.friends__card__username {
+  margin-top: 0.2rem;
+  font-size: 1.6rem;
+  color: $col-text-secondary;
+  text-align: center;
 }
 
 .friends__card-last-seen {
-  margin-top: 0.6rem;
+  margin-top: 1.2rem;
   text-align: right;
   font-size: 1.2rem;
   color: $col-text-secondary;

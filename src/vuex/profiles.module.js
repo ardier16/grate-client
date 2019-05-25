@@ -14,7 +14,7 @@ export const mutations = {
 export const actions = {
   async [vuexTypes.LOAD_PROFILES] ({ commit }) {
     const data = await api().get({
-      endpoint: `/profiles`,
+      endpoint: `/users`,
     })
 
     commit(vuexTypes.SET_PROFILES, data)
