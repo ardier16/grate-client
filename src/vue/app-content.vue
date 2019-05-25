@@ -1,7 +1,7 @@
 <template>
   <div class="app__container">
     <template v-if="isSignedIn">
-      <sidebar />
+      <links-bar />
 
       <div class="app__main-content">
         <div class="app__navbar">
@@ -18,7 +18,7 @@
 
 <script>
 import Navbar from '@/vue/navigation/navbar.vue'
-import Sidebar from '@/vue/navigation/sidebar.vue'
+import LinksBar from '@/vue/navigation/links-bar.vue'
 
 import { mapGetters } from 'vuex'
 import { vuexTypes } from '@/vuex'
@@ -28,7 +28,7 @@ export default {
 
   components: {
     Navbar,
-    Sidebar,
+    LinksBar,
   },
 
   computed: {
@@ -80,9 +80,9 @@ export default {
     $content-padding-bottom $content-padding-left;
   background-color: $col-app-background;
 
-  @include respond-to-custom($sidebar-hide-bp) {
+  @include respond-to-custom($links-bar-hide-bp) {
     width: 100vw;
-    padding: 0 $content-side-paddings-sm 3rem;
+    padding: 0 $content-side-paddings-sm $links-bar-bottom-height + 3rem;
   }
 }
 </style>
