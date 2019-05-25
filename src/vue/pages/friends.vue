@@ -35,6 +35,22 @@
           >
             {{ friend.status }}
           </p>
+
+          <p
+            class="friends__card-last-seen"
+            :title="friend.lastSeen | formatCalendar"
+          >
+            <template v-if="isOnline(friend)">
+              <span class="friends__card-online">
+                {{ 'friends.online-msg' | globalize }}
+              </span>
+            </template>
+
+            <template v-else>
+              {{ 'friends.last-seen-msg' | globalize }}
+              {{ friend.lastSeen | formatDate }}
+            </template>
+          </p>
         </div>
       </div>
     </template>
@@ -53,6 +69,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import Loader from '@/vue/common/loader.vue'
 import NoDataMessage from '@/vue/common/no-data-message.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
@@ -93,6 +111,10 @@ export default {
     ...mapActions({
       loadFriends: vuexTypes.LOAD_FRIENDS,
     }),
+
+    isOnline (friend) {
+      return moment(friend.lastSeen).diff(moment.now(), 'minutes') >= -5
+    },
   },
 }
 </script>
@@ -167,5 +189,22 @@ $media-small-desktop: 960px;
   margin-top: 0.6rem;
   text-align: right;
   font-style: italic;
+}
+
+.friends__card-last-seen {
+  margin-top: 0.6rem;
+  text-align: right;
+  font-size: 1.2rem;
+  color: $col-text-secondary;
+}
+
+.friends__card-online {
+  font-size: 1.2rem;
+
+  &:before {
+    font-size: 1.4rem;
+    content: '\2022';
+    color: $col-success;
+  }
 }
 </style>

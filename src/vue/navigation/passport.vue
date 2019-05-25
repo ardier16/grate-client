@@ -27,6 +27,10 @@
           }"
         />
       </button>
+
+      <p class="passport__online-status">
+        {{ 'passport.online-msg' | globalize }}
+      </p>
     </div>
 
     <transition name="passport__dropdown">
@@ -181,6 +185,8 @@ $dropdown-item-side-padding: 2.4rem;
 }
 
 .passport__account-details-wrp {
+  display: flex;
+  flex-direction: column;
   margin-left: 1.6rem;
 
   @include respond-to-custom($media-hide-account-details-bp) {
@@ -188,11 +194,21 @@ $dropdown-item-side-padding: 2.4rem;
   }
 }
 
+.passport__online-status {
+  margin-top: 0.2rem;
+
+  &:before {
+    font-size: 1.6rem;
+    content: '\2022';
+    color: $col-success;
+  }
+}
+
 .passport__dropdown {
   position: absolute;
   padding: 1rem;
   right: 0;
-  top: calc(100% + 1.8rem);
+  top: 100%;
   background: $col-block-bg;
   display: flex;
   flex-direction: column;

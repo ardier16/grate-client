@@ -11,12 +11,14 @@ $content-side-paddings-sm: 2rem;
 
 $_white: #ffffff;
 $_black: #000000;
+$_gray: gray;
+$_darkGrey: rgb(63, 63, 63);
 $_lightgray: #ebebeb;
 $_lightRed: #ef5350;
 $_darkRed: #d6244a;
 $_blue: #4ea8f1;
 $_green: #33a494;
-$_lightGreen: #51ca90;
+$_lightGreen: #3cab00;
 $_orange: #ef6c00;
 $_orangePeel: #ffa333;
 
@@ -28,6 +30,7 @@ $col-accent: red;
 
 $col-text: $col-primary;
 $col-text-inverse: $_white;
+$col-text-secondary: $_darkGrey;
 
 $col-block-bg: $_white;
 $col-sidebar-background: lightgray;
@@ -38,7 +41,7 @@ $col-sidebar-active-bg: rgb(230, 230, 230);
 $col-accent: $_lightRed;
 $col-pending: $_orange;
 $col-warning: $_orangePeel;
-$col-success: $_green;
+$col-success: $_lightGreen;
 $col-error: $_lightRed;
 $col-info: $_blue;
 $col-danger: $_darkRed;
@@ -49,12 +52,12 @@ $col-button-primary-txt: $col-text-inverse;
 
 $col-button-secondary-hover: lightgray;
 $col-button-secondary-txt: $col-text;
-$col-button-secondary-txt-inactive: gray;
+$col-button-secondary-txt-inactive: $_gray;
 $col-button-secondary-disabled-txt: lightgray;
 
 // status message colors
 $col-status-msg-warning: $col-warning;
-$col-status-msg-success: #3cab00;
+$col-status-msg-success: $col-success;
 $col-status-msg-error: $col-error;
 $col-status-msg-info: $col-info;
 $col-status-msg-text: $col-text-inverse;
