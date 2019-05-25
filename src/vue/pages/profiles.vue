@@ -36,6 +36,22 @@
             {{ profile.status }}
           </p>
 
+          <p
+            class="profiles__card-last-seen"
+            :title="profile.lastSeen | formatCalendar"
+          >
+            <template v-if="isOnline(profile)">
+              <span class="profiles__card-online">
+                {{ 'profiles.online-msg' | globalize }}
+              </span>
+            </template>
+
+            <template v-else>
+              {{ 'profiles.last-seen-msg' | globalize }}
+              {{ profile.lastSeen | formatDate }}
+            </template>
+          </p>
+
           <div class="profiles__card-actions">
             <template v-if="needReview(profile.userId)">
               <button
@@ -53,9 +69,8 @@
               </button>
             </template>
 
-            <template v-else>
+            <template v-else-if="profile.userId !== userId">
               <button
-                v-if="profile.userId !== userId"
                 class="app__button-primary"
                 @click="addFriend(profile.userId)"
                 :disabled="isFriend(profile.userId) ||
@@ -74,6 +89,15 @@
                 </template>
               </button>
             </template>
+
+            <template v-else>
+              <button
+                class="app__button-primary"
+                :disabled="true"
+              >
+                You
+              </button>
+            </template>
           </div>
         </div>
       </div>
@@ -86,6 +110,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import Loader from '@/vue/common/loader.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
 
@@ -185,6 +211,10 @@ export default {
       return this.friends.map(f => f.userId).includes(userId)
     },
 
+    isOnline (profile) {
+      return moment(profile.lastSeen).diff(moment.now(), 'minutes') >= -5
+    },
+
     isPendingRequest (userId) {
       return this.friendsSentRequests
         .map(r => r.participantId)
@@ -270,6 +300,23 @@ $media-small-desktop: 960px;
   margin-top: 0.6rem;
   text-align: right;
   font-style: italic;
+}
+
+.profiles__card-last-seen {
+  margin-top: 0.6rem;
+  text-align: right;
+  font-size: 1.2rem;
+  color: $col-text-secondary;
+}
+
+.profiles__card-online {
+  font-size: 1.2rem;
+
+  &:before {
+    font-size: 1.4rem;
+    content: '\2022';
+    color: $col-success;
+  }
 }
 
 .profiles__card-actions {

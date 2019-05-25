@@ -92,14 +92,12 @@ export default {
   async created () {
     try {
       await this.loadProfile()
-      this.isLoaded = true
 
       if (this.profile) {
         this.populateForm()
       }
-    } catch (e) {
-      ErrorHandler.process(e)
-    }
+    } catch (e) {}
+    this.isLoaded = true
   },
 
   methods: {

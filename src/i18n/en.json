@@ -66,7 +66,8 @@
     },
     "passport": {
       "signed-in-as": "Signed in as",
-      "sign-out-btn": "Sign out"
+      "sign-out-btn": "Sign out",
+      "online-msg": "Online"
     },
     "auth-pages": {
       "title": "gRate for you",
@@ -103,11 +104,15 @@
       "reject-btn": "Reject",
       "request-sent-msg": "Your friend request was sent",
       "request-approved-msg": "Request approved. Now you are friends",
-      "request-rejected-msg": "Friend request was successfully rejected"
+      "request-rejected-msg": "Friend request was successfully rejected",
+      "online-msg": "Online",
+      "last-seen-msg": "Last seen:"
     },
     "friends": {
       "no-friends-title": "No friends yet",
-      "no-friends-msg": "You do not have any friends yet"
+      "no-friends-msg": "You do not have any friends yet",
+      "online-msg": "Online",
+      "last-seen-msg": "Last seen:"
     },
     "post-form": {
       "title": "Title",
