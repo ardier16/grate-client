@@ -44,9 +44,8 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  @include respond-to-custom($sidebar-hide-bp) {
-    padding: 3.9rem $content-side-paddings-sm
-      1.7rem $content-side-paddings-sm + 5.2rem;
+  @include respond-to-custom($links-bar-hide-bp) {
+    padding: 1.7rem $content-side-paddings-sm;
   }
 
   .navbar__title {
@@ -54,7 +53,7 @@ export default {
     font-weight: normal;
     min-width: 15rem;
 
-    @include respond-to-custom($sidebar-hide-bp) {
+    @include respond-to-custom($links-bar-hide-bp) {
       font-size: 3rem;
     }
   }
@@ -66,7 +65,7 @@ export default {
   line-height: 1.5;
   font-weight: 400;
 
-  @include respond-to-custom($sidebar-hide-bp) {
+  @include respond-to-custom($links-bar-hide-bp) {
     font-size: 3.2rem;
   }
 }
