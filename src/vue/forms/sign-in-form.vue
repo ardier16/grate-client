@@ -3,11 +3,11 @@
     <div class="app__form-row">
       <div class="app__form-field">
         <input-field
-          v-model="form.email"
-          @blur="touchField('form.email')"
-          name="sign-in-email"
-          :label="'auth-pages.email' | globalize"
-          :error-message="getFieldErrorMessage('form.email')"
+          v-model="form.login"
+          @blur="touchField('form.login')"
+          name="sign-in-login"
+          :label="'auth-pages.login' | globalize"
+          :error-message="getFieldErrorMessage('form.login')"
         />
       </div>
     </div>
@@ -53,14 +53,14 @@ export default {
 
   data: _ => ({
     form: {
-      email: '',
+      login: '',
       password: '',
     },
   }),
 
   validations: {
     form: {
-      email: { required },
+      login: { required },
       password: { required },
     },
   },
@@ -79,7 +79,7 @@ export default {
       this.disableForm()
       try {
         await this.signIn({
-          login: this.form.email.toLowerCase(),
+          login: this.form.login.toLowerCase(),
           password: this.form.password,
         })
         await this.loadProfile()

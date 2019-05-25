@@ -7,33 +7,20 @@
           :key="profile.id"
           class="profiles__card"
         >
-          <div class="profiles__card-avatar">
-            <img
-              v-if="profile.avatarUrl"
-              class="profiles__card-avatar profiles__card-avatar--image"
-              :src="profile.avatarUrl"
-            >
-
-            <p
-              v-else
-              class="profiles__card-avatar profiles__card-avatar--abbr"
-            >
-              {{ profile.name | abbreviate }}
-            </p>
-          </div>
+          <user-avatar :user="profile" />
 
           <h3
             class="profiles__card-title"
-            :title="profile.name"
+            :title="profile.name|| profile.login"
           >
-            {{ profile.name }}
+            {{ profile.name || profile.login }}
           </h3>
 
           <p
-            class="profiles__card-status"
-            :title="profile.status"
+            class="profiles__card__username"
+            :title="profile.login"
           >
-            {{ profile.status }}
+            @{{ profile.login }}
           </p>
 
           <p
@@ -53,34 +40,34 @@
           </p>
 
           <div class="profiles__card-actions">
-            <template v-if="needReview(profile.userId)">
+            <template v-if="needReview(profile.id)">
               <button
                 class="app__button-primary app__button-primary--success"
-                @click="approveRequest(profile.userId)"
+                @click="approveRequest(profile.id)"
               >
                 {{ 'profiles.approve-btn' | globalize }}
               </button>
 
               <button
                 class="app__button-primary app__button-primary--danger"
-                @click="rejectRequest(profile.userId)"
+                @click="rejectRequest(profile.id)"
               >
                 {{ 'profiles.reject-btn' | globalize }}
               </button>
             </template>
 
-            <template v-else-if="profile.userId !== userId">
+            <template v-else-if="profile.id !== userId">
               <button
                 class="app__button-primary"
-                @click="addFriend(profile.userId)"
-                :disabled="isFriend(profile.userId) ||
-                  isPendingRequest(profile.userId)"
+                @click="addFriend(profile.id)"
+                :disabled="isFriend(profile.id) ||
+                  isPendingRequest(profile.id)"
               >
-                <template v-if="isFriend(profile.userId)">
+                <template v-if="isFriend(profile.id)">
                   {{ 'profiles.friend-btn' | globalize }}
                 </template>
 
-                <template v-else-if="isPendingRequest(profile.userId)">
+                <template v-else-if="isPendingRequest(profile.id)">
                   {{ 'profiles.requested-btn' | globalize }}
                 </template>
 
@@ -114,6 +101,7 @@ import moment from 'moment'
 
 import Loader from '@/vue/common/loader.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
+import UserAvatar from '@/vue/common/user-avatar.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions, mapGetters } from 'vuex'
@@ -126,6 +114,7 @@ export default {
   components: {
     Loader,
     LoadFailedMessage,
+    UserAvatar,
   },
 
   data: _ => ({
@@ -208,7 +197,7 @@ export default {
     },
 
     isFriend (userId) {
-      return this.friends.map(f => f.userId).includes(userId)
+      return this.friends.map(f => f.id).includes(userId)
     },
 
     isOnline (profile) {
@@ -255,8 +244,9 @@ $media-small-desktop: 960px;
   background-color: $col-block-bg;
   padding: 2.4rem;
   border-radius: 0.5rem;
-  min-height: 25rem;
+  min-height: 28rem;
   cursor: pointer;
+  position: relative;
 
   @include box-shadow();
   @include profile-card-width(33%);
@@ -296,14 +286,15 @@ $media-small-desktop: 960px;
   margin-top: 2rem;
 }
 
-.profiles__card-status {
-  margin-top: 0.6rem;
-  text-align: right;
-  font-style: italic;
+.profiles__card__username {
+  margin-top: 0.2rem;
+  font-size: 1.6rem;
+  color: $col-text-secondary;
+  text-align: center;
 }
 
 .profiles__card-last-seen {
-  margin-top: 0.6rem;
+  margin-top: 1.2rem;
   text-align: right;
   font-size: 1.2rem;
   color: $col-text-secondary;
@@ -320,7 +311,9 @@ $media-small-desktop: 960px;
 }
 
 .profiles__card-actions {
-  margin-top: 2.4rem;
+  position: absolute;
+  width: calc(100% - 4.8rem);
+  bottom: 2.4rem;
   display: flex;
   justify-content: space-between;
 }

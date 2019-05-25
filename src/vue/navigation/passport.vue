@@ -10,7 +10,7 @@
         v-else
         class="passport__avatar passport__name-abbr-btn"
       >
-        {{ profile.name | abbreviate }}
+        {{ profileName | abbreviate }}
       </p>
     </button>
 
@@ -19,7 +19,7 @@
         class="passport__name-btn"
         @click="toggleDropdown"
       >
-        {{ profile.name }}
+        {{ profileName }}
         <i
           class="passport__dropdown-status-icon mdi mdi-chevron-down"
           :class="{
@@ -44,7 +44,7 @@
           </span>
           <br>
           <span class="passport__dropdown-signed-in-email">
-            {{ profile.name }}
+            {{ profileName }}
           </span>
         </div>
 
@@ -80,6 +80,10 @@ export default {
     ...mapGetters({
       profile: vuexTypes.profile,
     }),
+
+    profileName () {
+      return this.profile.name || this.profile.login
+    },
   },
 
   methods: {
@@ -124,7 +128,7 @@ export default {
 @import '~@scss/mixins';
 
 $media-hide-account-details-bp: 800px;
-$dropdown-item-side-padding: 2.4rem;
+$dropdown-item-side-padding: 0rem;
 
 .passport__dropdown-btn {
   width: 100%;
@@ -162,8 +166,9 @@ $dropdown-item-side-padding: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $col-block-bg;
-  color: $col-text;
+  background: $col-primary;
+  color: $col-text-inverse;
+  border-radius: 50%;
 }
 
 .passport__name-btn,
@@ -206,12 +211,13 @@ $dropdown-item-side-padding: 2.4rem;
 
 .passport__dropdown {
   position: absolute;
-  padding: 1rem;
+  padding: 0.6rem 2rem;
   right: 0;
-  top: 100%;
+  top: calc(100% + 1rem);
   background: $col-block-bg;
   display: flex;
   flex-direction: column;
+  width: 18rem;
 
   @include box-shadow();
 
@@ -225,7 +231,7 @@ $dropdown-item-side-padding: 2.4rem;
     border-width: 0 0.8rem 0.8rem;
     border-color: transparent transparent $col-block-bg transparent;
     top: -0.8rem;
-    right: 3.9rem;
+    right: 2.4rem;
   }
 }
 

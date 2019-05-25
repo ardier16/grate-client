@@ -96,13 +96,14 @@ export default {
       if (this.profile) {
         this.populateForm()
       }
-    } catch (e) {}
+    } catch (e) {
+      ErrorHandler.process(e)
+    }
     this.isLoaded = true
   },
 
   methods: {
     ...mapActions({
-      createProfile: vuexTypes.CREATE_PROFILE,
       updateProfile: vuexTypes.UPDATE_PROFILE,
       loadProfile: vuexTypes.LOAD_PROFILE,
     }),
@@ -119,11 +120,7 @@ export default {
     async submit () {
       this.disableForm()
       try {
-        if (this.profile) {
-          await this.updateProfile(this.form)
-        } else {
-          await this.createProfile(this.form)
-        }
+        await this.updateProfile(this.form)
         Bus.success('profile-form.profile-updated-msg')
       } catch (e) {
         ErrorHandler.process(e)

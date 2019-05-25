@@ -14,24 +14,7 @@ export const mutations = {
 export const actions = {
   async [vuexTypes.LOAD_PROFILE] ({ commit, rootGetters }) {
     const data = await api().get({
-      endpoint: `/profiles/mine`,
-      token: rootGetters[vuexTypes.authToken],
-    })
-
-    commit(vuexTypes.SET_PROFILE, data)
-  },
-
-  async [vuexTypes.CREATE_PROFILE] ({ commit, rootGetters }, opts) {
-    let optsData = opts
-
-    if (opts.avatar) {
-      const docUrl = await api().uploadDocument(opts.avatar)
-      optsData = Object.assign(opts, { avatarUrl: docUrl })
-    }
-
-    const data = await api().post({
-      endpoint: '/profiles',
-      data: optsData,
+      endpoint: `/users/${rootGetters[vuexTypes.userId]}`,
       token: rootGetters[vuexTypes.authToken],
     })
 
@@ -47,7 +30,7 @@ export const actions = {
     }
 
     const data = await api().put({
-      endpoint: `/profiles/${getters[vuexTypes.profile].id}`,
+      endpoint: `/users/${getters[vuexTypes.profile].id}`,
       data: optsData,
       token: rootGetters[vuexTypes.authToken],
     })

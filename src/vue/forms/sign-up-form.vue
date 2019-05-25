@@ -15,11 +15,11 @@
     <div class="app__form-row">
       <div class="app__form-field">
         <input-field
-          v-model="form.username"
-          @blur="touchField('form.username')"
-          name="sign-up-username"
+          v-model="form.login"
+          @blur="touchField('form.login')"
+          name="sign-up-login"
           :label="'auth-pages.username' | globalize"
-          :error-message="getFieldErrorMessage('form.username')"
+          :error-message="getFieldErrorMessage('form.login')"
         />
       </div>
     </div>
@@ -84,7 +84,7 @@ export default {
   data: _ => ({
     form: {
       email: '',
-      username: '',
+      login: '',
       password: '',
       confirmPassword: '',
     },
@@ -93,7 +93,7 @@ export default {
   validations: {
     form: {
       email: { required, email },
-      username: { required },
+      login: { required },
       password: { required, password },
       confirmPassword: {
         required,
@@ -106,6 +106,7 @@ export default {
   methods: {
     ...mapActions({
       signUp: vuexTypes.SIGN_UP,
+      loadProfile: vuexTypes.LOAD_PROFILE,
     }),
 
     async submit () {
@@ -117,9 +118,10 @@ export default {
       try {
         await this.signUp({
           email: this.form.email.toLowerCase(),
-          name: this.form.username.toLowerCase(),
+          login: this.form.login.toLowerCase(),
           password: this.form.password,
         })
+        await this.loadProfile()
 
         this.$router.push({ name: 'app' })
       } catch (e) {

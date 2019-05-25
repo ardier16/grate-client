@@ -14,8 +14,35 @@
           :key="post.id"
           class="feed__card"
         >
+          <div class="feed__card-author">
+            <div class="feed__card-author-avatar-wrp">
+              <img
+                v-if="post.author.avatarUrl"
+                class="feed__card-author-avatar feed__card-author-avatar--image"
+                :src="post.author.avatarUrl"
+              >
+
+              <p
+                v-else
+                class="feed__card-author-avatar feed__card-author-avatar--abbr"
+              >
+                {{ (post.author.name || post.author.login) | abbreviate }}
+              </p>
+            </div>
+
+            <div class="feed__card-author-text">
+              <span class="feed__card-author-name">
+                {{ post.author.name || post.author.login }}
+              </span>
+
+              <span class="feed__card-author-username">
+                @{{ post.author.login }}
+              </span>
+            </div>
+          </div>
+
           <div
-            v-if="post.ownerId === userId"
+            v-if="post.author.id === userId"
             class="feed__card-actions"
           >
             <a
@@ -156,35 +183,129 @@ export default {
 
 <style lang="scss">
 @import '@scss/variables';
+@import '@scss/mixins';
 
 .feed__card {
   background-color: $col-block-bg;
-  margin-bottom: 2rem;
-  padding: 2.4rem;
+  padding: 2.4rem 4.8rem 4.8rem;
   border-radius: 0.5rem;
   position: relative;
+  max-width: 120rem;
+  margin: 0 auto 2rem;
+
+  @include respond-to(small) {
+    padding: 2.4rem;
+  }
 }
 
 .feed__card-actions {
   position: absolute;
-  right: 2rem;
+  right: 4.8rem;
+  top: 2.4rem;
+
+  @include respond-to(small) {
+    right: 2.4rem;
+  }
 }
 
 .feed__card-edit, .feed__card-delete {
   cursor: pointer;
 
   i {
-    font-size: 2rem;
+    font-size: 2.4rem;
+  }
+}
+
+.feed__card-author {
+  display: flex;
+}
+
+.feed__card-author-text {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feed__card-author-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.feed__card-author-username {
+  font-size: 1.4rem;
+  color: $col-text-secondary;
+}
+
+.feed__card-author-avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+
+  &--image {
+    display: block;
+  }
+
+  &--abbr {
+    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $col-primary;
+    color: $col-text-inverse;
   }
 }
 
 .feed__card-title {
+  margin-top: 2rem;
   font-size: 3.2rem;
   text-align: center;
 }
 
 .feed__card-text {
   margin-top: 1.6rem;
+
+  img {
+    max-width: 100%;
+    margin: 0.8rem 0;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0.4rem;
+    margin-top: 1.4rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0.2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  ul {
+    list-style-type: disc !important;
+    padding-left: 1.6rem;
+  }
+
+  li {
+    list-style-type: disc !important;
+    margin-bottom: 0.8rem;
+  }
+
+  a {
+    color: $col-text-secondary;
+  }
 }
 
 .feed__card-line {
