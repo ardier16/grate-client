@@ -28,7 +28,8 @@
       "profile": "Profile",
       "profiles": "Profiles",
       "friends": "Friends",
-      "create-post": "New post"
+      "create-post": "New post",
+      "post": "Post"
     },
     "validation": {
       "field-error_required": "Please fill this field",

@@ -75,14 +75,12 @@ const router = new Router({
           name: vueRoutes.posts.name,
           component: Posts,
           meta: { pageTranslationId: 'pages.posts' },
-          children: [
-            {
-              path: '/posts/:id',
-              name: vueRoutes.post.name,
-              component: Post,
-              meta: { pageTranslationId: 'pages.post' },
-            },
-          ]
+        },
+        {
+          path: '/posts/:id',
+          name: vueRoutes.post.name,
+          component: Post,
+          meta: { pageTranslationId: 'pages.post' },
         },
         {
           path: '/profiles',

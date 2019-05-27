@@ -3,7 +3,7 @@
     <template v-if="isLoaded">
       <template v-if="isEditMode">
         <post-form
-          :post="selectedPost"
+          :post="post"
           @submit="refreshPost"
         />
       </template>
@@ -57,6 +57,7 @@ export default {
   },
 
   data: _ => ({
+    post: null,
     isLoaded: false,
     isLoadFailed: false,
     isEditMode: false,
@@ -64,7 +65,7 @@ export default {
 
   async created () {
     try {
-      await this.loadPost(this.$route.params.id)
+      this.post = await this.loadPost(this.$route.params.id)
       this.isLoaded = true
     } catch (e) {
       this.isLoadFailed = true
@@ -82,7 +83,7 @@ export default {
       this.isLoaded = false
 
       try {
-        await this.loadPost()
+        this.post = await this.loadPost(this.post.id)
         this.isLoaded = true
       } catch (e) {
         ErrorHandler.process(e)
