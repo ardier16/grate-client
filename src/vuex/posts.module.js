@@ -28,10 +28,18 @@ export const actions = {
 
   async [vuexTypes.LOAD_POSTS] ({ commit }) {
     const data = await api().get({
-      endpoint: '/posts',
+      endpoint: '/posts/',
     })
 
     commit(vuexTypes.SET_POSTS, data)
+  },
+
+  async [vuexTypes.LOAD_POST] (_, id) {
+    const post = await api().get({
+      endpoint: `/posts/${id}`,
+    })
+
+    return post
   },
 
   async [vuexTypes.CREATE_POST] ({ rootGetters }, opts) {

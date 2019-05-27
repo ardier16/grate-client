@@ -36,6 +36,7 @@ const actions = {
 
   // posts
   LOAD_POSTS: 'LOAD_POSTS',
+  LOAD_POST: 'LOAD_POST',
   LOAD_FEED: 'LOAD_FEED',
   CREATE_POST: 'CREATE_POST',
   UPDATE_POST: 'UPDATE_POST',

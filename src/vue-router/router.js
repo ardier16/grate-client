@@ -13,6 +13,7 @@ import Profile from '@/vue/pages/profile.vue'
 import CreatePost from '@/vue/pages/create-post.vue'
 import Feed from '@/vue/pages/feed.vue'
 import Posts from '@/vue/pages/posts.vue'
+import Post from '@/vue/pages/post.vue'
 import Profiles from '@/vue/pages/profiles.vue'
 import Friends from '@/vue/pages/friends.vue'
 
@@ -74,6 +75,14 @@ const router = new Router({
           name: vueRoutes.posts.name,
           component: Posts,
           meta: { pageTranslationId: 'pages.posts' },
+          children: [
+            {
+              path: '/posts/:id',
+              name: vueRoutes.post.name,
+              component: Post,
+              meta: { pageTranslationId: 'pages.post' },
+            },
+          ]
         },
         {
           path: '/profiles',

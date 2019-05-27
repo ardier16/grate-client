@@ -47,9 +47,12 @@
       </a>
     </div>
 
-    <h3 class="post-card__title">
+    <router-link
+      class="post-card__title"
+      :to="{ ...vueRoutes.post, params: { id: post.id } }"
+    >
       {{ post.title }}
-    </h3>
+    </router-link>
 
     <vue-markdown
       class="post-card__text"
@@ -64,6 +67,16 @@
       >
         {{ 'posts.created' | globalize }}
         {{ post.createdAt | formatDate }}
+      </p>
+
+      <p
+        v-if="post.commentsCount > 0"
+        class="post-card__comments-wrp"
+      >
+        <i class="mdi mdi-comment-text-outline post-card__comments-icon" />
+        <span class="post-card__comments">
+          {{ post.commentsCount }}
+        </span>
       </p>
 
       <p
@@ -83,6 +96,8 @@ import VueMarkdown from 'vue-markdown'
 import { vuexTypes } from '@/vuex'
 import { mapGetters } from 'vuex'
 
+import { vueRoutes } from '@/vue-router/routes'
+
 const EVENTS = {
   editClick: 'edit-click',
   removeClick: 'remove-click',
@@ -98,6 +113,7 @@ export default {
 
   data: _ => ({
     EVENTS,
+    vueRoutes,
   }),
 
   computed: {
@@ -184,9 +200,12 @@ export default {
 }
 
 .post-card__title {
-  margin-top: 2rem;
+  margin-top: 0.4rem;
   font-size: 3.2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: $col-primary;
+  text-decoration: none;
 }
 
 .post-card__text {
@@ -243,5 +262,20 @@ export default {
   margin-top: 0.8rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.post-card__comments-wrp {
+  display: flex;
+  align-items: center;
+}
+
+.post-card__comments-icon {
+  font-size: 1.8rem;
+}
+
+.post-card__comments {
+  font-size: 1.6rem;
+  margin-left: 0.4rem;
 }
 </style>
