@@ -51,7 +51,9 @@
       class="post-card__title"
       :to="{ ...vueRoutes.post, params: { id: post.id } }"
     >
-      {{ post.title }}
+      <p class="post-card__title-text">
+        {{ post.title }}
+      </p>
     </router-link>
 
     <vue-markdown
@@ -136,6 +138,8 @@ export default {
   max-width: 120rem;
   margin: 0 auto 2rem;
 
+  @include box-shadow();
+
   @include respond-to(small) {
     padding: 2.4rem;
   }
@@ -200,16 +204,31 @@ export default {
 }
 
 .post-card__title {
-  margin-top: 0.4rem;
-  font-size: 3.2rem;
   display: flex;
-  justify-content: center;
+  margin: 0.4rem auto;
+  width: fit-content;
   color: $col-primary;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.router-link-exact-active {
+  cursor: default;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.post-card__title-text {
+  font-size: 3.2rem;
 }
 
 .post-card__text {
-  margin-top: 1.6rem;
+  margin-top: 1.2rem;
 
   img {
     max-width: 100%;

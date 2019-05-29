@@ -103,7 +103,12 @@
       "created": "Created:",
       "updated": "Updated:",
       "no-posts-title": "No posts yet",
-      "no-posts-msg": "Be the first to create a post"
+      "no-posts-msg": "Be the first to create a post",
+      "comments-title": "Comments"
+    },
+    "comments": {
+      "created": "Created:",
+      "updated": "Updated:"
     },
     "profiles": {
       "add-friend-btn": "Add friend",

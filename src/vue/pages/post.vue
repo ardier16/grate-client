@@ -1,5 +1,5 @@
 <template>
-  <div class="posts">
+  <div class="post">
     <template v-if="isLoaded">
       <template v-if="isEditMode">
         <post-form
@@ -14,6 +14,21 @@
           @edit-click="isEditMode = true"
           @remove-click="removePost"
         />
+
+        <div
+          v-if="post.comments"
+          class="post__comments"
+        >
+          <h3 class="post__comments-title">
+            {{ 'posts.comments-title' | globalize }}
+          </h3>
+
+          <comment-card
+            v-for="comment in post.comments"
+            :key="comment.id"
+            :comment="comment"
+          />
+        </div>
       </template>
     </template>
 
@@ -35,6 +50,7 @@ import Loader from '@/vue/common/loader.vue'
 import NoDataMessage from '@/vue/common/no-data-message.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
 import PostCard from '@/vue/common/post-card.vue'
+import CommentCard from '@/vue/common/comment-card.vue'
 
 import PostForm from '@/vue/forms/post-form.vue'
 
@@ -54,6 +70,7 @@ export default {
     LoadFailedMessage,
     PostForm,
     PostCard,
+    CommentCard,
   },
 
   data: _ => ({
@@ -102,3 +119,27 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@scss/variables';
+@import '@scss/mixins';
+
+.post__comments {
+  // background-color: $col-block-bg;
+  // border-radius: 0.5rem;
+  // position: relative;
+  max-width: 120rem;
+  margin: 4rem auto 2rem;
+
+  // @include box-shadow();
+
+  @include respond-to(small) {
+    padding: 2.4rem;
+  }
+}
+
+.post__comments-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+</style>
