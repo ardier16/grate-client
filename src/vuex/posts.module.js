@@ -64,6 +64,29 @@ export const actions = {
       token: rootGetters[vuexTypes.authToken],
     })
   },
+
+  async [vuexTypes.CREATE_COMMENT] ({ rootGetters }, opts) {
+    await api().post({
+      endpoint: `/posts/${opts.postId}/comment`,
+      data: opts,
+      token: rootGetters[vuexTypes.authToken],
+    })
+  },
+
+  async [vuexTypes.UPDATE_COMMENT] ({ rootGetters }, opts) {
+    await api().put({
+      endpoint: `/posts/comments/${opts.id}`,
+      data: opts,
+      token: rootGetters[vuexTypes.authToken],
+    })
+  },
+
+  async [vuexTypes.DELETE_COMMENT] ({ rootGetters }, id) {
+    await api().delete({
+      endpoint: `/posts/comments/${id}`,
+      token: rootGetters[vuexTypes.authToken],
+    })
+  },
 }
 
 export const getters = {

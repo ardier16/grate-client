@@ -1,74 +1,87 @@
 <template>
   <div class="comment-card">
-    <div class="comment-card__author">
-      <div class="comment-card__author-avatar-wrp">
-        <img
-          v-if="comment.author.avatarUrl"
-          class="comment-card__author-avatar
-                  comment-card__author-avatar--image"
-          :src="comment.author.avatarUrl"
-        >
-
-        <p
-          v-else
-          class="comment-card__author-avatar
-                  comment-card__author-avatar--abbr"
-        >
-          {{ (comment.author.name || comment.author.login) | abbreviate }}
-        </p>
-      </div>
-
-      <div class="comment-card__author-text">
-        <span class="comment-card__author-name">
-          {{ comment.author.name || comment.author.login }}
-        </span>
-
-        <span class="comment-card__author-username">
-          @{{ comment.author.login }}
-        </span>
-      </div>
-    </div>
+    <comment-form
+      class="comment-card__form"
+      v-if="isEditMode"
+      :comment="comment"
+      :post-id="postId"
+      @submit="emitUpdate"
+    />
 
     <div
-      v-if="comment.author.id === userId"
-      class="comment-card__actions"
+      v-else
+      class="comment-card__content"
     >
-      <a
-        @click="$emit(EVENTS.editClick, comment)"
-        class="comment-card__edit"
-      >
-        <i class="mdi mdi-pencil" />
-      </a>
-      <a
-        @click="$emit(EVENTS.removeClick, comment)"
-        class="comment-card__delete"
-      >
-        <i class="mdi mdi-close" />
-      </a>
-    </div>
+      <div class="comment-card__author">
+        <div class="comment-card__author-avatar-wrp">
+          <img
+            v-if="comment.author.avatarUrl"
+            class="comment-card__author-avatar
+                    comment-card__author-avatar--image"
+            :src="comment.author.avatarUrl"
+          >
 
-    <vue-markdown
-      class="comment-card__text"
-      :source="comment.text"
-    />
-    <hr class="comment-card__line">
+          <p
+            v-else
+            class="comment-card__author-avatar
+                    comment-card__author-avatar--abbr"
+          >
+            {{ (comment.author.name || comment.author.login) | abbreviate }}
+          </p>
+        </div>
 
-    <div class="comment-card__date">
-      <p
-        class="comment-card__created"
-        :title="comment.createdAt | formatCalendar"
-      >
-        {{ 'comments.created' | globalize }}
-        {{ comment.createdAt | formatDate }}
-      </p>
+        <div class="comment-card__author-text">
+          <span class="comment-card__author-name">
+            {{ comment.author.name || comment.author.login }}
+          </span>
 
-      <p
-        class="comment-card__updated"
-        :title="comment.updatedAt | formatCalendar"
+          <span class="comment-card__author-username">
+            @{{ comment.author.login }}
+          </span>
+        </div>
+      </div>
+
+      <div
+        v-if="comment.author.id === userId"
+        class="comment-card__actions"
       >
-        {{ 'comments.updated' | globalize }}
-        {{ comment.updatedAt | formatDate }}
-      </p>
+        <a
+          @click="isEditMode = true"
+          class="comment-card__edit"
+        >
+          <i class="mdi mdi-pencil" />
+        </a>
+        <a
+          @click="$emit(EVENTS.removeClick, comment)"
+          class="comment-card__delete"
+        >
+          <i class="mdi mdi-close" />
+        </a>
+      </div>
+
+      <vue-markdown
+        class="comment-card__text"
+        :source="comment.text"
+      />
+      <hr class="comment-card__line">
+
+      <div class="comment-card__date">
+        <p
+          class="comment-card__created"
+          :title="comment.createdAt | formatCalendar"
+        >
+          {{ 'comments.created' | globalize }}
+          {{ comment.createdAt | formatDate }}
+        </p>
+
+        <p
+          class="comment-card__updated"
+          :title="comment.updatedAt | formatCalendar"
+        >
+          {{ 'comments.updated' | globalize }}
+          {{ comment.updatedAt | formatDate }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -76,25 +89,31 @@
 <script>
 import VueMarkdown from 'vue-markdown'
 
+import CommentForm from '@/vue/forms/comment-form.vue'
+
 import { vuexTypes } from '@/vuex'
 import { mapGetters } from 'vuex'
 
 import { vueRoutes } from '@/vue-router/routes'
 
 const EVENTS = {
-  editClick: 'edit-click',
-  removeClick: 'remove-click',
+  updated: 'updated',
 }
 
 export default {
   name: 'comment-card',
-  components: { VueMarkdown },
+  components: {
+    VueMarkdown,
+    CommentForm,
+  },
 
   props: {
     comment: { type: Object, required: true },
+    postId: { type: String, required: true },
   },
 
   data: _ => ({
+    isEditMode: false,
     EVENTS,
     vueRoutes,
   }),
@@ -104,6 +123,13 @@ export default {
       userId: vuexTypes.userId,
     }),
   },
+
+  methods: {
+    emitUpdate () {
+      this.isEditMode = false
+      this.$emit(EVENTS.updated)
+    },
+  },
 }
 </script>
 
@@ -111,13 +137,19 @@ export default {
 @import '@scss/variables';
 @import '@scss/mixins';
 
-.comment-card {
+.comment-card__form {
+  margin-bottom: 2rem;
+}
+
+.comment-card__content {
   background-color: $col-block-bg;
-  padding: 2.4rem 4.8rem 4.8rem;
+  padding: 2.4rem 4.8rem 2.4rem;
   border-radius: 0.5rem;
   position: relative;
   max-width: 120rem;
   margin: 0 auto 2rem;
+
+  @include box-shadow();
 
   @include respond-to(small) {
     padding: 2.4rem;

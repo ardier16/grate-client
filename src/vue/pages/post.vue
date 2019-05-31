@@ -23,10 +23,18 @@
             {{ 'posts.comments-title' | globalize }}
           </h3>
 
+          <comment-form
+            class="post__comment-form"
+            :post-id="post.id"
+            @submit="refreshPost"
+          />
+
           <comment-card
             v-for="comment in post.comments"
             :key="comment.id"
             :comment="comment"
+            :post-id="post.id"
+            @updated="refreshPost"
           />
         </div>
       </template>
@@ -53,6 +61,7 @@ import PostCard from '@/vue/common/post-card.vue'
 import CommentCard from '@/vue/common/comment-card.vue'
 
 import PostForm from '@/vue/forms/post-form.vue'
+import CommentForm from '@/vue/forms/comment-form.vue'
 
 import { vuexTypes } from '@/vuex'
 import { mapActions } from 'vuex'
@@ -69,6 +78,7 @@ export default {
     NoDataMessage,
     LoadFailedMessage,
     PostForm,
+    CommentForm,
     PostCard,
     CommentCard,
   },
@@ -125,17 +135,16 @@ export default {
 @import '@scss/mixins';
 
 .post__comments {
-  // background-color: $col-block-bg;
-  // border-radius: 0.5rem;
-  // position: relative;
   max-width: 120rem;
   margin: 4rem auto 2rem;
-
-  // @include box-shadow();
 
   @include respond-to(small) {
     padding: 2.4rem;
   }
+}
+
+.post__comment-form {
+  margin-bottom: 2rem;
 }
 
 .post__comments-title {

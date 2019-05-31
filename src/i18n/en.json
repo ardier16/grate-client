@@ -133,7 +133,13 @@
       "text": "Text",
       "create-btn": "Create",
       "update-btn": "Update",
-      "post-created-msg": "Your post was successfully created"
+      "post-updated-msg": "Your post was successfully updated"
+    },
+    "comment-form": {
+      "text": "Text",
+      "add-btn": "Add a comment",
+      "update-btn": "Update",
+      "comment-updated-msg": "Your comment was successfully updated"
     },
     "file-field": {
       "title": "Select image to upload"
