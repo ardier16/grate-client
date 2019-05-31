@@ -104,11 +104,13 @@
       "updated": "Updated:",
       "no-posts-title": "No posts yet",
       "no-posts-msg": "Be the first to create a post",
-      "comments-title": "Comments"
+      "comments-title": "Comments",
+      "post-removed-msg": "Your post was successfully removed"
     },
     "comments": {
       "created": "Created:",
-      "updated": "Updated:"
+      "updated": "Updated:",
+      "comment-removed-msg": "Your comment was successfully removed"
     },
     "profiles": {
       "add-friend-btn": "Add friend",

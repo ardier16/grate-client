@@ -52,7 +52,7 @@
           <i class="mdi mdi-pencil" />
         </a>
         <a
-          @click="$emit(EVENTS.removeClick, comment)"
+          @click="removeComment"
           class="comment-card__delete"
         >
           <i class="mdi mdi-close" />
@@ -92,8 +92,10 @@ import VueMarkdown from 'vue-markdown'
 import CommentForm from '@/vue/forms/comment-form.vue'
 
 import { vuexTypes } from '@/vuex'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
+import { ErrorHandler } from '@/js/helpers/error-handler'
+import { Bus } from '@/js/helpers/event-bus'
 import { vueRoutes } from '@/vue-router/routes'
 
 const EVENTS = {
@@ -125,9 +127,23 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      deleteComment: vuexTypes.DELETE_COMMENT,
+    }),
+
     emitUpdate () {
       this.isEditMode = false
       this.$emit(EVENTS.updated)
+    },
+
+    async removeComment () {
+      try {
+        await this.deleteComment(this.comment.id)
+        await this.emitUpdate()
+        Bus.success('comments.comment-removed-msg')
+      } catch (e) {
+        ErrorHandler.process(e)
+      }
     },
   },
 }
