@@ -196,7 +196,6 @@ $content-item-right-padding: 2.4rem;
   &.router-link-active {
     background-color: $col-links-bar-active-bg;
     color: $col-text;
-    pointer-events: none;
   }
 
   @include respond-to-custom($links-bar-hide-bp) {

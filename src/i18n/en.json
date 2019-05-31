@@ -28,7 +28,8 @@
       "profile": "Profile",
       "profiles": "Profiles",
       "friends": "Friends",
-      "create-post": "New post"
+      "create-post": "New post",
+      "post": "Post"
     },
     "validation": {
       "field-error_required": "Please fill this field",
@@ -98,6 +99,19 @@
       "no-posts-title": "No posts yet",
       "no-posts-msg": "Be the first to create a post"
     },
+    "posts": {
+      "created": "Created:",
+      "updated": "Updated:",
+      "no-posts-title": "No posts yet",
+      "no-posts-msg": "Be the first to create a post",
+      "comments-title": "Comments",
+      "post-removed-msg": "Your post was successfully removed"
+    },
+    "comments": {
+      "created": "Created:",
+      "updated": "Updated:",
+      "comment-removed-msg": "Your comment was successfully removed"
+    },
     "profiles": {
       "add-friend-btn": "Add friend",
       "friend-btn": "Your friend",
@@ -121,7 +135,13 @@
       "text": "Text",
       "create-btn": "Create",
       "update-btn": "Update",
-      "post-created-msg": "Your post was successfully created"
+      "post-updated-msg": "Your post was successfully updated"
+    },
+    "comment-form": {
+      "text": "Text",
+      "add-btn": "Add a comment",
+      "update-btn": "Update",
+      "comment-updated-msg": "Your comment was successfully updated"
     },
     "file-field": {
       "title": "Select image to upload"

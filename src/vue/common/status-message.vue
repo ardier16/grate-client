@@ -4,6 +4,13 @@
       v-if="isShown"
       :class="`status-message status-message--${messageType}`"
     >
+      <div class="status-message__icon-wrp">
+        <i
+          class="mdi status-message__icon"
+          :class="[`status-message__icon--${messageType}`, messageIconClass]"
+        />
+      </div>
+
       <div class="status-message__payload">
         <h4 class="status-message__title">
           {{ 'status-message.title' | globalize({ context: messageType }) }}
@@ -26,7 +33,7 @@
 import { Bus } from '@/js/helpers/event-bus'
 
 const DEFAULT_MESSAGE_TRANSLATION_ID = 'status-message.default-message'
-const CLOSE_TIMEOUT_MS = 5000
+const CLOSE_TIMEOUT_MS = 10000
 const MESSAGE_TYPES = Object.freeze({
   warning: 'warning',
   success: 'success',
@@ -45,6 +52,23 @@ export default {
     isShown: false,
     timeoutId: -1,
   }),
+
+  computed: {
+    messageIconClass () {
+      switch (this.messageType) {
+        case MESSAGE_TYPES.success:
+          return 'mdi-emoticon-cool-outline'
+        case MESSAGE_TYPES.error:
+          return 'mdi-emoticon-cry-outline'
+        case MESSAGE_TYPES.info:
+          return 'mdi-information-outline'
+        case MESSAGE_TYPES.warning:
+          return 'mdi-alert-outline'
+        default:
+          return ''
+      }
+    },
+  },
 
   created () {
     Bus.on(Bus.eventList.success, payload =>
@@ -93,8 +117,10 @@ export default {
 @import '~@scss/mixins';
 
 $payload-padding: 2.4rem;
+$icon-padding: 2.4rem;
 
 .status-message {
+  @include box-shadow();
   position: fixed;
   right: 4rem;
   top: 4rem;
@@ -103,26 +129,64 @@ $payload-padding: 2.4rem;
   min-width: 32rem;
   display: flex;
 
-  @include box-shadow();
+  &--warning {
+    background-color: $col-status-msg-warning;
+  }
 
-  &--warning { background-color: $col-status-msg-warning; }
-  &--success { background-color: $col-status-msg-success; }
-  &--error { background-color: $col-status-msg-error; }
-  &--info { background-color: $col-status-msg-info; }
+  &--success {
+    background-color: $col-status-msg-light-bg;
+  }
+
+  &--error {
+    background-color: $col-status-msg-error;
+  }
+
+  &--info {
+    background-color: $col-status-msg-light-bg;
+  }
 
   @include respond-to($tablet) {
     min-width: auto;
   }
-
   @include respond-to-custom($status-message-reposition-bp) {
     right: $content-side-paddings-sm;
     left: $content-side-paddings-sm;
   }
 }
 
+.status-message__icon-wrp {
+  min-width: 4.2rem;
+  padding: $icon-padding 1.2rem $icon-padding $icon-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-message__icon {
+  display: flex;
+  font-size: 3.6rem;
+
+  &--success { color: $col-status-msg-success; }
+  &--error { color: $col-status-msg-text; }
+  &--info { color: $col-status-msg-info; }
+  &--warning { color: $col-status-msg-text; }
+}
+
 .status-message__payload {
-  padding: $payload-padding;
+  padding: $payload-padding $payload-padding $payload-padding 1.2rem;
   flex: 1;
+}
+
+.status-message__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: $col-status-msg-text;
+}
+
+.status-message--success .status-message__title,
+.status-message--info .status-message__title {
+  color: $col-text;
 }
 
 .status-message__text {
@@ -131,11 +195,9 @@ $payload-padding: 2.4rem;
   color: $col-status-msg-text;
 }
 
-.status-message__title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  color: $col-status-msg-text;
+.status-message--success .status-message__text,
+.status-message--info .status-message__text {
+  color: $col-text-secondary;
 }
 
 .status-message__close-btn {
@@ -167,7 +229,7 @@ $payload-padding: 2.4rem;
     /* stylelint-disable function-calc-no-invalid */
     left: calc(50% - (#{$cross-stroke-width} / 2));
     /* stylelint-enable function-calc-no-invalid */
-    background-color: $col-text-inverse;
+    background-color: $col-button-primary-txt;
   }
 
   &:before {
@@ -176,6 +238,14 @@ $payload-padding: 2.4rem;
 
   &:after {
     transform: rotate(-45deg);
+  }
+
+  &:hover:before {
+    transform: rotate(225deg);
+  }
+
+  &:hover:after {
+    transform: rotate(135deg);
   }
 
   &:hover:after,
@@ -187,6 +257,14 @@ $payload-padding: 2.4rem;
     /* stylelint-enable function-calc-no-invalid */
   }
   /* /cross */
+}
+
+.status-message--success .status-message__close-btn,
+.status-message--info .status-message__close-btn {
+  &:before,
+  &:after {
+    background-color: $col-text-secondary;
+  }
 }
 
 .status-message__transition-enter-active,

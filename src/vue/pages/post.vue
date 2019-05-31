@@ -1,21 +1,42 @@
 <template>
-  <div class="posts">
-    <template v-if="isLoaded && posts.length">
-      <template v-if="selectedPost">
+  <div class="post">
+    <template v-if="isLoaded">
+      <template v-if="isEditMode">
         <post-form
-          :post="selectedPost"
-          @submit="refreshPosts"
+          :post="post"
+          @submit="refreshPost"
         />
       </template>
 
       <template v-else>
         <post-card
-          v-for="post in posts"
-          :key="post.id"
           :post="post"
-          @edit-click="selectPost"
+          @edit-click="isEditMode = true"
           @remove-click="removePost"
         />
+
+        <div
+          v-if="post.comments"
+          class="post__comments"
+        >
+          <h3 class="post__comments-title">
+            {{ 'posts.comments-title' | globalize }}
+          </h3>
+
+          <comment-form
+            class="post__comment-form"
+            :post-id="post.id"
+            @submit="refreshPost"
+          />
+
+          <comment-card
+            v-for="comment in post.comments"
+            :key="comment.id"
+            :comment="comment"
+            :post-id="post.id"
+            @updated="refreshPost"
+          />
+        </div>
       </template>
     </template>
 
@@ -37,40 +58,41 @@ import Loader from '@/vue/common/loader.vue'
 import NoDataMessage from '@/vue/common/no-data-message.vue'
 import LoadFailedMessage from '@/vue/common/load-failed-message.vue'
 import PostCard from '@/vue/common/post-card.vue'
+import CommentCard from '@/vue/common/comment-card.vue'
 
 import PostForm from '@/vue/forms/post-form.vue'
+import CommentForm from '@/vue/forms/comment-form.vue'
 
 import { vuexTypes } from '@/vuex'
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
+import { vueRoutes } from '@/vue-router/routes'
 
 import { ErrorHandler } from '@/js/helpers/error-handler'
 import { Bus } from '@/js/helpers/event-bus'
 
 export default {
-  name: 'posts',
+  name: 'post',
   components: {
     Loader,
     NoDataMessage,
     LoadFailedMessage,
     PostForm,
+    CommentForm,
     PostCard,
+    CommentCard,
   },
 
   data: _ => ({
+    post: null,
     isLoaded: false,
     isLoadFailed: false,
-    selectedPost: null,
+    isEditMode: false,
   }),
-
-  computed: {
-    ...mapGetters({
-      posts: vuexTypes.posts,
-    }),
-  },
 
   async created () {
     try {
-      await this.loadPosts()
+      this.post = await this.loadPost(this.$route.params.id)
       this.isLoaded = true
     } catch (e) {
       this.isLoadFailed = true
@@ -79,31 +101,27 @@ export default {
 
   methods: {
     ...mapActions({
-      loadPosts: vuexTypes.LOAD_POSTS,
+      loadPost: vuexTypes.LOAD_POST,
       deletePost: vuexTypes.DELETE_POST,
     }),
 
-    async refreshPosts () {
-      this.selectedPost = null
+    async refreshPost () {
+      this.isEditMode = false
       this.isLoaded = false
 
       try {
-        await this.loadPosts()
+        this.post = await this.loadPost(this.post.id)
         this.isLoaded = true
       } catch (e) {
         ErrorHandler.process(e)
       }
     },
 
-    selectPost (post) {
-      this.selectedPost = post
-    },
-
     async removePost (post) {
       try {
         await this.deletePost(post.id)
-        await this.refreshPosts()
         Bus.success('posts.post-removed-msg')
+        await this.$router.push(vueRoutes.posts)
       } catch (e) {
         ErrorHandler.process(e)
       }
@@ -111,3 +129,26 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@scss/variables';
+@import '@scss/mixins';
+
+.post__comments {
+  max-width: 120rem;
+  margin: 4rem auto 2rem;
+
+  @include respond-to(small) {
+    padding: 2.4rem;
+  }
+}
+
+.post__comment-form {
+  margin-bottom: 2rem;
+}
+
+.post__comments-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+</style>

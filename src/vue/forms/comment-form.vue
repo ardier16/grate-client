@@ -1,41 +1,30 @@
 <template>
-  <form class="app-form post-form" @submit.prevent="submit">
+  <form class="app-form comment-form" @submit.prevent="submit">
     <div class="app__form-row">
       <div class="app__form-field">
-        <input-field
-          v-model="form.title"
-          @blur="touchField('form.title')"
-          name="post-title"
-          :label="'post-form.title' | globalize"
-          :error-message="getFieldErrorMessage('form.title')"
-        />
-      </div>
-    </div>
-
-    <div class="app__form-row">
-      <div class="app__form-field">
-        <markdown-field
+        <text-field
           v-model="form.text"
           @blur="touchField('form.text')"
-          name="post-text"
+          name="comment-text"
+          rows="3"
           :error-message="getFieldErrorMessage('form.text')"
-          :label="'post-form.text' | globalize"
+          :label="'comment-form.text' | globalize"
         />
       </div>
     </div>
 
-    <div class="app__form-actions">
+    <div class="comment-form__actions">
       <button
         type="submit"
-        class="post-form__submit-btn app__button-primary"
+        class="comment-form__submit-btn app__button-primary"
         :disabled="formMixin.isDisabled"
       >
-        <template v-if="post">
-          {{ 'post-form.update-btn' | globalize }}
+        <template v-if="comment">
+          {{ 'comment-form.update-btn' | globalize }}
         </template>
 
         <template v-else>
-          {{ 'post-form.create-btn' | globalize }}
+          {{ 'comment-form.add-btn' | globalize }}
         </template>
       </button>
     </div>
@@ -58,40 +47,39 @@ const EVENTS = {
 }
 
 export default {
-  name: 'post-form',
+  name: 'comment-form',
   mixins: [FormMixin],
 
   props: {
-    post: { type: Object, default: null },
+    postId: { type: String, required: true },
+    comment: { type: Object, default: null },
   },
 
   data: _ => ({
     form: {
-      title: '',
-      text: '',
       id: '',
+      text: '',
     },
   }),
 
   validations: {
     form: {
-      title: { required },
       text: { required },
     },
   },
 
   created () {
-    if (this.post) {
-      this.form.title = this.post.title
-      this.form.text = this.post.text
-      this.form.id = this.post.id
+    if (this.comment) {
+      this.form.title = this.comment.title
+      this.form.text = this.comment.text
+      this.form.id = this.comment.id
     }
   },
 
   methods: {
     ...mapActions({
-      createPost: vuexTypes.CREATE_POST,
-      updatePost: vuexTypes.UPDATE_POST,
+      createComment: vuexTypes.CREATE_COMMENT,
+      updateComment: vuexTypes.UPDATE_COMMENT,
     }),
 
     async submit () {
@@ -101,13 +89,19 @@ export default {
 
       this.disableForm()
       try {
-        if (this.post) {
-          await this.updatePost(this.form)
+        if (this.comment) {
+          await this.updateComment({
+            ...this.form,
+            postId: this.postId,
+          })
         } else {
-          await this.createPost(this.form)
+          await this.createComment({
+            ...this.form,
+            postId: this.postId,
+          })
         }
 
-        Bus.success('post-form.post-updated-msg')
+        Bus.success('comment-form.comment-updated-msg')
         this.$emit(EVENTS.submit)
       } catch (e) {
         ErrorHandler.process(e)
@@ -120,4 +114,8 @@ export default {
 
 <style lang="scss" scoped>
 @import './app-form';
+
+.comment-form__actions {
+  margin-top: 2.4rem;
+}
 </style>
