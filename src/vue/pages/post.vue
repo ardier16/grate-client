@@ -20,7 +20,11 @@
           class="post__comments"
         >
           <h3 class="post__comments-title">
-            {{ 'posts.comments-title' | globalize }}
+            {{
+              'posts.comments-title' | globalize({
+                count: post.comments.length
+              })
+            }}
           </h3>
 
           <comment-form
