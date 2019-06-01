@@ -29,7 +29,8 @@
       "profiles": "Profiles",
       "friends": "Friends",
       "create-post": "New post",
-      "post": "Post"
+      "post": "Post",
+      "search": "Search"
     },
     "validation": {
       "field-error_required": "Please fill this field",
@@ -104,7 +105,7 @@
       "updated": "Updated:",
       "no-posts-title": "No posts yet",
       "no-posts-msg": "Be the first to create a post",
-      "comments-title": "Comments",
+      "comments-title": "Comments ({{count}})",
       "post-removed-msg": "Your post was successfully removed"
     },
     "comments": {
@@ -145,6 +146,15 @@
     },
     "file-field": {
       "title": "Select image to upload"
+    },
+    "search": {
+      "search-posts-title": "Search posts",
+      "search-profiles-title": "Search profiles",
+      "query-placeholder": "Type your search query here",
+      "no-posts-title": "No posts by your query yet",
+      "no-posts-msg": "Try to search something else",
+      "no-profiles-title": "No profiles by your query yet",
+      "no-profiles-msg": "Try to search something else"
     }
   }
 }
