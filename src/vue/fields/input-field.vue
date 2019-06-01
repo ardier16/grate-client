@@ -94,7 +94,7 @@ export default {
   @include text-font-sizes;
 
   &:not([readonly]) {
-    -webkit-box-shadow: inset 0 0 0 5rem $field-color-background
+    -webkit-box-shadow: inset 0 0 0 5rem $col-app-background;
     // autofill hack
   }
 
@@ -127,22 +127,27 @@ export default {
     @include placeholder;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus)::-webkit-input-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus)::-moz-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus):-moz-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus):-ms-input-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus)::placeholder {
     opacity: 0;
   }

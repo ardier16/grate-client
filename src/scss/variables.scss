@@ -65,3 +65,9 @@ $col-status-msg-info: $col-info;
 $col-status-msg-text: $col-text-inverse;
 $col-status-msg-light-bg: $col-block-bg;
 $col-status-close-btn-hover: rgba(0, 0, 0, 0.1);
+
+// top bar colors
+$col-top-bar-background: $_white;
+$col-top-bar-text: $_black;
+$col-top-bar-tab: $_black;
+$col-top-bar-tab-active: $_black;

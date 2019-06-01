@@ -57,6 +57,17 @@
 
           <router-link
             class="links-bar__link"
+            :to="vueRoutes.search"
+            tag="a"
+          >
+            <i class="links-bar__link-icon mdi mdi-magnify" />
+            <span class="links-bar__link-text">
+              {{ 'pages.search' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="links-bar__link"
             :to="vueRoutes.profiles"
             tag="a"
           >

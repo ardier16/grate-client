@@ -16,6 +16,9 @@ import Posts from '@/vue/pages/posts.vue'
 import Post from '@/vue/pages/post.vue'
 import Profiles from '@/vue/pages/profiles.vue'
 import Friends from '@/vue/pages/friends.vue'
+import Search from '@/vue/pages/search.vue'
+import SearchPosts from '@/vue/pages/search-posts.vue'
+import SearchProfiles from '@/vue/pages/search-profiles.vue'
 
 Vue.use(Router)
 
@@ -93,6 +96,25 @@ const router = new Router({
           name: vueRoutes.friends.name,
           component: Friends,
           meta: { pageTranslationId: 'pages.friends' },
+        },
+        {
+          path: '/search',
+          name: vueRoutes.search.name,
+          component: Search,
+          redirect: vueRoutes.searchPosts,
+          meta: { pageTranslationId: 'pages.search' },
+          children: [
+            {
+              path: '/search/posts',
+              name: vueRoutes.searchPosts.name,
+              component: SearchPosts,
+            },
+            {
+              path: '/search/profiles',
+              name: vueRoutes.searchProfiles.name,
+              component: SearchProfiles,
+            },
+          ],
         },
       ],
     },
