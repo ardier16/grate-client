@@ -127,18 +127,22 @@ export default {
     @include placeholder;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus)::-webkit-input-placeholder {
-    opacity: 1;
+    opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus)::-moz-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus):-moz-placeholder {
     opacity: 0;
   }
 
+  .input-field__label ~
   &:placeholder-shown:not(:focus):-ms-input-placeholder {
     opacity: 0;
   }

@@ -119,6 +119,7 @@
       "requested-btn": "Requested",
       "approve-btn": "Approve",
       "reject-btn": "Reject",
+      "you-btn": "You",
       "request-sent-msg": "Your friend request was sent",
       "request-approved-msg": "Request approved. Now you are friends",
       "request-rejected-msg": "Friend request was successfully rejected",

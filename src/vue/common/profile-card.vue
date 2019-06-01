@@ -75,7 +75,7 @@
           class="app__button-primary"
           :disabled="true"
         >
-          You
+          {{ 'profiles.you-btn' | globalize }}
         </button>
       </template>
     </div>
