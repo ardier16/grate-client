@@ -1,5 +1,6 @@
 const mutations = {
   // root
+  SET_LANGUAGE: 'SET_LANGUAGE',
   CLEAR_STATE: 'CLEAR_STATE',
   POP_STATE: 'POP_STATE',
 
@@ -58,6 +59,9 @@ const actions = {
 }
 
 const getters = {
+  // root
+  language: 'language',
+
   // auth
   authToken: 'authToken',
   isSignedIn: 'isSignedIn',

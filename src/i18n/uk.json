@@ -8,11 +8,11 @@
         "dmy": "DD MM YYYY"
       },
       "formats": {
-        "same_day": "[Today at] H:mm",
-        "last_day": "[Yesterday at] H:mm",
-        "next_day": "[Tomorrow at] H:mm",
-        "last_week": "[Last] dddd [at] H:mm",
-        "next_week": "[Next] dddd [at] H:mm"
+        "same_day": "[Сьогоднi в] H:mm",
+        "last_day": "[Вчора в] H:mm",
+        "next_day": "[Завтра в] H:mm",
+        "last_week": "[Минулого тижня]",
+        "next_week": "[Наступного тижня]"
       }
     }
   },
@@ -23,14 +23,14 @@
     },
     "common": {},
     "pages": {
-      "feed": "Feed",
-      "posts": "Posts",
-      "profile": "Profile",
-      "profiles": "Profiles",
-      "friends": "Friends",
-      "create-post": "New post",
-      "post": "Post",
-      "search": "Search"
+      "feed": "Новини",
+      "posts": "Записи",
+      "profile": "Профiль",
+      "profiles": "Профiлi",
+      "friends": "Друзi",
+      "create-post": "Новий запис",
+      "post": "Запис",
+      "search": "Пошук"
     },
     "languages": {
       "english": "English",

@@ -1,11 +1,20 @@
 import moment from 'moment'
 
-const language = 'en'
+import { store, vuexTypes } from '@/vuex'
+import { CLIENT_LANGUAGES } from '@/js/const/client-languages'
+
+const language = store.getters[vuexTypes.language]
 let i18n
 
 switch (language) {
-  case 'en':
+  case CLIENT_LANGUAGES.english:
     i18n = require(`./en`)
+    break
+  case CLIENT_LANGUAGES.russian:
+    i18n = require(`./ru`)
+    break
+  case CLIENT_LANGUAGES.ukrainian:
+    i18n = require(`./uk`)
     break
   default:
     throw new Error('Locale not found')
@@ -15,13 +24,23 @@ export const i18nOptions = {
   lng: language,
   debug: false,
   resources: {
-    en: {
+    english: {
+      translation: {
+        ...i18n.translations,
+      },
+    },
+    russian: {
+      translation: {
+        ...i18n.translations,
+      },
+    },
+    ukrainian: {
       translation: {
         ...i18n.translations,
       },
     },
   },
-  whitelist: ['en'],
+  whitelist: ['english', 'russian', 'ukrainian'],
   // set to true if you need en-US/en-UK lng's:
   nonExplicitWhitelist: false,
   interpolation: {
