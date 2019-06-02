@@ -34,133 +34,133 @@
     },
     "languages": {
       "english": "English",
-      "russian": "Russian",
-      "ukrainian": "Ukrainian"
+      "russian": "Русский",
+      "ukrainian": "Українська"
     },
     "validation": {
-      "field-error_required": "Please fill this field",
-      "field-error_email": "This field should be a valid email",
-      "field-error_password": "Password should contain minimum 6 symbols",
-      "field-error_sameAsPassword": "Passwords don't match"
+      "field-error_required": "Буь ласка, заповніть це поле",
+      "field-error_email": "Це поле повинне містити валідний e-mail",
+      "field-error_password": "Пароль повинен містити щонайменше 6 символів",
+      "field-error_sameAsPassword": "Паролі не збігаються"
     },
     "errors": {
-      "default": "This service is temporary unavailable. Please try again later",
-      "timeout": "Timeout exceeded. Please re-check your internet connection and try again",
-      "network": "Network error. Please re-check your internet connection and try again",
-      "internal": "This service is temporary unavailable. Please try again later",
-      "conflict": "Such item already exists",
-      "not-found": "Such item not found",
-      "forbidden": "Request forbidden",
-      "bad-request": "The request you sent is invalid in some way",
-      "not-allowed": "Your account don't have permissions to perform this request",
-      "unauthorized": "Access denied"
+      "default": "Ця служба тимчасово недоступна. Будь ласка, спробуйте пізніше",
+      "timeout": "Час відклику сплив. Будь ласка, перевірте з'єднання з інтернетом та спробуйте пізніше",
+      "network": "Помилка мережі. Будь ласка, перевірте з'єднання з інтернетом та спробуйте пізніше",
+      "internal": "Ця служба тимчасово недоступна. Будь ласка, спробуйте пізніше",
+      "conflict": "Такий елемент вже існує",
+      "not-found": "Елемент не знайдено",
+      "forbidden": "Запит заборонений",
+      "bad-request": "Ваш запит неправильно складено",
+      "not-allowed": "Ваш акаунт не має повноважень для виконання цього запиту",
+      "unauthorized": "Доступ заблоковано"
     },
     "status-message": {
-      "title_warning": "Warning",
-      "title_success": "Success",
-      "title_error": "Error",
-      "title_info": "Notification",
-      "default-message_warning": "Something you are doing is not recommended",
-      "default-message_success": "Action successful",
-      "default-message_error": "Something went wrong",
-      "default-message_info": "Something is happening. Just want you to know that"
+      "title_warning": "Увага",
+      "title_success": "Успіх",
+      "title_error": "Помилка",
+      "title_info": "Сповіщення",
+      "default-message_warning": "Не рекомендується робити такі дії",
+      "default-message_success": "Дія успішно виконана",
+      "default-message_error": "Щось пішло не так",
+      "default-message_info": "Ви отримали нове сповіщення"
     },
     "load-failed-message": {
-      "default-title": "Loading error",
-      "default-msg": "There was an error while loading. Please, try again later"
+      "default-title": "Помилка при завантаженні",
+      "default-msg": "Трапилася помилка при завантаженні даних. Будь ласка, спробуйте пізніше"
     },
     "footer": {
       "copyright": "{{year}} © gRate"
     },
     "passport": {
-      "signed-in-as": "Signed in as",
-      "sign-out-btn": "Sign out",
-      "online-msg": "Online"
+      "signed-in-as": "У мережі як",
+      "sign-out-btn": "Вийти",
+      "online-msg": "Онлайн"
     },
     "auth-pages": {
-      "title": "gRate for you",
-      "sign-in": "Sign in",
-      "sign-up": "Sign up",
-      "no-account-question": "No account yet?",
-      "no-account-answer": "Sign up",
-      "have-account-question": "Already have an account?",
-      "have-account-answer": "Sign in",
+      "title": "Найкраще для вас",
+      "sign-in": "Увійти",
+      "sign-up": "Зареєструватися",
+      "no-account-question": "Ще нема акаунту?",
+      "no-account-answer": "Зареєструйстеся",
+      "have-account-question": "Уже маєте акаунт?",
+      "have-account-answer": "Увійти",
       "email": "E-mail",
-      "login": "E-mail or username",
-      "password": "Password",
-      "confirm-password": "Confirm password",
-      "username": "Username"
+      "login": "E-mail або ім'я користувача",
+      "password": "Пароль",
+      "confirm-password": "Повторіть пароль",
+      "username": "Ім'я користувача"
     },
     "profile-form": {
-      "name": "Name",
-      "birth-date": "Birth date",
-      "status": "Status",
-      "avatar": "Avatar",
-      "update-btn": "Update",
-      "profile-updated-msg": "Your profile was successfully updated"
+      "name": "Повне ім'я",
+      "birth-date": "Дата народження",
+      "status": "Статус",
+      "avatar": "Аватар",
+      "update-btn": "Зберегти",
+      "profile-updated-msg": "Зміни до профілю були успішно збережені"
     },
     "feed": {
-      "created": "Created:",
-      "updated": "Updated:",
-      "no-posts-title": "No posts yet",
-      "no-posts-msg": "Be the first to create a post"
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "no-posts-title": "Нема записів",
+      "no-posts-msg": "Будьте першим у створенні запису"
     },
     "posts": {
-      "created": "Created:",
-      "updated": "Updated:",
-      "no-posts-title": "No posts yet",
-      "no-posts-msg": "Be the first to create a post",
-      "comments-title": "Comments ({{count}})",
-      "post-removed-msg": "Your post was successfully removed"
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "no-posts-title": "Нема записів",
+      "no-posts-msg": "Будьте першим у створенні запису",
+      "comments-title": "Коментарі ({{count}})",
+      "post-removed-msg": "Ваш запис було успішно видалено"
     },
     "comments": {
-      "created": "Created:",
-      "updated": "Updated:",
-      "comment-removed-msg": "Your comment was successfully removed"
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "comment-removed-msg": "Ваш коментар було успішно видалено"
     },
     "profiles": {
-      "add-friend-btn": "Add friend",
-      "friend-btn": "Your friend",
-      "requested-btn": "Requested",
-      "approve-btn": "Approve",
-      "reject-btn": "Reject",
-      "you-btn": "You",
-      "request-sent-msg": "Your friend request was sent",
-      "request-approved-msg": "Request approved. Now you are friends",
-      "request-rejected-msg": "Friend request was successfully rejected",
-      "online-msg": "Online",
-      "last-seen-msg": "Last seen:"
+      "add-friend-btn": "Додати до друзів",
+      "friend-btn": "Ваш друг",
+      "requested-btn": "Запит надіслано",
+      "approve-btn": "Прийняти",
+      "reject-btn": "Відхилити",
+      "you-btn": "Ви",
+      "request-sent-msg": "Запит на додавання до друзів надіслано",
+      "request-approved-msg": "Запит прийнято. Тепер ви є друзями",
+      "request-rejected-msg": "Запит успішно відхилено",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Був у мережі:"
     },
     "friends": {
-      "no-friends-title": "No friends yet",
-      "no-friends-msg": "You do not have any friends yet",
-      "online-msg": "Online",
-      "last-seen-msg": "Last seen:"
+      "no-friends-title": "Нема друзів",
+      "no-friends-msg": "У вас ще нема друзів у мережі",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Був у мережі:"
     },
     "post-form": {
-      "title": "Title",
-      "text": "Text",
-      "create-btn": "Create",
-      "update-btn": "Update",
-      "post-updated-msg": "Your post was successfully updated"
+      "title": "Заголовок",
+      "text": "Текст",
+      "create-btn": "Створити",
+      "update-btn": "Оновити",
+      "post-updated-msg": "Ваш запис було успішно оновлено"
     },
     "comment-form": {
-      "text": "Text",
-      "add-btn": "Add a comment",
-      "update-btn": "Update",
-      "comment-updated-msg": "Your comment was successfully updated"
+      "text": "Текст",
+      "add-btn": "Додати коментар",
+      "update-btn": "Оновити",
+      "comment-updated-msg": "Ваш коментар було успішно оновлено"
     },
     "file-field": {
-      "title": "Select image to upload"
+      "title": "Виберіть зоображення"
     },
     "search": {
-      "search-posts-title": "Search posts",
-      "search-profiles-title": "Search profiles",
-      "query-placeholder": "Type your search query here",
-      "no-posts-title": "No posts by your query yet",
-      "no-posts-msg": "Try to search something else",
-      "no-profiles-title": "No profiles by your query yet",
-      "no-profiles-msg": "Try to search something else"
+      "search-posts-title": "Пошук записів",
+      "search-profiles-title": "Пошук профілів",
+      "query-placeholder": "Введіть свій запит тут",
+      "no-posts-title": "Нема записів за вашим запитом",
+      "no-posts-msg": "Будь ласка, спробуйте інший запит",
+      "no-profiles-title": "Нема профілів за вашим запитом",
+      "no-profiles-msg": "Будь ласка, спробуйте інший запит"
     }
   }
 }
