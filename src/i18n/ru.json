@@ -1,0 +1,166 @@
+{
+  "config": {
+    "date": {
+      "presets": {
+        "time": "H:mm",
+        "date": "MMMM D, YYYY",
+        "datetime": "MMMM D, YYYY [at] H:mm",
+        "dmy": "DD MM YYYY"
+      },
+      "formats": {
+        "same_day": "[Сегодня в] H:mm",
+        "last_day": "[Вчера в] H:mm",
+        "next_day": "[Завтра в] H:mm",
+        "last_week": "[На прошлой неделе]",
+        "next_week": "[На следующей неделе]"
+      }
+    }
+  },
+  "translations": {
+    "formats": {
+      "date": "{{value, date}}",
+      "calendar": "{{value, calendar}}"
+    },
+    "common": {},
+    "pages": {
+      "feed": "Новости",
+      "posts": "Посты",
+      "profile": "Профиль",
+      "profiles": "Профили",
+      "friends": "Друзья",
+      "create-post": "Новый пост",
+      "post": "Пост",
+      "search": "Поиск"
+    },
+    "languages": {
+      "english": "English",
+      "russian": "Русский",
+      "ukrainian": "Українська"
+    },
+    "validation": {
+      "field-error_required": "Пожалуйста, заполните это поле",
+      "field-error_email": "Это поле должно содержать валидный e-mail",
+      "field-error_password": "Пароль должен состоять минимум из 6 символов",
+      "field-error_sameAsPassword": "Пароли не совпадают"
+    },
+    "errors": {
+      "default": "Служба временно недоступна. Пожалуйста, попробуйте позже",
+      "timeout": "Время ожидания истекло. Проверьте ваше интернет-подключение и попробуйте снова",
+      "network": "Ошибка сети. Проверьте ваше интернет-подключение и попробуйте снова",
+      "internal": "Служба временно недоступна. Пожалуйста, повторите попытку позже",
+      "conflict": "Такой элемент уже существует",
+      "not-found": "Элемент не найден",
+      "forbidden": "Запрос запрещён",
+      "bad-request": "Ваш запрос составлен неправильно",
+      "not-allowed": "У вашего аккаунта нет разрешений для выполнения даного запроса",
+      "unauthorized": "Доступ закрыт"
+    },
+    "status-message": {
+      "title_warning": "Внимание",
+      "title_success": "Успех",
+      "title_error": "Ошибка",
+      "title_info": "Уведомление",
+      "default-message_warning": "Ваши действия не рекомендуются",
+      "default-message_success": "Действие успешно",
+      "default-message_error": "Что-то пошло не так",
+      "default-message_info": "У вас новое уведомление"
+    },
+    "load-failed-message": {
+      "default-title": "Ошибка загрузки",
+      "default-msg": "Произошла ошибка при загрузке данных. Пожалуйста, повторите попытку позже"
+    },
+    "footer": {
+      "copyright": "{{year}} © gRate"
+    },
+    "passport": {
+      "signed-in-as": "В сети как",
+      "sign-out-btn": "Выйти",
+      "online-msg": "Онлайн"
+    },
+    "auth-pages": {
+      "title": "Лучшее для вас",
+      "sign-in": "Войти",
+      "sign-up": "Зарегистрироваться",
+      "no-account-question": "Нет аккаунта в сети?",
+      "no-account-answer": "Зарегистрируйтесь",
+      "have-account-question": "Уже есть аккаунт?",
+      "have-account-answer": "Войти",
+      "email": "E-mail",
+      "login": "E-mail или имя пользователя",
+      "password": "Пароль",
+      "confirm-password": "Повторите пароль",
+      "username": "Имя пользователя"
+    },
+    "profile-form": {
+      "name": "Полное имя",
+      "birth-date": "Дата рождения",
+      "status": "Статус",
+      "avatar": "Аватар",
+      "update-btn": "Сохранить",
+      "profile-updated-msg": "Изменения профиля успешно сохранены"
+    },
+    "feed": {
+      "created": "Создан:",
+      "updated": "Обновлён:",
+      "no-posts-title": "Нет постов",
+      "no-posts-msg": "Создайте пост первым"
+    },
+    "posts": {
+      "created": "Создан:",
+      "updated": "Обновлён:",
+      "no-posts-title": "Нет постов",
+      "no-posts-msg": "Создайте пост первым",
+      "comments-title": "Комментарии ({{count}})",
+      "post-removed-msg": "Ваш пост был успешно удалён"
+    },
+    "comments": {
+      "created": "Создан:",
+      "updated": "Обновлён:",
+      "comment-removed-msg": "Ваш комментарий был успешно удалён"
+    },
+    "profiles": {
+      "add-friend-btn": "Добавить в друзья",
+      "friend-btn": "Ваш друг",
+      "requested-btn": "Запрос отправлен",
+      "approve-btn": "Принять",
+      "reject-btn": "Отклонить",
+      "you-btn": "Вы",
+      "request-sent-msg": "Запрос на добавления в друзья был успешно отослан",
+      "request-approved-msg": "Запрос принят. Теперь вы друзья",
+      "request-rejected-msg": "Запрос успешно отклонён",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Был в сети:"
+    },
+    "friends": {
+      "no-friends-title": "Нет друзей",
+      "no-friends-msg": "У вас ещё нет друзей в сети",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Был в сети:"
+    },
+    "post-form": {
+      "title": "Заголовок",
+      "text": "Текст",
+      "create-btn": "Создать",
+      "update-btn": "Обновить",
+      "post-updated-msg": "Ваш пост был успешно обновлён"
+    },
+    "comment-form": {
+      "text": "Текст",
+      "add-btn": "Добавить комментарий",
+      "update-btn": "Обновить",
+      "comment-updated-msg": "Ваш комментарий был успешно обновлён"
+    },
+    "file-field": {
+      "title": "Выберите изображение"
+    },
+    "search": {
+      "search-posts-title": "Поиск постов",
+      "search-profiles-title": "Поиск профилей",
+      "query-placeholder": "Введите ваш запрос здесь",
+      "no-posts-title": "Нет постов по вашему запросу",
+      "no-posts-msg": "Попробуйте ввести другой запрос",
+      "no-profiles-title": "Нет профилей по вашему запросу",
+      "no-profiles-msg": "Попробуйте ввести другой запрос"
+    }
+  }
+}

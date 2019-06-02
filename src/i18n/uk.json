@@ -1,0 +1,166 @@
+{
+  "config": {
+    "date": {
+      "presets": {
+        "time": "H:mm",
+        "date": "MMMM D, YYYY",
+        "datetime": "MMMM D, YYYY [at] H:mm",
+        "dmy": "DD MM YYYY"
+      },
+      "formats": {
+        "same_day": "[Сьогоднi в] H:mm",
+        "last_day": "[Вчора в] H:mm",
+        "next_day": "[Завтра в] H:mm",
+        "last_week": "[Минулого тижня]",
+        "next_week": "[Наступного тижня]"
+      }
+    }
+  },
+  "translations": {
+    "formats": {
+      "date": "{{value, date}}",
+      "calendar": "{{value, calendar}}"
+    },
+    "common": {},
+    "pages": {
+      "feed": "Новини",
+      "posts": "Записи",
+      "profile": "Профiль",
+      "profiles": "Профiлi",
+      "friends": "Друзi",
+      "create-post": "Новий запис",
+      "post": "Запис",
+      "search": "Пошук"
+    },
+    "languages": {
+      "english": "English",
+      "russian": "Русский",
+      "ukrainian": "Українська"
+    },
+    "validation": {
+      "field-error_required": "Буь ласка, заповніть це поле",
+      "field-error_email": "Це поле повинне містити валідний e-mail",
+      "field-error_password": "Пароль повинен містити щонайменше 6 символів",
+      "field-error_sameAsPassword": "Паролі не збігаються"
+    },
+    "errors": {
+      "default": "Ця служба тимчасово недоступна. Будь ласка, спробуйте пізніше",
+      "timeout": "Час відклику сплив. Будь ласка, перевірте з'єднання з інтернетом та спробуйте пізніше",
+      "network": "Помилка мережі. Будь ласка, перевірте з'єднання з інтернетом та спробуйте пізніше",
+      "internal": "Ця служба тимчасово недоступна. Будь ласка, спробуйте пізніше",
+      "conflict": "Такий елемент вже існує",
+      "not-found": "Елемент не знайдено",
+      "forbidden": "Запит заборонений",
+      "bad-request": "Ваш запит неправильно складено",
+      "not-allowed": "Ваш акаунт не має повноважень для виконання цього запиту",
+      "unauthorized": "Доступ заблоковано"
+    },
+    "status-message": {
+      "title_warning": "Увага",
+      "title_success": "Успіх",
+      "title_error": "Помилка",
+      "title_info": "Сповіщення",
+      "default-message_warning": "Не рекомендується робити такі дії",
+      "default-message_success": "Дія успішно виконана",
+      "default-message_error": "Щось пішло не так",
+      "default-message_info": "Ви отримали нове сповіщення"
+    },
+    "load-failed-message": {
+      "default-title": "Помилка при завантаженні",
+      "default-msg": "Трапилася помилка при завантаженні даних. Будь ласка, спробуйте пізніше"
+    },
+    "footer": {
+      "copyright": "{{year}} © gRate"
+    },
+    "passport": {
+      "signed-in-as": "У мережі як",
+      "sign-out-btn": "Вийти",
+      "online-msg": "Онлайн"
+    },
+    "auth-pages": {
+      "title": "Найкраще для вас",
+      "sign-in": "Увійти",
+      "sign-up": "Зареєструватися",
+      "no-account-question": "Ще нема акаунту?",
+      "no-account-answer": "Зареєструйстеся",
+      "have-account-question": "Уже маєте акаунт?",
+      "have-account-answer": "Увійти",
+      "email": "E-mail",
+      "login": "E-mail або ім'я користувача",
+      "password": "Пароль",
+      "confirm-password": "Повторіть пароль",
+      "username": "Ім'я користувача"
+    },
+    "profile-form": {
+      "name": "Повне ім'я",
+      "birth-date": "Дата народження",
+      "status": "Статус",
+      "avatar": "Аватар",
+      "update-btn": "Зберегти",
+      "profile-updated-msg": "Зміни до профілю були успішно збережені"
+    },
+    "feed": {
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "no-posts-title": "Нема записів",
+      "no-posts-msg": "Будьте першим у створенні запису"
+    },
+    "posts": {
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "no-posts-title": "Нема записів",
+      "no-posts-msg": "Будьте першим у створенні запису",
+      "comments-title": "Коментарі ({{count}})",
+      "post-removed-msg": "Ваш запис було успішно видалено"
+    },
+    "comments": {
+      "created": "Створено:",
+      "updated": "Відредаговано:",
+      "comment-removed-msg": "Ваш коментар було успішно видалено"
+    },
+    "profiles": {
+      "add-friend-btn": "Додати до друзів",
+      "friend-btn": "Ваш друг",
+      "requested-btn": "Запит надіслано",
+      "approve-btn": "Прийняти",
+      "reject-btn": "Відхилити",
+      "you-btn": "Ви",
+      "request-sent-msg": "Запит на додавання до друзів надіслано",
+      "request-approved-msg": "Запит прийнято. Тепер ви є друзями",
+      "request-rejected-msg": "Запит успішно відхилено",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Був у мережі:"
+    },
+    "friends": {
+      "no-friends-title": "Нема друзів",
+      "no-friends-msg": "У вас ще нема друзів у мережі",
+      "online-msg": "Онлайн",
+      "last-seen-msg": "Був у мережі:"
+    },
+    "post-form": {
+      "title": "Заголовок",
+      "text": "Текст",
+      "create-btn": "Створити",
+      "update-btn": "Оновити",
+      "post-updated-msg": "Ваш запис було успішно оновлено"
+    },
+    "comment-form": {
+      "text": "Текст",
+      "add-btn": "Додати коментар",
+      "update-btn": "Оновити",
+      "comment-updated-msg": "Ваш коментар було успішно оновлено"
+    },
+    "file-field": {
+      "title": "Виберіть зоображення"
+    },
+    "search": {
+      "search-posts-title": "Пошук записів",
+      "search-profiles-title": "Пошук профілів",
+      "query-placeholder": "Введіть свій запит тут",
+      "no-posts-title": "Нема записів за вашим запитом",
+      "no-posts-msg": "Будь ласка, спробуйте інший запит",
+      "no-profiles-title": "Нема профілів за вашим запитом",
+      "no-profiles-msg": "Будь ласка, спробуйте інший запит"
+    }
+  }
+}

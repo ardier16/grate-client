@@ -22,8 +22,8 @@
           <h3 class="post__comments-title">
             {{
               'posts.comments-title' | globalize({
-                count: post.comments.length
-              })
+                 count: post.comments.length
+               })
             }}
           </h3>
 

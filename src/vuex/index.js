@@ -10,17 +10,27 @@ import friends from './friends.module'
 import { vuexTypes } from '@/vuex/types'
 import { localStoragePlugin } from './plugins/local-storage'
 
+import { CLIENT_LANGUAGES } from '@/js/const/client-languages'
+
 Vue.use(Vuex)
 
 export const rootModule = {
   actions: {},
   mutations: {
+    [vuexTypes.SET_LANGUAGE] (state, language) {
+      state.language = language
+    },
+
     // These mutations are being subscribed by plugins
     [vuexTypes.POP_STATE] () {},
     [vuexTypes.CLEAR_STATE] () {},
   },
-  getters: {},
-  state: {},
+  getters: {
+    [vuexTypes.language]: state => state.language || CLIENT_LANGUAGES.english,
+  },
+  state: {
+    language: '',
+  },
 }
 
 const store = new Vuex.Store({

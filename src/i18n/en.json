@@ -32,6 +32,11 @@
       "post": "Post",
       "search": "Search"
     },
+    "languages": {
+      "english": "English",
+      "russian": "Русский",
+      "ukrainian": "Українська"
+    },
     "validation": {
       "field-error_required": "Please fill this field",
       "field-error_email": "This field should be a valid email",
