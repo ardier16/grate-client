@@ -34,8 +34,8 @@
     },
     "languages": {
       "english": "English",
-      "russian": "Russian",
-      "ukrainian": "Ukrainian"
+      "russian": "Русский",
+      "ukrainian": "Українська"
     },
     "validation": {
       "field-error_required": "Please fill this field",
