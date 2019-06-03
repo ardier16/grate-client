@@ -71,3 +71,7 @@ $col-top-bar-background: $_white;
 $col-top-bar-text: $_black;
 $col-top-bar-tab: $_black;
 $col-top-bar-tab-active: $_black;
+
+// modal colors
+$col-modal-bg: $col-block-bg;
+$col-modal-backdrop-bg: rgba(0, 0, 0, 0.6);

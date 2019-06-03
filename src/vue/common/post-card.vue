@@ -71,15 +71,27 @@
         {{ post.createdAt | formatDate }}
       </p>
 
-      <p
-        v-if="post.commentsCount > 0"
-        class="post-card__comments-wrp"
-      >
-        <i class="mdi mdi-comment-text-outline post-card__comments-icon" />
-        <span class="post-card__comments">
-          {{ post.commentsCount }}
-        </span>
-      </p>
+      <div class="post-card__actions-wrp">
+        <p
+          v-if="post.commentsCount > 0"
+          class="post-card__comments-wrp"
+        >
+          <i class="mdi mdi-comment-text-outline post-card__comments-icon" />
+          <span class="post-card__comments">
+            {{ post.commentsCount }}
+          </span>
+        </p>
+
+        <p
+          v-if="post.ratesCount > 0"
+          class="post-card__rates-wrp"
+        >
+          <i class="mdi mdi-star post-card__rates-icon" />
+          <span class="post-card__rates">
+            {{ post.ratesCount }}
+          </span>
+        </p>
+      </div>
 
       <p
         class="post-card__updated"
@@ -284,17 +296,28 @@ export default {
   align-items: center;
 }
 
-.post-card__comments-wrp {
+.post-card__comments-wrp,
+.post-card__rates-wrp {
   display: flex;
   align-items: center;
 }
 
-.post-card__comments-icon {
+.post-card__comments-icon,
+.post-card__rates-icon {
   font-size: 1.8rem;
 }
 
-.post-card__comments {
+.post-card__comments,
+.post-card__rates {
   font-size: 1.6rem;
   margin-left: 0.4rem;
+}
+
+.post-card__actions-wrp {
+  display: flex;
+}
+
+.post-card__rates-wrp {
+  margin-left: 2rem;
 }
 </style>
