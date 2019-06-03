@@ -57,12 +57,45 @@
 
           <router-link
             class="links-bar__link"
+            :to="vueRoutes.messages"
+            tag="a"
+          >
+            <i class="links-bar__link-icon mdi mdi-email" />
+            <span class="links-bar__link-text">
+              {{ 'pages.messages' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="links-bar__link"
             :to="vueRoutes.search"
             tag="a"
           >
             <i class="links-bar__link-icon mdi mdi-magnify" />
             <span class="links-bar__link-text">
               {{ 'pages.search' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="links-bar__link"
+            :to="vueRoutes.groups"
+            tag="a"
+          >
+            <i class="links-bar__link-icon mdi mdi-briefcase-account" />
+            <span class="links-bar__link-text">
+              {{ 'pages.groups' | globalize }}
+            </span>
+          </router-link>
+
+          <router-link
+            class="links-bar__link"
+            :to="vueRoutes.statistics"
+            tag="a"
+          >
+            <i class="links-bar__link-icon mdi mdi-finance" />
+            <span class="links-bar__link-text">
+              {{ 'pages.statistics' | globalize }}
             </span>
           </router-link>
 

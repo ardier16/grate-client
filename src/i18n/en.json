@@ -30,7 +30,10 @@
       "friends": "Friends",
       "create-post": "New post",
       "post": "Post",
-      "search": "Search"
+      "search": "Search",
+      "messages": "Messages",
+      "groups": "Groups",
+      "statistics": "Statistics"
     },
     "languages": {
       "english": "English",
@@ -89,7 +92,8 @@
       "login": "E-mail or username",
       "password": "Password",
       "confirm-password": "Confirm password",
-      "username": "Username"
+      "username": "Username",
+      "sign-in-with-google": "Sign in with Google"
     },
     "profile-form": {
       "name": "Name",

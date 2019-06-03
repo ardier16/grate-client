@@ -14,4 +14,7 @@ export const vueRoutes = Object.freeze({
   profile: { name: 'app.profile' },
   createPost: { name: 'create-post' },
   settings: { name: 'app.settings' },
+  statistics: { name: 'app.statistics' },
+  messages: { name: 'app.messages' },
+  groups: { name: 'app.groups' },
 })

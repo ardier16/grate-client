@@ -4,6 +4,12 @@
 .auth-form__submit-btn {
   @include button-primary();
 
-  margin-right: auto;
+  width: 16rem;
+}
+
+.auth-form__google-btn {
+  @include button-primary();
+
   width: 20rem;
+  background-color: $col-accent;
 }
