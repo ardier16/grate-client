@@ -27,11 +27,18 @@
 
     <div class="app__form-actions">
       <button
-        type="submit"
         class="auth-form__submit-btn"
         :disabled="formMixin.isDisabled"
       >
         {{ 'auth-pages.sign-in' | globalize }}
+      </button>
+
+      <button
+        type="submit"
+        class="auth-form__submit-btn auth-form__google-btn"
+        :disabled="formMixin.isDisabled"
+      >
+        {{ 'auth-pages.sign-in-with-google' | globalize }}
       </button>
     </div>
   </form>

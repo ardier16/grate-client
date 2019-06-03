@@ -8,12 +8,15 @@ let i18n
 
 switch (language) {
   case CLIENT_LANGUAGES.english:
+    moment.locale('en')
     i18n = require(`./en`)
     break
   case CLIENT_LANGUAGES.russian:
+    moment.locale('ru')
     i18n = require(`./ru`)
     break
   case CLIENT_LANGUAGES.ukrainian:
+    moment.locale('uk')
     i18n = require(`./uk`)
     break
   default:

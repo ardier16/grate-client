@@ -30,7 +30,10 @@
       "friends": "Друзья",
       "create-post": "Новый пост",
       "post": "Пост",
-      "search": "Поиск"
+      "search": "Поиск",
+      "messages": "Сообшения",
+      "groups": "Группы",
+      "statistics": "Статистика"
     },
     "languages": {
       "english": "English",
@@ -89,7 +92,8 @@
       "login": "E-mail или имя пользователя",
       "password": "Пароль",
       "confirm-password": "Повторите пароль",
-      "username": "Имя пользователя"
+      "username": "Имя пользователя",
+      "sign-in-with-google": "Войти через Google"
     },
     "profile-form": {
       "name": "Полное имя",

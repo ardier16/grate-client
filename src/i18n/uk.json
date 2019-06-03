@@ -30,7 +30,10 @@
       "friends": "Друзi",
       "create-post": "Новий запис",
       "post": "Запис",
-      "search": "Пошук"
+      "search": "Пошук",
+      "messages": "Повiдомлення",
+      "groups": "Групи",
+      "statistics": "Статистика"
     },
     "languages": {
       "english": "English",
@@ -89,7 +92,8 @@
       "login": "E-mail або ім'я користувача",
       "password": "Пароль",
       "confirm-password": "Повторіть пароль",
-      "username": "Ім'я користувача"
+      "username": "Ім'я користувача",
+      "sign-in-with-google": "Увiйти через Google"
     },
     "profile-form": {
       "name": "Повне ім'я",
@@ -151,7 +155,7 @@
       "comment-updated-msg": "Ваш коментар було успішно оновлено"
     },
     "file-field": {
-      "title": "Виберіть зоображення"
+      "title": "Виберіть зображення"
     },
     "search": {
       "search-posts-title": "Пошук записів",

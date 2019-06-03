@@ -19,6 +19,9 @@ import Friends from '@/vue/pages/friends.vue'
 import Search from '@/vue/pages/search.vue'
 import SearchPosts from '@/vue/pages/search-posts.vue'
 import SearchProfiles from '@/vue/pages/search-profiles.vue'
+import Messages from '@/vue/pages/messages.vue'
+import Groups from '@/vue/pages/groups.vue'
+import Statistics from '@/vue/pages/statistics.vue'
 
 Vue.use(Router)
 
@@ -115,6 +118,24 @@ const router = new Router({
               component: SearchProfiles,
             },
           ],
+        },
+        {
+          path: '/messages',
+          name: vueRoutes.messages.name,
+          component: Messages,
+          meta: { pageTranslationId: 'pages.messages' },
+        },
+        {
+          path: '/groups',
+          name: vueRoutes.groups.name,
+          component: Groups,
+          meta: { pageTranslationId: 'pages.groups' },
+        },
+        {
+          path: '/statistics',
+          name: vueRoutes.statistics.name,
+          component: Statistics,
+          meta: { pageTranslationId: 'pages.statistics' },
         },
       ],
     },
