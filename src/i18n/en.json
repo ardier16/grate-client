@@ -165,6 +165,16 @@
       "no-posts-msg": "Try to search something else",
       "no-profiles-title": "No profiles by your query yet",
       "no-profiles-msg": "Try to search something else"
+    },
+    "factor-types": {
+      "post_overall": "Overall",
+      "post_relevance": "Relevance",
+      "post_truth": "Truth",
+      "post_informativeness": "Informativeness"
+    },
+    "rate-post-form": {
+      "update-btn": "Update",
+      "rates-updated-msg": "Your rates were successfully updated"
     }
   }
 }
