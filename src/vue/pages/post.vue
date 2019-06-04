@@ -16,25 +16,30 @@
         />
 
         <modal :is-shown.sync="isModalShown">
-          <rate-post-form :post="post" />
+          <rate-post-form
+            :post="post"
+            @submit="refreshPost"
+          />
         </modal>
 
         <div
           v-if="post.rates"
           class="post__rates"
         >
-          <h3 class="post__rates-title">
-            {{
-              `Rates (${post.rates.length})`
-            }}
-          </h3>
+          <div class="post__rates-heading">
+            <h3 class="post__rates-title">
+              {{
+                `Rates (${post.rates.length})`
+              }}
+            </h3>
 
-          <button
-            class="app__button-primary"
-            @click="isModalShown = true"
-          >
-            Rate post
-          </button>
+            <button
+              class="app__button-primary"
+              @click="isModalShown = true"
+            >
+              Rate post
+            </button>
+          </div>
 
           <div class="post__rates-wrp">
             <div
@@ -215,13 +220,9 @@ export default {
 @import '@scss/variables';
 @import '@scss/mixins';
 
-.post__comments {
+.post__comments, .post__rates {
   max-width: 120rem;
   margin: 4rem auto 2rem;
-
-  @include respond-to(small) {
-    padding: 2.4rem;
-  }
 }
 
 .post__comment-form {
@@ -230,6 +231,36 @@ export default {
 
 .post__comments-title {
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
+}
+
+.post__rates-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.post__rates-title {
+  font-size: 2.4rem;
+}
+
+.post__rates-wrp {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: $col-block-bg;
+  padding: 2.4rem 1.4rem;
+  border-radius: 1rem;
+
+  @include box-shadow();
+}
+
+.post__rate {
+  margin: 0 1rem;
+}
+
+.post__rate-factor {
+  font-size: 1.8rem;
 }
 </style>
