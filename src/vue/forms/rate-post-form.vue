@@ -1,44 +1,50 @@
 <template>
-  <form class="app-form comment-form" @submit.prevent="submit">
+  <form class="app-form rate-post-form" @submit.prevent="submit">
+    <h3 class="rate-post-form__header">
+      Rate a post
+    </h3>
     <div class="app__form-row">
-      <div class="app__form-field">
-        <text-field
-          v-model="form.text"
-          @blur="touchField('form.text')"
-          name="comment-text"
-          rows="3"
-          :error-message="getFieldErrorMessage('form.text')"
-          :label="'comment-form.text' | globalize"
-        />
+      <div class="rate-post-form__factors">
+        <div
+          v-for="factor in factors"
+          :key="factor.id"
+          class="rate-post-form__factor"
+        >
+          <h4 class="rate-post-form__rate-factor">
+            {{ `factor-types.${factor.code}` | globalize }}
+          </h4>
+
+          <p class="rate-post-form__rate-setter">
+            <rate-setter
+              :rate="getRateValue(factor)"
+              @updated="updateRate($event, factor)"
+            />
+          </p>
+        </div>
       </div>
     </div>
 
-    <div class="comment-form__actions">
+    <div class="rate-post-form__actions">
       <button
         type="submit"
-        class="comment-form__submit-btn app__button-primary"
+        class="rate-post-form__submit-btn app__button-primary"
         :disabled="formMixin.isDisabled"
       >
-        <template v-if="comment">
-          {{ 'comment-form.update-btn' | globalize }}
-        </template>
-
-        <template v-else>
-          {{ 'comment-form.add-btn' | globalize }}
-        </template>
+        {{ 'rate-post-form.update-btn' | globalize }}
       </button>
     </div>
   </form>
 </template>
 
 <script>
+import RateSetter from '@/vue/common/rate-setter.vue'
+
 import FormMixin from '@/vue/mixins/form.mixin'
 
-import { required } from '@validators'
-
 import { vuexTypes } from '@/vuex'
-import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
+import { api } from '@/api'
 import { ErrorHandler } from '@/js/helpers/error-handler'
 import { Bus } from '@/js/helpers/event-bus'
 
@@ -48,60 +54,81 @@ const EVENTS = {
 
 export default {
   name: 'comment-form',
+  components: {
+    RateSetter,
+  },
   mixins: [FormMixin],
 
   props: {
-    postId: { type: String, required: true },
-    comment: { type: Object, default: null },
+    post: { type: Object, required: true },
+    factors: { type: Array, required: true },
   },
 
   data: _ => ({
     form: {
-      id: '',
-      text: '',
+      rates: [],
     },
   }),
 
-  validations: {
-    form: {
-      text: { required },
+  computed: {
+    ...mapGetters({
+      userId: vuexTypes.userId,
+      token: vuexTypes.authToken,
+    }),
+
+    userRates () {
+      return this.post.rates
+        .filter(rate => rate.ownerId === this.userId)
+        .map(rate => {
+          return {
+            factorId: rate.factorId,
+            code: this.factors.find(f => f.id === rate.factorId).code,
+            value: rate.value,
+          }
+        })
     },
   },
 
   created () {
-    if (this.comment) {
-      this.form.title = this.comment.title
-      this.form.text = this.comment.text
-      this.form.id = this.comment.id
-    }
+    this.rates = this.userRates.slice(0)
   },
 
   methods: {
-    ...mapActions({
-      createComment: vuexTypes.CREATE_COMMENT,
-      updateComment: vuexTypes.UPDATE_COMMENT,
-    }),
+    getRateValue (factor) {
+      const rate = this.rates.find(r => r.factorId === factor.id)
+      return rate ? rate.value : 0
+    },
 
-    async submit () {
-      if (!this.isFormValid()) {
-        return
+    updateRate (value, factor) {
+      const rate = this.rates.find(rate => rate.factorId === factor.id)
+      if (rate) {
+        rate.value = value
+      } else {
+        this.rates.push({
+          factorId: factor.id,
+          code: factor.code,
+          value,
+        })
       }
 
+      this.$forceUpdate()
+    },
+
+    async submit () {
       this.disableForm()
       try {
-        if (this.comment) {
-          await this.updateComment({
-            ...this.form,
-            postId: this.postId,
+        await Promise.all(this.rates.map(rate => {
+          return api().post({
+            endpoint: `/posts/${this.post.id}/rate`,
+            data: {
+              factorCode: rate.code,
+              value: rate.value,
+            },
+            token: this.token,
           })
-        } else {
-          await this.createComment({
-            ...this.form,
-            postId: this.postId,
-          })
-        }
+        }))
 
-        Bus.success('comment-form.comment-updated-msg')
+        Bus.success('rate-post-form.rates-updated-msg')
         this.$emit(EVENTS.submit)
       } catch (e) {
         ErrorHandler.process(e)
@@ -115,7 +142,26 @@ export default {
 <style lang="scss" scoped>
 @import './app-form';
 
-.comment-form__actions {
-  margin-top: 2.4rem;
+.rate-post-form__factors {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: -1rem;
+}
+
+.rate-post-form__factor {
+  margin: 1rem;
+}
+
+.rate-post-form__actions {
+  margin-top: 4rem;
+}
+
+.rate-post-form__header {
+  font-size: 2.4rem;
+}
+
+.rate-post-form__rate-factor {
+  font-size: 1.8rem;
 }
 </style>

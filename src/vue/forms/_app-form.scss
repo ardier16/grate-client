@@ -9,8 +9,6 @@ form {
   padding: 2.4rem;
   background-color: $col-block-bg;
   border-radius: 0.5rem;
-
-  @include box-shadow();
 }
 
 .app__form-row {

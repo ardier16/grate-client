@@ -108,7 +108,7 @@ $media-small: 460px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 70rem;
-  height: 50rem;
+  height: 40rem;
   max-width: 100%;
   max-height: 100%;
   box-shadow: 0 1rem 2rem 0 $col-modal-backdrop-bg;

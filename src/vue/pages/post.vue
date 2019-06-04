@@ -18,7 +18,8 @@
         <modal :is-shown.sync="isModalShown">
           <rate-post-form
             :post="post"
-            @submit="refreshPost"
+            :factors="factors"
+            @submit="closeModal() || refreshPost()"
           />
         </modal>
 
@@ -179,6 +180,10 @@ export default {
       deletePost: vuexTypes.DELETE_POST,
     }),
 
+    closeModal () {
+      this.isModalShown = false
+    },
+
     async getFactors () {
       const factors = api().get({
         endpoint: '/factors',
@@ -227,6 +232,8 @@ export default {
 
 .post__comment-form {
   margin-bottom: 2rem;
+
+  @include box-shadow();
 }
 
 .post__comments-title {

@@ -162,6 +162,10 @@
       "post_relevance": "Relevance",
       "post_truth": "Truth",
       "post_informativeness": "Informativeness"
+    },
+    "rate-post-form": {
+      "update-btn": "Update",
+      "rates-updated-msg": "Your rates were successfully updated"
     }
   }
 }
